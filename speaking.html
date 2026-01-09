@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking & Media | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
+        .page-header p { font-size: 1.3rem; max-width: 800px; margin: 0 auto; }
+        
+        .content-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; }
+        .intro-text { text-align: center; max-width: 900px; margin: 0 auto 5rem; }
+        .intro-text p { font-size: 1.2rem; line-height: 2; margin-bottom: 1.5rem; }
+        
+        .topics-section h2 { font-size: 3rem; text-align: center; margin-bottom: 4rem; }
+        .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .topic-card { background: linear-gradient(to bottom right, var(--white), var(--cream)); padding: 3rem; border-radius: 20px; border-left: 5px solid var(--gold); box-shadow: 0 15px 50px rgba(10, 22, 40, 0.08); transition: all 0.4s; }
+        .topic-card:hover { transform: translateX(10px); box-shadow: 0 20px 60px rgba(201, 169, 97, 0.2); }
+        .topic-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        .topic-card p { font-size: 1.05rem; line-height: 1.8; }
+        
+        .impact-section { background: var(--cream); padding: 6rem 2rem; }
+        .impact-section h2 { font-size: 3rem; text-align: center; margin-bottom: 3rem; }
+        .impact-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+        .impact-stat { text-align: center; padding: 2rem; }
+        .impact-number { font-size: 4rem; font-weight: 700; color: var(--gold); font-family: 'Playfair Display', serif; display: block; margin-bottom: 1rem; }
+        .impact-label { font-size: 1.1rem; color: var(--navy); font-weight: 600; }
+        
+        .collaborations-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; }
+        .collaborations-section h2 { font-size: 3rem; text-align: center; margin-bottom: 2rem; }
+        .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .partner-item { background: var(--white); padding: 2rem; border-radius: 10px; text-align: center; font-weight: 600; color: var(--navy); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); border: 1px solid var(--gold); transition: all 0.3s; }
+        .partner-item:hover { transform: translateY(-5px); }
+        
+        .cta-section { text-align: center; padding: 6rem 2rem; background: linear-gradient(to bottom, var(--cream), var(--white)); }
+        .cta-section h2 { font-size: 3rem; margin-bottom: 2rem; }
+        
+        .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) { .page-header h1 { font-size: 2.5rem; } .topics-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html" class="active">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Insights & Speaking Engagements</h1>
+        <p>Sharing Clinical Expertise, Innovation, and the Future of Dermatology</p>
+    </section>
+
+    <div class="content-section">
+        <div class="intro-text">
+            <p>Dr. Quoc-Bao Nguyen translates complex dermatologic science and emerging healthcare trends into clear, practical insights for diverse audiences. Whether addressing clinicians, industry collaborators, or the public, he speaks with clarity and purpose on topics that span clinical mastery, cutting-edge research, entrepreneurship, and the role of artificial intelligence in dermatology.</p>
+        </div>
+    </div>
+
+    <section class="topics-section">
+        <div class="content-section">
+            <h2>Featured Speaking Topics</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3>Skin Cancer Detection & Management</h3>
+                    <p>Best practices in early detection, Mohs micrographic surgery, and evidence-based treatment strategies for optimal patient outcomes.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Reconstructive Surgery Excellence</h3>
+                    <p>Advanced facial reconstruction techniques, scar optimization methods, and personalized approaches for superior aesthetic results.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Medical Dermatology Innovation</h3>
+                    <p>Updates on chronic conditions including atopic dermatitis, psoriasis, acne, vitiligo, and alopecia areata, with insights from clinical trial research.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Cosmetic Dermatology & Aesthetics</h3>
+                    <p>Rejuvenation strategies, injectable techniques, laser applications, and procedural approaches that prioritize natural, tailored results.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Hair Loss & Restoration</h3>
+                    <p>Comprehensive diagnosis and management of androgenetic alopecia, alopecia areata, scarring alopecia, and evidence-based restoration therapies.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Artificial Intelligence in Dermatology</h3>
+                    <p>Harnessing AI for diagnostics, workflow enhancement, clinical decision-support, and future care delivery models.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Healthcare Entrepreneurship</h3>
+                    <p>Building modern dermatology practices, developing physician-formulated skincare, leveraging technology, and accelerating innovation.</p>
+                </div>
+                <div class="topic-card">
+                    <h3>Clinical Trial Research</h3>
+                    <p>Insights from 20+ clinical trials in dermatology, collaboration with pharmaceutical companies, and bringing innovative therapies to patients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <h2>Clinical & Research Impact</h2>
+        <div class="impact-grid">
+            <div class="impact-stat">
+                <span class="impact-number">30+</span>
+                <div class="impact-label">Publications</div>
+            </div>
+            <div class="impact-stat">
+                <span class="impact-number">100+</span>
+                <div class="impact-label">Presentations</div>
+            </div>
+            <div class="impact-stat">
+                <span class="impact-number">20+</span>
+                <div class="impact-label">Clinical Trials</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="collaborations-section">
+        <h2>Industry Collaborations</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 4rem;">Dr. Nguyen has partnered with leading pharmaceutical and biotechnology companies</p>
+        <div class="partners-grid">
+            <div class="partner-item">Pfizer</div>
+            <div class="partner-item">Amgen</div>
+            <div class="partner-item">GlaxoSmithKline</div>
+            <div class="partner-item">Celgene</div>
+            <div class="partner-item">Novartis</div>
+            <div class="partner-item">Leo Pharma</div>
+            <div class="partner-item">Dermira</div>
+            <div class="partner-item">Anacor</div>
+            <div class="partner-item">Novan</div>
+            <div class="partner-item">Brickell Biotech</div>
+            <div class="partner-item">Mayne Pharma</div>
+            <div class="partner-item">Cutanea Life Sciences</div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Request Dr. Nguyen for Your Event</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Available for keynote presentations, conference lectures, panel discussions, media interviews, and educational workshops</p>
+        <a href="contact.html" class="cta-primary">Inquire About Availability</a>
+    </section>
+
+    <footer>
+        <p>📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

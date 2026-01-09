@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise & Services | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
+        .page-header p { font-size: 1.3rem; }
+        
+        .services-container { max-width: 1300px; margin: 6rem auto; padding: 0 2rem; }
+        .service-category { margin-bottom: 6rem; }
+        .category-header { text-align: center; margin-bottom: 4rem; }
+        .category-header h2 { font-size: 3rem; margin-bottom: 1rem; }
+        .category-header p { font-size: 1.2rem; color: var(--gold); font-weight: 500; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; }
+        .service-card { background: linear-gradient(to bottom, var(--white), var(--cream)); padding: 3.5rem; border-radius: 20px; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.1); border: 1px solid rgba(201, 169, 97, 0.2); transition: all 0.4s; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 70px rgba(10, 22, 40, 0.15); }
+        .service-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        .service-card p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem; }
+        .service-features { list-style: none; margin-top: 1.5rem; }
+        .service-features li { padding: 0.6rem 0; padding-left: 1.8rem; position: relative; }
+        .service-features li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+        
+        .highlight-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+        .highlight-section h2 { font-size: 3rem; color: var(--white); margin-bottom: 2rem; }
+        .highlight-section p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 2; }
+        
+        .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) { .service-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html" class="active">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Areas of Expertise</h1>
+        <p>Comprehensive Dermatologic Care with Surgical Precision & Aesthetic Artistry</p>
+    </section>
+
+    <div class="services-container">
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Surgical Dermatology</h2>
+                <p>Advanced Techniques for Optimal Outcomes</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Mohs Micrographic Surgery</h3>
+                    <p>The gold standard for skin cancer treatment, offering the highest cure rates while preserving healthy tissue and optimizing cosmetic outcomes.</p>
+                    <ul class="service-features">
+                        <li>99% cure rate for primary basal cell carcinoma</li>
+                        <li>Tissue-sparing precision</li>
+                        <li>Same-day procedure and reconstruction</li>
+                        <li>Optimal aesthetic results</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Reconstructive Surgery</h3>
+                    <p>Advanced facial reconstruction techniques following skin cancer removal, trauma, or previous surgeries.</p>
+                    <ul class="service-features">
+                        <li>Complex flap and graft procedures</li>
+                        <li>Facial aesthetic units preservation</li>
+                        <li>Minimizing visible scarring</li>
+                        <li>Natural, functional outcomes</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Scar Revision & Optimization</h3>
+                    <p>Multi-modal approach combining surgical techniques, laser therapy, and medical-grade skincare for superior scar improvement.</p>
+                    <ul class="service-features">
+                        <li>Surgical scar revision</li>
+                        <li>Laser scar treatment</li>
+                        <li>Injectable scar therapy</li>
+                        <li>BaoMD Scar Cream protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Medical Dermatology</h2>
+                <p>Evidence-Based Treatment for All Skin Conditions</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">🩺</div>
+                    <h3>Acne Treatment</h3>
+                    <p>Comprehensive acne management from adolescent to adult acne, including severe and treatment-resistant cases.</p>
+                    <ul class="service-features">
+                        <li>Topical and oral medications</li>
+                        <li>Advanced therapies including biologics</li>
+                        <li>Acne scar prevention and treatment</li>
+                        <li>Personalized skincare regimens</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Skin Cancer Detection & Prevention</h3>
+                    <p>Thorough full-body skin examinations using advanced diagnostic techniques for early detection.</p>
+                    <ul class="service-features">
+                        <li>Total body skin examinations</li>
+                        <li>Dermoscopy and imaging</li>
+                        <li>Risk assessment and screening</li>
+                        <li>Preventive education</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💊</div>
+                    <h3>Chronic Skin Conditions</h3>
+                    <p>Expert management of eczema, psoriasis, rosacea, vitiligo, and other chronic dermatologic conditions.</p>
+                    <ul class="service-features">
+                        <li>Advanced biologic therapies</li>
+                        <li>Phototherapy treatments</li>
+                        <li>Personalized treatment plans</li>
+                        <li>Long-term disease management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Cosmetic Dermatology</h2>
+                <p>Natural Enhancement & Aesthetic Refinement</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">💉</div>
+                    <h3>Injectable Treatments</h3>
+                    <p>Neurotoxins and dermal fillers for facial rejuvenation with natural, balanced results.</p>
+                    <ul class="service-features">
+                        <li>Botox® and Dysport®</li>
+                        <li>Hyaluronic acid fillers</li>
+                        <li>Advanced injection techniques</li>
+                        <li>Natural facial harmony</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Laser & Energy Treatments</h3>
+                    <p>State-of-the-art laser technology for skin resurfacing, pigmentation, and vascular concerns.</p>
+                    <ul class="service-features">
+                        <li>Laser skin resurfacing</li>
+                        <li>Pigmentation treatment</li>
+                        <li>Vascular lesion removal</li>
+                        <li>Skin tightening procedures</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💆</div>
+                    <h3>Hair Restoration</h3>
+                    <p>Comprehensive hair loss diagnosis and treatment using medical therapies and advanced procedures.</p>
+                    <ul class="service-features">
+                        <li>Medical hair loss treatment</li>
+                        <li>Platelet-rich plasma (PRP) therapy</li>
+                        <li>Hair transplantation consultation</li>
+                        <li>Personalized restoration plans</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="highlight-section">
+        <h2>BaoMD Skincare</h2>
+        <p>Dr. Nguyen created BaoMD Skincare to bridge the gap between clinical outcomes and everyday skin health. Starting with our physician-formulated Scar Cream, BaoMD provides medical-grade solutions for post-procedure recovery and optimal healing.</p>
+        <p style="margin-top: 2rem; color: var(--gold); font-size: 1.1rem;">Physician-formulated. Evidence-based. Results-driven.</p>
+    </section>
+
+    <div style="text-align: center; padding: 4rem 2rem;">
+        <a href="contact.html" class="cta-primary">Schedule Your Consultation</a>
+    </div>
+
+    <footer>
+        <p>📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

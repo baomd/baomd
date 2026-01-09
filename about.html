@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Dr. Nguyen | Quoc-Bao Nguyen, MD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
+        .page-header p { font-size: 1.3rem; opacity: 0.95; }
+        
+        .bio-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
+        .bio-image { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(10, 22, 40, 0.25); }
+        .bio-text h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+        .bio-text h3 { font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--gold); }
+        .bio-text p { font-size: 1.1rem; line-height: 2; margin-bottom: 1.8rem; }
+        
+        .credentials-section { background: linear-gradient(to bottom, var(--cream), #f2f0ed); padding: 6rem 2rem; }
+        .credentials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .credential-card { background: var(--white); padding: 3rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); border-left: 5px solid var(--gold); }
+        .credential-card h4 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .credential-card ul { list-style: none; }
+        .credential-card li { padding: 0.8rem 0; padding-left: 1.5rem; position: relative; font-size: 1.05rem; }
+        .credential-card li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); }
+        
+        .philosophy-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+        .philosophy-content { max-width: 900px; margin: 0 auto; }
+        .philosophy-content h2 { font-size: 3rem; color: var(--white); margin-bottom: 2rem; }
+        .philosophy-content p { font-size: 1.2rem; line-height: 2; margin-bottom: 1.5rem; }
+        
+        .memberships-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; }
+        .memberships-section h3 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
+        .memberships-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .membership-item { background: var(--cream); padding: 2rem; border-radius: 10px; text-align: center; font-size: 1.05rem; font-weight: 500; }
+        
+        .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) { .bio-section { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>About Dr. Nguyen</h1>
+        <p>Dermatologist, Educator, Researcher, and Advocate for Healthier Skin</p>
+    </section>
+
+    <div class="bio-section">
+        <div><img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="bio-image"></div>
+        <div class="bio-text">
+            <h2>Commitment to Excellence</h2>
+            <p>Dr. Quoc-Bao Nguyen is a double board-certified dermatologist and fellowship-trained Mohs micrographic and reconstructive surgeon specializing in skin cancer treatment, reconstructive surgery, medical dermatology, and cosmetic dermatology. Born and raised in Austin, Texas, he is honored to return to his hometown to provide compassionate, high-quality, evidence-based care to the community he loves.</p>
+            <p>Dr. Nguyen's academic journey is defined by excellence. He graduated Summa Cum Laude from The University of Texas at Austin, earning a Bachelor of Science in Chemistry through the prestigious Dean's Scholars Honors Program, completing Special Honors, and finishing at the top of his class with a 4.0 GPA.</p>
+            <p>He received his Medical Degree with Honors from Texas A&M University, where he was inducted into the Alpha Omega Alpha (AOA) Honor Medical Society in recognition of his outstanding academic performance and leadership.</p>
+            <p>He completed his intern year in Neurosurgery at The University of Texas Health Science Center at Houston, followed by a dedicated clinical research year, where he served as a sub-investigator in approximately 20 dermatology clinical research trials. During this time, he also earned an MBA in Finance from The University of Houston, expanding his ability to collaborate effectively with pharmaceutical and biotechnology companies to advance innovative dermatologic therapies.</p>
+            <h3>Comprehensive Aesthetic Care</h3>
+            <p>In addition to his surgical expertise, Dr. Nguyen is passionate about helping his patients look refreshed and feel confident in their skin. He offers a full spectrum of cosmetic treatments—including Botox®, Dysport®, dermal fillers, microneedling, platelet-rich plasma (PRP), chemical peels, laser resurfacing, scar revision, and cosmetic surgery—as well as advanced procedures for cellulite reduction, body contouring, skin tightening, sclerotherapy, and hair restoration.</p>
+            <h3>Academic Contributions</h3>
+            <p>Throughout his academic and professional career, Dr. Nguyen has received numerous honors, including the ASDS Resident Scholarship and the World Congress of Dermatology Scholarship. With more than 30 publications in leading dermatology journals and over 100 presentations at state, national, and international conferences, he has made meaningful contributions to dermatologic science.</p>
+        </div>
+    </div>
+
+    <div class="credentials-section">
+        <div class="credentials-grid">
+            <div class="credential-card">
+                <h4>Board Certifications</h4>
+                <ul>
+                    <li>Dermatology, American Board of Dermatology</li>
+                    <li>Micrographic Surgery & Dermatologic Oncology</li>
+                </ul>
+            </div>
+            <div class="credential-card">
+                <h4>Post-Graduate Training</h4>
+                <ul>
+                    <li>Fellowship: Micrographic Surgery and Dermato-Oncology, Geisinger</li>
+                    <li>Fellowship: Clinical Research, UT Health Science Center Houston</li>
+                    <li>Residency: Dermatology, UT Health Science Center Houston</li>
+                    <li>Internship: Neurosurgery, UT Health Science Center Houston</li>
+                </ul>
+            </div>
+            <div class="credential-card">
+                <h4>Education</h4>
+                <ul>
+                    <li>MD: Texas A&M University College of Medicine</li>
+                    <li>MBA: University of Houston Clear Lake</li>
+                    <li>BS: The University of Texas at Austin</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="philosophy-section">
+        <div class="philosophy-content">
+            <h2>Approach to Patients</h2>
+            <p>When I meet a patient, I focus on more than the skin—I focus on the person. Every individual brings their own concerns, goals, and experiences, and I believe effective care begins with truly listening.</p>
+            <p>Education is central to my philosophy. When patients understand their diagnosis and the reasoning behind treatment recommendations, they feel more confident and engaged in their care.</p>
+            <p>My practice blends evidence-based dermatology with a personalized approach. I stay current with the latest surgical, medical, and cosmetic advancements, but I also recognize that the best treatment is the one tailored to your unique skin, goals, and comfort level.</p>
+        </div>
+    </div>
+
+    <div class="memberships-section">
+        <h3>Professional Memberships</h3>
+        <div class="memberships-list">
+            <div class="membership-item">American Academy of Dermatology</div>
+            <div class="membership-item">American Society for Dermatologic Surgery</div>
+            <div class="membership-item">American College of Mohs Surgery</div>
+            <div class="membership-item">American Society for Laser Medicine and Surgery</div>
+            <div class="membership-item">American Medical Association</div>
+            <div class="membership-item">Texas Medical Association</div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="contact.html" class="cta-primary">Schedule a Consultation</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
