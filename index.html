@@ -27,17 +27,27 @@
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-        /* Hamburger Menu - GUARANTEED WORKING */
-        .hamburger { 
-            display: none; 
-            flex-direction: column; 
-            cursor: pointer; 
-            padding: 5px; 
-            z-index: 1001; 
-            gap: 4px;
-            background: none;
-            border: none;
-        }
+        
+<nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+HAMBURGER_CSS
+        
         .hamburger span { 
             width: 25px; 
             height: 3px; 
@@ -349,201 +359,20 @@
         footer a { color: var(--gold); text-decoration: none; }
         
         /* MOBILE RESPONSIVE */
-                @media (max-width: 768px) {
-            .hamburger { display: flex !important; }
-            
-            .nav-links { 
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important;
-                height: 100vh !important;
-                width: 70% !important;
-                max-width: 300px !important;
-                background: var(--white) !important;
-                flex-direction: column !important;
-                padding: 6rem 2rem 2rem !important;
-                gap: 2rem !important;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15) !important;
-                transition: right 0.3s ease !important;
-                z-index: 1000 !important;
-            }
-            
-            .nav-links.active { 
-                right: 0 !important; 
-            }
-            
-            .nav-links a { 
-                font-size: 1.1rem !important; 
-                padding: 0.5rem 0 !important; 
-            }
-            
-            .logo { font-size: 1rem !important; }
-
-        }
-        
-        @media (max-width: 374px) {
-            .hero h1 { font-size: 2rem; }
-            .stats-container { grid-template-columns: 1fr; }
-        }
-            
-            50% { opacity: 1; box-shadow: 0 0 20px rgba(201, 169, 97, 0.6); }
-        }
-        
-    
-        /* Super Lively Clickable Header Styles */
-        .clickable-header {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-        
-        .expertise-link {
-            color: var(--navy);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-            padding: 1rem 2.5rem 1rem 1.5rem;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 97, 0.05) 100%);
-            border: 2px solid transparent;
-        }
-        
-        .header-text {
-            position: relative;
-            z-index: 2;
-            transition: all 0.4s ease;
-        }
-        
-        .explore-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            border-radius: 30px;
-            color: var(--navy);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
-            transition: all 0.4s ease;
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-        
-        .badge-text {
-            transition: transform 0.3s ease;
-        }
-        
-        .arrow-icon {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--navy);
-        }
-        
-        @keyframes badgePulse {
-            0%, 100% { 
-                box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
-                transform: scale(1.05);
-            }
-        }
-        
-        /* Shine effect that sweeps across */
-        .shine-effect {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.3) 50%, 
-                transparent 100%);
-            transition: left 0.6s ease;
-            z-index: 1;
-        }
-        
-        /* Hover Effects */
-        .expertise-link:hover {
-            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(201, 169, 97, 0.15) 100%);
-            border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.2);
-        }
-        
-        .expertise-link:hover .header-text {
-            color: var(--gold);
-            transform: translateX(-5px);
-        }
-        
-        .expertise-link:hover .explore-badge {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
-            transform: translateX(5px) scale(1.1);
-        }
-        
-        .expertise-link:hover .arrow-icon {
-            transform: translateX(5px);
-            animation: arrowBounce 0.6s ease-in-out infinite;
-        }
-        
-        .expertise-link:hover .shine-effect {
-            left: 100%;
-        }
-        
-        @keyframes arrowBounce {
-            0%, 100% { transform: translateX(5px); }
-            50% { transform: translateX(10px); }
-        }
-        
-        /* Active/Click Effect */
-        .expertise-link:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .expertise-link {
-                flex-direction: column;
-                gap: 0.8rem;
-                padding: 1rem;
-                text-align: center;
-            }
-            
-            .explore-badge {
-                font-size: 0.75rem;
-                padding: 0.5rem 1rem;
-            }
+                
+/* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+MOBILE_CSS
         }
 
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="expertise.html">EXPERTISE</a></li>
-                <li><a href="speaking.html">SPEAKING</a></li>
-                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </div>
-    </nav>
+    NAV
 
     <section class="hero">
         <div class="hero-content">
@@ -788,48 +617,54 @@
         </p>
     </footer>
 
+    
+
+@media (max-width: 968px) {
+            .hamburger { display: flex; }
+            
+            .nav-links { 
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
+SCRIPT
+
     <script>
-        // GUARANTEED WORKING HAMBURGER MENU
-        console.log('=== Index Page Hamburger Menu Starting ===');
-        
+        // Hamburger menu functionality
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links a');
         
-        console.log('Hamburger element:', hamburger);
-        console.log('NavLinks element:', navLinks);
-        console.log('Links found:', links.length);
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
         
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                console.log('🍔 HAMBURGER CLICKED!');
-                
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                
-                console.log('Menu active:', navLinks.classList.contains('active'));
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
             });
-            
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    console.log('Link clicked, closing menu');
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-            
-            console.log('✅ Index page hamburger initialized successfully!');
-        } else {
-            console.error('❌ HAMBURGER OR NAVLINKS NOT FOUND!');
-        }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
