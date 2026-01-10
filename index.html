@@ -312,8 +312,7 @@
         }
         
         /* Mobile responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
+        
             
             .nav-links { 
                 position: fixed;
@@ -400,8 +399,7 @@
         footer a { color: var(--gold); text-decoration: none; }
         
         /* MOBILE RESPONSIVE */
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
+        
             
             .nav-links { 
                 position: fixed;
@@ -498,6 +496,65 @@
             .hero h1 { font-size: 2rem; }
             .stats-container { grid-template-columns: 1fr; }
         }
+    
+        @media (max-width: 768px) {
+            .hamburger { display: flex !important; }
+            
+            .nav-links { 
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                height: 100vh !important;
+                width: 70% !important;
+                max-width: 300px !important;
+                background: var(--white) !important;
+                flex-direction: column !important;
+                padding: 6rem 2rem 2rem !important;
+                gap: 2rem !important;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1) !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+            }
+            
+            .nav-links.active { 
+                right: 0 !important; 
+            }
+            
+            .nav-links a { 
+                font-size: 1.1rem !important; 
+                padding: 0.5rem 0 !important; 
+            }
+            
+            .logo { font-size: 1rem !important; }
+            
+            .header-text { font-size: 2rem !important; }
+            
+            .explore-badge {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 1rem !important;
+            }
+            
+            .expertise-link {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+            }
+            
+            .expertise-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 1.5rem !important; 
+            }
+            
+            .expertise-card { 
+                padding: 2rem 1.5rem !important; 
+            }
+            
+            .expertise-icon { 
+                width: 60px !important; 
+                height: 60px !important; 
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -510,14 +567,13 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="index.html"class="active">HOME</a></li>
+                <li><a href="about.html" >ABOUT</a></li>
                 <li><a href="expertise.html">EXPERTISE</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
