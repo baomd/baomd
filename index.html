@@ -331,6 +331,34 @@
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
+            nav { padding: 1.2rem 1.5rem; }
+            .logo { font-size: 1rem; }
+            
+            .nav-links { 
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.mobile-open { 
+                right: 0; 
+            }
+            
+            .nav-links a { 
+                font-size: 1.1rem; 
+                padding: 0.5rem 0; 
+            }
+
             /* Expertise Grid Mobile Override */
             .expertise-grid { 
                 grid-template-columns: 1fr !important; 
@@ -341,23 +369,7 @@
                 padding: 2rem 1.5rem; 
             }
 
-            nav { padding: 1.2rem 1.5rem; }
-            .nav-links { 
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                gap: 1.5rem;
-                z-index: 999;
-            }
-            .nav-links.mobile-open { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .logo { font-size: 1rem; }
+            
             
             .hero { min-height: 70vh; padding: 4rem 1.5rem; }
             .hero h1 { font-size: 2.5rem; letter-spacing: 1px; }
