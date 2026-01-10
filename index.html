@@ -33,6 +33,32 @@
             padding: 0.5rem;
         }
         
+        /* Hamburger Icon */
+        .hamburger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            padding: 5px; 
+            z-index: 1001; 
+            gap: 4px;
+        }
+        .hamburger span { 
+            width: 25px; 
+            height: 3px; 
+            background: var(--navy); 
+            transition: all 0.3s; 
+            border-radius: 3px; 
+        }
+        .hamburger.active span:nth-child(1) { 
+            transform: rotate(45deg) translate(5px, 5px); 
+        }
+        .hamburger.active span:nth-child(2) { 
+            opacity: 0; 
+        }
+        .hamburger.active span:nth-child(3) { 
+            transform: rotate(-45deg) translate(7px, -6px); 
+        }
+        
         .hero { 
             min-height: 90vh; 
             display: flex; 
@@ -209,7 +235,43 @@
         .expertise-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem; }
         .expertise-card { background: var(--white); padding: 3.5rem; border-radius: 20px; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.08); transition: all 0.5s; border: 1px solid rgba(201, 169, 97, 0.1); position: relative; overflow: hidden; }
         .expertise-card:hover { transform: translateY(-15px); box-shadow: 0 25px 70px rgba(10, 22, 40, 0.15); }
-        .expertise-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3); }
+                .expertise-icon { 
+            width: 90px; 
+            height: 90px; 
+            margin: 0 auto 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .expertise-icon::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .expertise-card:hover .expertise-icon::before {
+            opacity: 1;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        .expertise-card:hover .expertise-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .expertise-icon svg {
+            filter: drop-shadow(0 4px 12px rgba(201, 169, 97, 0.3));
+            transition: all 0.5s ease;
+        }
+        .expertise-card:hover .expertise-icon svg {
+            filter: drop-shadow(0 8px 20px rgba(201, 169, 97, 0.5));
+        }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
         .expertise-icon svg { color: var(--navy); }
         .expertise-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
         .expertise-card p { font-size: 1.05rem; line-height: 1.8; }
@@ -268,7 +330,43 @@
             .section-header h2 { font-size: 2.5rem; }
             .expertise-grid { grid-template-columns: 1fr; gap: 2rem; }
             .expertise-card { padding: 2.5rem 2rem; }
-            .expertise-icon { width: 70px; height: 70px; }
+                    .expertise-icon { 
+            width: 90px; 
+            height: 90px; 
+            margin: 0 auto 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .expertise-icon::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .expertise-card:hover .expertise-icon::before {
+            opacity: 1;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        .expertise-card:hover .expertise-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .expertise-icon svg {
+            filter: drop-shadow(0 4px 12px rgba(201, 169, 97, 0.3));
+            transition: all 0.5s ease;
+        }
+        .expertise-card:hover .expertise-icon svg {
+            filter: drop-shadow(0 8px 20px rgba(201, 169, 97, 0.5));
+        }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
             
             .testimonial-section { padding: 4rem 1.5rem; }
             .testimonial-quote { font-size: 1.4rem; line-height: 1.7; padding: 0 1rem; }
@@ -278,6 +376,144 @@
             .hero h1 { font-size: 2rem; }
             .stats-container { grid-template-columns: 1fr; }
         }
+            
+            50% { opacity: 1; box-shadow: 0 0 20px rgba(201, 169, 97, 0.6); }
+        }
+        
+    
+        /* Super Lively Clickable Header Styles */
+        .clickable-header {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .expertise-link {
+            color: var(--navy);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            padding: 1rem 2.5rem 1rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 97, 0.05) 100%);
+            border: 2px solid transparent;
+        }
+        
+        .header-text {
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        
+        .explore-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 30px;
+            color: var(--navy);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+            transition: all 0.4s ease;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        
+        .badge-text {
+            transition: transform 0.3s ease;
+        }
+        
+        .arrow-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--navy);
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { 
+                box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Shine effect that sweeps across */
+        .shine-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+        
+        /* Hover Effects */
+        .expertise-link:hover {
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(201, 169, 97, 0.15) 100%);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.2);
+        }
+        
+        .expertise-link:hover .header-text {
+            color: var(--gold);
+            transform: translateX(-5px);
+        }
+        
+        .expertise-link:hover .explore-badge {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
+            transform: translateX(5px) scale(1.1);
+        }
+        
+        .expertise-link:hover .arrow-icon {
+            transform: translateX(5px);
+            animation: arrowBounce 0.6s ease-in-out infinite;
+        }
+        
+        .expertise-link:hover .shine-effect {
+            left: 100%;
+        }
+        
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(5px); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* Active/Click Effect */
+        .expertise-link:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .expertise-link {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            .explore-badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -292,7 +528,11 @@
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -350,73 +590,228 @@
 
     <section class="expertise-section">
         <div class="section-header">
-            <h2>Areas of Excellence</h2>
+            <h2 class="clickable-header">
+                <a href="expertise.html" class="expertise-link">
+                    <span class="header-text">Areas of Excellence</span>
+                    <span class="explore-badge">
+                        <span class="badge-text">Explore All</span>
+                        <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="shine-effect"></span>
+                </a>
+            </h2>
             <p>Comprehensive dermatologic care combining surgical expertise, medical precision, and aesthetic artistry</p>
         </div>
         <div class="expertise-grid">
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <h3>Skin Cancer & Mohs Surgery</h3>
-                <p>Tissue-sparing removal with the highest cure rates and personalized reconstruction for optimal cosmetic outcomes.</p>
-            </div>
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
-                        <line x1="7" y1="7" x2="7.01" y2="7"/>
-                    </svg>
-                </div>
-                <h3>Scar Optimization & Revision</h3>
-                <p>Advanced protocols combining surgical technique, laser technology, and medical-grade skincare for superior results.</p>
-            </div>
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                </div>
-                <h3>Medical Dermatology</h3>
-                <p>Evidence-based treatment for acne, eczema, rosacea, pigment disorders, and chronic skin conditions.</p>
-            </div>
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                        <line x1="9" y1="9" x2="9.01" y2="9"/>
-                        <line x1="15" y1="9" x2="15.01" y2="9"/>
-                    </svg>
-                </div>
-                <h3>Hair Loss Treatment</h3>
-                <p>Personalized treatment plans using the latest medical therapies and regenerative procedures for hair restoration.</p>
-            </div>
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                    </svg>
-                </div>
-                <h3>Cosmetic Dermatology</h3>
-                <p>Subtle, natural enhancements using advanced injectables, lasers, and aesthetic procedures tailored to your features.</p>
-            </div>
-            <div class="expertise-card">
-                <div class="expertise-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                    </svg>
-                </div>
-                <h3>BaoMD Skincare</h3>
-                <p>Physician-formulated solutions bridging clinical outcomes with everyday skin health and optimal healing.</p>
-            </div>
+            
         </div>
+    </section>
+
+                
+        
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-mohs" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                            <filter id="shadow-mohs">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                                <feOffset dx="0" dy="2" result="offsetblur"/>
+                                <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+                                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <circle cx="30" cy="30" r="24" fill="url(#grad-mohs)" opacity="0.1"/>
+                        <path d="M30 10 L40 18 L48 18 L48 26 L40 34 L30 42 L20 34 L12 26 L12 18 L20 18 Z" 
+                              stroke="url(#grad-mohs)" stroke-width="2.5" fill="none" filter="url(#shadow-mohs)"/>
+                        <circle cx="30" cy="30" r="6" fill="url(#grad-mohs)" opacity="0.4"/>
+                        <path d="M30 22 L30 38 M22 30 L38 30" stroke="url(#grad-mohs)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Mohs Micrographic Surgery</h3>
+                <p>The gold standard for skin cancer treatment, offering the highest cure rates while preserving healthy tissue.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-recon" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                            <filter id="glow-recon">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M15 20 L25 15 L35 20 L45 15" stroke="url(#grad-recon)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow-recon)"/>
+                        <path d="M15 30 L25 25 L35 30 L45 25" stroke="url(#grad-recon)" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#glow-recon)"/>
+                        <path d="M15 40 L25 35 L35 40 L45 35" stroke="url(#grad-recon)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow-recon)"/>
+                        <circle cx="15" cy="30" r="3" fill="url(#grad-recon)"/>
+                        <circle cx="45" cy="25" r="3" fill="url(#grad-recon)"/>
+                    </svg>
+                </div>
+                <h3>Reconstructive Surgery</h3>
+                <p>Advanced facial reconstruction techniques following skin cancer removal, trauma, or previous surgeries.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-scar" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4b976"/>
+                                <stop offset="100%" style="stop-color:#c9a961"/>
+                            </linearGradient>
+                            <radialGradient id="rad-scar">
+                                <stop offset="0%" style="stop-color:#d4b976;stop-opacity:0.3"/>
+                                <stop offset="100%" style="stop-color:#c9a961;stop-opacity:0"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="30" cy="30" r="26" fill="url(#rad-scar)"/>
+                        <path d="M18 24 Q30 20 42 24" stroke="url(#grad-scar)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M18 30 Q30 26 42 30" stroke="url(#grad-scar)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M18 36 Q30 40 42 36" stroke="url(#grad-scar)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <circle cx="18" cy="30" r="3" fill="url(#grad-scar)"/>
+                        <circle cx="42" cy="30" r="3" fill="url(#grad-scar)"/>
+                    </svg>
+                </div>
+                <h3>Scar Revision & Optimization</h3>
+                <p>Multi-modal approach combining surgical techniques, laser therapy, and medical-grade skincare.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-acne" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#b39650"/>
+                            </linearGradient>
+                            <filter id="glow-acne"><feGaussianBlur stdDeviation="2"/></filter>
+                        </defs>
+                        <circle cx="30" cy="30" r="20" stroke="url(#grad-acne)" stroke-width="2.5" fill="none" opacity="0.3"/>
+                        <path d="M30 15 L34 22 L42 23 L36 29 L38 37 L30 33 L22 37 L24 29 L18 23 L26 22 Z" 
+                              fill="url(#grad-acne)" opacity="0.6" filter="url(#glow-acne)"/>
+                        <circle cx="30" cy="30" r="5" fill="url(#grad-acne)" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3>Acne Treatment</h3>
+                <p>Comprehensive acne management from adolescent to adult acne, including treatment-resistant cases.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-detect" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="24" cy="24" r="14" fill="url(#grad-detect)" opacity="0.15"/>
+                        <circle cx="24" cy="24" r="14" stroke="url(#grad-detect)" stroke-width="2.5" fill="none"/>
+                        <circle cx="24" cy="24" r="9" stroke="url(#grad-detect)" stroke-width="2" fill="none" opacity="0.4"/>
+                        <path d="M34 34 L44 44" stroke="url(#grad-detect)" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="24" cy="24" r="4" fill="url(#grad-detect)" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3>Skin Cancer Detection</h3>
+                <p>Thorough full-body skin examinations using advanced diagnostic techniques for early detection.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-chronic" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4b976"/>
+                                <stop offset="100%" style="stop-color:#c9a961"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="15" y="12" width="30" height="36" rx="4" stroke="url(#grad-chronic)" stroke-width="2.5" fill="none"/>
+                        <circle cx="30" cy="22" r="6" fill="url(#grad-chronic)" opacity="0.3"/>
+                        <rect x="20" y="32" width="20" height="3" rx="1.5" fill="url(#grad-chronic)" opacity="0.6"/>
+                        <rect x="20" y="38" width="15" height="3" rx="1.5" fill="url(#grad-chronic)" opacity="0.4"/>
+                    </svg>
+                </div>
+                <h3>Chronic Skin Conditions</h3>
+                <p>Expert management of eczema, psoriasis, rosacea, vitiligo, and other chronic conditions.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-inject" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                            <filter id="glow-inject"><feGaussianBlur stdDeviation="1.5"/></filter>
+                        </defs>
+                        <path d="M15 15 L25 25 M20 10 L25 15 M10 20 L15 25" stroke="url(#grad-inject)" stroke-width="2.5" stroke-linecap="round"/>
+                        <rect x="23" y="23" width="24" height="8" rx="2" fill="url(#grad-inject)" opacity="0.6" transform="rotate(45 35 27)"/>
+                        <circle cx="45" cy="45" r="3" fill="url(#grad-inject)" filter="url(#glow-inject)"/>
+                    </svg>
+                </div>
+                <h3>Injectable Treatments</h3>
+                <p>Neurotoxins and dermal fillers for facial rejuvenation with natural, balanced results.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-laser" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4b976"/>
+                                <stop offset="100%" style="stop-color:#c9a961"/>
+                            </linearGradient>
+                            <filter id="glow-laser"><feGaussianBlur stdDeviation="2"/></filter>
+                        </defs>
+                        <path d="M30 10 L30 25" stroke="url(#grad-laser)" stroke-width="3" stroke-linecap="round" filter="url(#glow-laser)"/>
+                        <path d="M30 35 L30 50" stroke="url(#grad-laser)" stroke-width="3" stroke-linecap="round" filter="url(#glow-laser)"/>
+                        <path d="M10 30 L25 30" stroke="url(#grad-laser)" stroke-width="3" stroke-linecap="round" filter="url(#glow-laser)"/>
+                        <path d="M35 30 L50 30" stroke="url(#grad-laser)" stroke-width="3" stroke-linecap="round" filter="url(#glow-laser)"/>
+                        <circle cx="30" cy="30" r="8" fill="none" stroke="url(#grad-laser)" stroke-width="2.5" opacity="0.6"/>
+                        <circle cx="30" cy="30" r="4" fill="url(#grad-laser)" opacity="0.7" filter="url(#glow-laser)"/>
+                    </svg>
+                </div>
+                <h3>Laser & Energy Treatments</h3>
+                <p>State-of-the-art laser technology for skin resurfacing, pigmentation, and vascular concerns.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-hair" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M30 45 Q26 35 24 25 Q22 15 26 10" stroke="url(#grad-hair)" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M30 45 Q32 35 33 25 Q34 15 32 10" stroke="url(#grad-hair)" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M30 45 Q36 37 38 25 Q40 13 38 8" stroke="url(#grad-hair)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                        <path d="M30 45 Q24 37 22 25 Q20 13 22 8" stroke="url(#grad-hair)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                        <circle cx="26" cy="10" r="2.5" fill="url(#grad-hair)"/>
+                        <circle cx="32" cy="10" r="2.5" fill="url(#grad-hair)"/>
+                        <circle cx="30" cy="45" r="3.5" fill="url(#grad-hair)" opacity="0.8"/>
+                    </svg>
+                </div>
+                <h3>Hair Restoration</h3>
+                <p>Comprehensive hair loss diagnosis and treatment using medical therapies and advanced procedures.</p>
+            </div>
+
+        </div>
+    </section>
+
+    </div>
     </section>
 
     <section class="testimonial-section">
@@ -425,7 +820,24 @@
     </section>
 
     <footer>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem;">📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+    <defs>
+        <linearGradient id="grad-footer-loc" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#c9a961"/>
+            <stop offset="100%" style="stop-color:#d4b976"/>
+        </linearGradient>
+        <filter id="glow-footer">
+            <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
+          stroke="url(#grad-footer-loc)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
+    <circle cx="10" cy="7.5" r="2" fill="url(#grad-footer-loc)" opacity="0.8"/>
+</svg>Based in Austin, Texas — Caring for patients nationally and internationally</p>
         <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
         <p style="margin-top: 1.5rem; font-size: 0.9rem;">
             <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>

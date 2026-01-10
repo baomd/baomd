@@ -8,8 +8,16 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); line-height: 1.8; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden, sans-serif; color: var(--text-dark); line-height: 1.8; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        
+                
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
         
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
@@ -47,12 +55,59 @@
         footer a { color: var(--gold); text-decoration: none; }
         
         @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } .content-box { padding: 2rem; } }
+    
+        /* Mobile Responsive Styles */
+        @media (max-width: 968px) {
+            nav { padding: 1.5rem 2rem; }
+            .logo { font-size: 0.95rem; }
+            .hamburger { display: flex; }
+            
+            .nav-links { 
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
+            
+            .page-header { padding: 4rem 1.5rem 3rem; }
+            .page-header h1 { font-size: 2rem; }
+            .page-header p { font-size: 1rem; }
+            
+            .content-container { margin: 3rem auto; }
+            .content-box { padding: 2rem 1.5rem; }
+            
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.2rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .logo { font-size: 0.85rem; }
+            .page-header h1 { font-size: 1.6rem; }
+            .content-box { padding: 1.5rem; }
+        }
+
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -152,7 +207,7 @@
                 <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</li>
                 <li><strong>Restrict Processing:</strong> Request that we limit how we use your information</li>
             </ul>
-            <p>To exercise these rights, please contact us at dr.nguyen.assistant@gmail.com or (512) 786-3498.</p>
+            <p>To exercise these rights, please contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86e2f4a8e8e1f3ffe3e8a8e7f5f5eff5f2e7e8f2c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</a> or (512) 786-3498.</p>
 
             <h2>9. Children's Privacy</h2>
             <p>Our website is not intended for children under 13 years of age. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.</p>
@@ -168,18 +223,10 @@
             <p><strong>Central Austin Dermatology & Aesthetics</strong><br>
             2700 W Anderson Ln. Unit 403<br>
             Austin, TX 78757<br>
-            Email: dr.nguyen.assistant@gmail.com<br>
+            Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4a2e3864242d3f332f24642b393923393e2b243e0a2d272b232664292527">[email&#160;protected]</a><br>
             Phone: (512) 786-3498</p>
 
             <div style="text-align: center;">
                 <a href="index.html" class="back-link">Return to Home</a>
             </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
-        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-    </footer>
-</body>
-</html>
+ 
