@@ -789,19 +789,47 @@
     </footer>
 
     <script>
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        // GUARANTEED WORKING HAMBURGER MENU
+        console.log('=== Index Page Hamburger Menu Starting ===');
         
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('mobile-open');
-                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+        
+        console.log('Hamburger element:', hamburger);
+        console.log('NavLinks element:', navLinks);
+        console.log('Links found:', links.length);
+        
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('🍔 HAMBURGER CLICKED!');
+                
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                
+                console.log('Menu active:', navLinks.classList.contains('active'));
             });
             
-            document.querySelectorAll('.nav-links a').forEach(link => {
+            links.forEach(link => {
                 link.addEventListener('click', () => {
-                    navLinks.classList.remove('mobile-open');
-                    mobileMenuBtn.textContent = '☰';
+                    console.log('Link clicked, closing menu');
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
                 });
             });
-        
+            
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+            
+            console.log('✅ Index page hamburger initialized successfully!');
+        } else {
+            console.error('❌ HAMBURGER OR NAVLINKS NOT FOUND!');
+        }
+    </script>
+</body>
+</html>

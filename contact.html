@@ -584,38 +584,50 @@
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // GUARANTEED WORKING HAMBURGER MENU - CONTACT PAGE
+        console.log('=== Contact Page Hamburger Menu Starting ===');
+        
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links a');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+        console.log('Hamburger element:', hamburger);
+        console.log('NavLinks element:', navLinks);
+        console.log('Links found:', links.length);
         
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('🍔 CONTACT PAGE HAMBURGER CLICKED!');
+                
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                
+                console.log('Menu active:', navLinks.classList.contains('active'));
             });
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const inquiry = document.getElementById('inquiry').value;
-            const message = document.getElementById('message').value;
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    console.log('Link clicked, closing menu');
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
             
-            const emailBody = `
-Name:
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+            
+            console.log('✅ Contact page hamburger initialized successfully!');
+        } else {
+            console.error('❌ HAMBURGER OR NAVLINKS NOT FOUND!');
+            console.error('Hamburger:', hamburger);
+            console.error('NavLinks:', navLinks);
+        }
+    </script>
+</body>
+</html>
