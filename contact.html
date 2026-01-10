@@ -8,27 +8,84 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
         
-        /* Navigation */
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.5rem 2rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.2px; }
-        
-        
-        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
-        
-        
-        
-        
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; transition: color 0.3s; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         
-<nav>
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
+        .page-header p { font-size: 1.3rem; }
+        
+        .contact-container { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+        .contact-info h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .contact-info p { font-size: 1.15rem; line-height: 2; margin-bottom: 3rem; }
+        .info-item { margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
+        .info-item h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .info-icon { font-size: 1.8rem; }
+        .info-item p { font-size: 1.1rem; margin: 0; }
+        .info-item a { color: var(--gold); text-decoration: none; font-weight: 600; }
+        
+        .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
+        .contact-form-section h3 { font-size: 2rem; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 1rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--cream); border-radius: 10px; font-size: 1rem; font-family: 'Inter', sans-serif; background: var(--white); }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 1.3rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
+        
+        .reasons-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; }
+        .reasons-section h2 { font-size: 3rem; color: var(--white); text-align: center; margin-bottom: 4rem; }
+        .reasons-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+        .reason-card { text-align: center; padding: 2rem; }
+        .reason-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .reason-card h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+        .reason-card p { font-size: 1.05rem; line-height: 1.8; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 968px) {
+            .hamburger { display: flex; }
+            
+            .nav-links { 
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
+ .contact-container { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
             <div class="hamburger">
@@ -38,156 +95,14 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
                 <li><a href="expertise.html">EXPERTISE</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
             </ul>
         </div>
     </nav>
-HAMBURGER_CSS
-        
-        .hamburger span { 
-            width: 25px; 
-            height: 3px; 
-            background: var(--navy); 
-            transition: all 0.3s; 
-            border-radius: 3px; 
-            display: block;
-        }
-        .hamburger.active span:nth-child(1) { 
-            transform: rotate(45deg) translate(5px, 5px); 
-        }
-        .hamburger.active span:nth-child(2) { 
-            opacity: 0; 
-        }
-        .hamburger.active span:nth-child(3) { 
-            transform: rotate(-45deg) translate(7px, -6px); 
-        }
-
-        
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 6rem 2rem 4rem; text-align: center; color: var(--white); }
-        .page-header h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 1.5rem; }
-        .page-header p { font-size: 1.2rem; }
-        
-        .contact-container { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-        .contact-info h2 { font-size: 2.3rem; margin-bottom: 2rem; }
-        .contact-info p { font-size: 1.1rem; line-height: 1.9; margin-bottom: 2.5rem; }
-        .info-item { margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
-        .info-item h3 { font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
-                .info-icon { 
-            font-size: 1.6rem; 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .info-icon::before {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .info-item:hover .info-icon::before {
-            opacity: 1;
-            animation: infoIconPulse 2s ease-in-out infinite;
-        }
-        .info-item:hover .info-icon {
-            transform: scale(1.15) rotate(-5deg);
-        }
-        .info-icon svg {
-            filter: drop-shadow(0 3px 8px rgba(201, 169, 97, 0.25));
-            transition: filter 0.5s ease;
-        }
-        .info-item:hover .info-icon svg {
-            filter: drop-shadow(0 6px 16px rgba(201, 169, 97, 0.45));
-        }
-        @keyframes infoIconPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-        .info-item p { font-size: 1.05rem; margin: 0; line-height: 1.7; }
-        .info-item a { color: var(--gold); text-decoration: none; font-weight: 600; }
-        .info-item a:hover { text-decoration: underline; }
-        
-        .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 2.5rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
-        .contact-form-section h3 { font-size: 1.8rem; margin-bottom: 2rem; }
-        .form-group { margin-bottom: 1.8rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.95rem; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem 1.3rem; border: 2px solid var(--cream); border-radius: 10px; font-size: 0.95rem; font-family: 'Inter', sans-serif; background: var(--white); }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1); }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .submit-btn { width: 100%; padding: 1.2rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border: none; border-radius: 50px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.3px; cursor: pointer; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
-        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
-        
-        .reasons-section { background: var(--navy); color: var(--white); padding: 5rem 2rem; }
-        .reasons-section h2 { font-size: 2.8rem; color: var(--white); text-align: center; margin-bottom: 3.5rem; }
-        .reasons-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; }
-        .reason-card { text-align: center; padding: 2rem; }
-                .reason-icon { 
-            font-size: 3rem; 
-            margin-bottom: 1.5rem; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .reason-icon::before {
-            content: '';
-            position: absolute;
-            inset: -20px;
-            background: radial-gradient(circle, rgba(212, 185, 118, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.6s ease;
-        }
-        .reason-card:hover .reason-icon::before {
-            opacity: 1;
-            animation: reasonIconGlow 2.5s ease-in-out infinite;
-        }
-        .reason-card:hover .reason-icon {
-            transform: translateY(-10px) scale(1.2) rotate(5deg);
-        }
-        .reason-icon svg {
-            filter: drop-shadow(0 4px 12px rgba(212, 185, 118, 0.3));
-            transition: filter 0.6s ease;
-        }
-        .reason-card:hover .reason-icon svg {
-            filter: drop-shadow(0 8px 24px rgba(212, 185, 118, 0.6));
-        }
-        @keyframes reasonIconGlow {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.4); opacity: 1; }
-        }
-        .reason-card h3 { font-size: 1.4rem; color: var(--gold); margin-bottom: 1rem; }
-        .reason-card p { font-size: 1rem; line-height: 1.8; }
-        
-        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; }
-        footer a { color: var(--gold); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        
-                
-/* Hamburger Menu */
-        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
-        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-MOBILE_CSS
-        }
-    </style>
-</head>
-<body>
-    NAV
 
     <section class="page-header">
         <h1>Get in Touch</h1>
@@ -375,119 +290,22 @@ MOBILE_CSS
         <h2>Why Choose Dr. Nguyen</h2>
         <div class="reasons-grid">
             <div class="reason-card">
-                <div class="reason-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad-train" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#c9a961"/>
-                            <stop offset="100%" style="stop-color:#d4b976"/>
-                        </linearGradient>
-                        <filter id="glow-train">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <path d="M28 10 L18 20 L18 28 L14 28 L14 36 L42 36 L42 28 L38 28 L38 20 Z" 
-                          fill="url(#grad-train)" opacity="0.2"/>
-                    <path d="M28 10 L18 20 L18 28 L14 28 L14 36 L42 36 L42 28 L38 28 L38 20 Z" 
-                          stroke="url(#grad-train)" stroke-width="2.5" fill="none" filter="url(#glow-train)" 
-                          stroke-linejoin="round"/>
-                    <rect x="22" y="24" width="12" height="8" rx="1" fill="url(#grad-train)" opacity="0.5"/>
-                    <path d="M24 40 L24 46 M32 40 L32 46" stroke="url(#grad-train)" stroke-width="2.5" 
-                          stroke-linecap="round" filter="url(#glow-train)"/>
-                    <circle cx="28" cy="17" r="3" fill="url(#grad-train)" filter="url(#glow-train)"/>
-                    <path d="M20 46 L36 46" stroke="url(#grad-train)" stroke-width="2.5" stroke-linecap="round"/>
-                </svg></div>
+                <div class="reason-icon">🎓</div>
                 <h3>Elite Training</h3>
                 <p>Double board-certified with fellowship training from MD Anderson and Geisinger Medical Center</p>
             </div>
             <div class="reason-card">
-                <div class="reason-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad-research" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#d4b976"/>
-                            <stop offset="100%" style="stop-color:#c9a961"/>
-                        </linearGradient>
-                        <filter id="glow-research">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <circle cx="24" cy="24" r="14" fill="url(#grad-research)" opacity="0.15"/>
-                    <circle cx="24" cy="24" r="14" stroke="url(#grad-research)" stroke-width="2.5" fill="none" filter="url(#glow-research)"/>
-                    <circle cx="24" cy="24" r="9" stroke="url(#grad-research)" stroke-width="2" fill="none" opacity="0.4"/>
-                    <path d="M34 34 L44 44" stroke="url(#grad-research)" stroke-width="4" stroke-linecap="round" filter="url(#glow-research)"/>
-                    <circle cx="24" cy="24" r="4" fill="url(#grad-research)" opacity="0.5"/>
-                    <path d="M24 16 L24 18 M24 30 L24 32 M16 24 L18 24 M30 24 L32 24" 
-                          stroke="url(#grad-research)" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="44" cy="44" r="3" fill="url(#grad-research)" filter="url(#glow-research)"/>
-                </svg></div>
+                <div class="reason-icon">🔬</div>
                 <h3>Research Excellence</h3>
                 <p>30+ publications and 100+ presentations advancing dermatologic science</p>
             </div>
             <div class="reason-card">
-                <div class="reason-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad-comp" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#c9a961"/>
-                            <stop offset="50%" style="stop-color:#d4b976"/>
-                            <stop offset="100%" style="stop-color:#b39650"/>
-                        </linearGradient>
-                        <radialGradient id="rad-comp">
-                            <stop offset="0%" style="stop-color:#d4b976;stop-opacity:0.3"/>
-                            <stop offset="100%" style="stop-color:#c9a961;stop-opacity:0"/>
-                        </radialGradient>
-                        <filter id="glow-comp">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <circle cx="28" cy="28" r="24" fill="url(#rad-comp)"/>
-                    <path d="M28 8 L34 18 L46 20 L38 28 L40 40 L28 34 L16 40 L18 28 L10 20 L22 18 Z" 
-                          fill="url(#grad-comp)" opacity="0.25"/>
-                    <path d="M28 8 L34 18 L46 20 L38 28 L40 40 L28 34 L16 40 L18 28 L10 20 L22 18 Z" 
-                          stroke="url(#grad-comp)" stroke-width="2.5" fill="none" filter="url(#glow-comp)" 
-                          stroke-linejoin="round"/>
-                    <circle cx="28" cy="28" r="8" fill="url(#grad-comp)" opacity="0.4" filter="url(#glow-comp)"/>
-                    <circle cx="28" cy="28" r="4" fill="url(#grad-comp)" filter="url(#glow-comp)"/>
-                </svg></div>
+                <div class="reason-icon">💎</div>
                 <h3>Comprehensive Care</h3>
                 <p>Surgical, medical, and cosmetic dermatology under one expert physician</p>
             </div>
             <div class="reason-card">
-                <div class="reason-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad-patient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#d4b976"/>
-                            <stop offset="100%" style="stop-color:#c9a961"/>
-                        </linearGradient>
-                        <filter id="glow-patient">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <path d="M28 14 C20 14 14 20 14 28 C14 36 20 42 28 42 C36 42 42 36 42 28 C42 20 36 14 28 14 Z" 
-                          fill="url(#grad-patient)" opacity="0.15"/>
-                    <circle cx="28" cy="28" r="14" stroke="url(#grad-patient)" stroke-width="2.5" fill="none" filter="url(#glow-patient)"/>
-                    <path d="M22 26 C22 26 24 28 28 28 C32 28 34 26 34 26" stroke="url(#grad-patient)" 
-                          stroke-width="2.5" stroke-linecap="round" fill="none" filter="url(#glow-patient)"/>
-                    <circle cx="22" cy="22" r="2" fill="url(#grad-patient)"/>
-                    <circle cx="34" cy="22" r="2" fill="url(#grad-patient)"/>
-                    <path d="M18 34 Q28 38 38 34" stroke="url(#grad-patient)" stroke-width="2.5" 
-                          stroke-linecap="round" fill="none" opacity="0.6"/>
-                    <circle cx="28" cy="28" r="3" fill="url(#grad-patient)" opacity="0.3"/>
-                </svg></div>
+                <div class="reason-icon">🤝</div>
                 <h3>Patient-Centered</h3>
                 <p>Personalized treatment plans tailored to your unique needs and goals</p>
             </div>
@@ -517,29 +335,6 @@ MOBILE_CSS
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
-    
-
-@media (max-width: 968px) {
-            .hamburger { display: flex; }
-            
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-            }
-            
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
-SCRIPT
 
     <script>
         // Hamburger menu functionality
