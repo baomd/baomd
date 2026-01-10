@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quoc-Bao Nguyen, MD | Board-Certified Dermatologist - Austin, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; 
+            --gold-dark: #b39650; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--navy);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hero { 
+            min-height: 90vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: var(--white); 
+            position: relative; 
+            overflow: hidden; 
+            background: 
+                radial-gradient(ellipse at top, rgba(201, 169, 97, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.1), transparent 50%),
+                linear-gradient(135deg, #0a1628 0%, #1a2d47 50%, #0d1b2e 100%);
+        }
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.15) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a961' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite; 
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 1000px; animation: fadeInUp 1.2s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(201, 169, 97, 0.2);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(201, 169, 97, 0.2); }
+            50% { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 60px rgba(201, 169, 97, 0.4); }
+        }
+        
+        .hero .credentials { 
+            color: var(--gold-light); 
+            font-size: 1.3rem; 
+            margin-bottom: 3rem; 
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-divider { 
+            width: 150px; 
+            height: 2px; 
+            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent); 
+            margin: 2.5rem auto; 
+            position: relative;
+            box-shadow: 0 0 20px rgba(201, 169, 97, 0.5);
+        }
+        .hero-divider::before { 
+            content: '◆'; 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+            color: var(--gold-light); 
+            background: var(--navy); 
+            padding: 0 12px;
+            font-size: 1rem;
+            text-shadow: 0 0 20px rgba(201, 169, 97, 0.8);
+        }
+        
+        .hero .subtitle { 
+            font-size: 1.8rem; 
+            margin-bottom: 1.5rem; 
+            font-weight: 300; 
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .hero p { 
+            font-size: 1.25rem; 
+            line-height: 2.2; 
+            max-width: 900px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stats-bar { 
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, var(--gold-dark) 100%); 
+            padding: 4rem 2rem; 
+            margin-top: -80px; 
+            position: relative; 
+            z-index: 10; 
+            box-shadow: 
+                0 30px 80px rgba(201, 169, 97, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -2px 0 rgba(10, 22, 40, 0.3);
+        }
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .stats-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center; }
+        .stat-number { 
+            font-size: 3.5rem; 
+            font-weight: 700; 
+            font-family: 'Playfair Display', serif; 
+            color: var(--navy); 
+            display: block;
+            text-shadow: 
+                2px 2px 0px rgba(255, 255, 255, 0.3),
+                0 4px 10px rgba(10, 22, 40, 0.2);
+        }
+        .stat-label { font-size: 0.95rem; font-weight: 500; text-transform: uppercase; color: var(--navy); }
+        
+        .welcome-section { 
+            padding: 10rem 2rem; 
+            position: relative; 
+            overflow: hidden;
+            background: 
+                radial-gradient(ellipse at top left, rgba(201, 169, 97, 0.03), transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(10, 22, 40, 0.02), transparent 50%),
+                var(--white);
+        }
+        .welcome-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 2fr; gap: 6rem; align-items: center; position: relative; }
+        
+        .profile-showcase { position: relative; }
+        .profile-frame { position: relative; padding: 8px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 25%, var(--white) 50%, var(--gold-light) 75%, var(--gold) 100%); background-size: 200% 200%; animation: frameShimmer 8s ease infinite; border-radius: 25px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15); }
+        @keyframes frameShimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        
+        .profile-image { width: 100%; border-radius: 20px; box-shadow: 0 40px 80px rgba(10, 22, 40, 0.25); transition: all 0.6s; }
+        .profile-showcase:hover .profile-image { transform: translateY(-10px) scale(1.02); }
+        
+        .welcome-text h2 { 
+            font-size: 3.5rem; 
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .welcome-text p { font-size: 1.15rem; line-height: 2; margin-bottom: 1.8rem; }
+        .welcome-text p:first-of-type {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
+        .cta-secondary { display: inline-block; padding: 1.3rem 3.5rem; background: transparent; color: var(--navy); text-decoration: none; border-radius: 50px; border: 2px solid var(--navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.4s; }
+        .cta-secondary:hover { background: var(--navy); color: var(--white); transform: translateY(-4px); }
+        .cta-group { display: flex; gap: 1.5rem; margin-top: 3rem; }
+        
+        .expertise-section { padding: 8rem 2rem; background: linear-gradient(to bottom, var(--cream), #f2f0ed, var(--cream)); position: relative; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
+        .section-header h2 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .expertise-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem; }
+        .expertise-card { background: var(--white); padding: 3.5rem; border-radius: 20px; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.08); transition: all 0.5s; border: 1px solid rgba(201, 169, 97, 0.1); position: relative; overflow: hidden; }
+        .expertise-card:hover { transform: translateY(-15px); box-shadow: 0 25px 70px rgba(10, 22, 40, 0.15); }
+        .expertise-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3); }
+        .expertise-icon svg { color: var(--navy); }
+        .expertise-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
+        .expertise-card p { font-size: 1.05rem; line-height: 1.8; }
+        
+        .testimonial-section { padding: 8rem 2rem; background: var(--navy); color: var(--white); position: relative; text-align: center; }
+        .testimonial-quote { font-size: 2rem; font-family: 'Playfair Display', serif; font-style: italic; line-height: 1.8; margin-bottom: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .testimonial-author { font-size: 1.1rem; color: var(--gold); font-weight: 600; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 1.2rem 1.5rem; }
+            .nav-links { 
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                gap: 1.5rem;
+                z-index: 999;
+            }
+            .nav-links.mobile-open { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .logo { font-size: 1rem; }
+            
+            .hero { min-height: 70vh; padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; letter-spacing: 1px; }
+            .hero .credentials { font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .hero p { font-size: 1rem; line-height: 1.8; }
+            
+            .stats-bar { padding: 2rem 1rem; margin-top: -30px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .stat-number { font-size: 2.5rem; }
+            .stat-label { font-size: 0.85rem; }
+            
+            .welcome-section { padding: 4rem 1.5rem; }
+            .welcome-content { grid-template-columns: 1fr; gap: 3rem; }
+            .welcome-text h2 { font-size: 2.2rem; }
+            .welcome-text p { font-size: 1rem; }
+            .cta-group { flex-direction: column; gap: 1rem; }
+            .cta-primary, .cta-secondary { 
+                width: 100%; 
+                text-align: center;
+                padding: 1.2rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .expertise-section { padding: 4rem 1.5rem; }
+            .section-header h2 { font-size: 2.5rem; }
+            .expertise-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .expertise-card { padding: 2.5rem 2rem; }
+            .expertise-icon { width: 70px; height: 70px; }
+            
+            .testimonial-section { padding: 4rem 1.5rem; }
+            .testimonial-quote { font-size: 1.4rem; line-height: 1.7; padding: 0 1rem; }
+        }
+        
+        @media (max-width: 374px) {
+            .hero h1 { font-size: 2rem; }
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Quoc-Bao Nguyen</h1>
+            <p class="credentials">MD, MBA, FAAD, AACMS</p>
+            <div class="hero-divider"></div>
+            <p class="subtitle">Double Board-Certified Dermatologist & Mohs Micrographic Surgeon</p>
+            <p>Advancing dermatologic care through science, education, and a commitment to compassionate, patient-centered excellence in Austin, Texas.</p>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Publications</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Presentations</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">20+</span>
+                <span class="stat-label">Clinical Trials</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Board Certifications</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <div class="profile-showcase">
+                <div class="profile-frame">
+                    <img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="profile-image">
+                </div>
+            </div>
+            <div class="welcome-text">
+                <h2>Dermatology Elevated.</h2>
+                <p>Excellence in every aspect of dermatologic care.</p>
+                <p>Dr. Quoc-Bao Nguyen is a double board-certified dermatologist and fellowship-trained Mohs micrographic and reconstructive surgeon with advanced training from MD Anderson Cancer Center and Geisinger Medical Center.</p>
+                <p>His comprehensive background in skin cancer management, facial reconstruction, medical dermatology, and cosmetic dermatology allows him to deliver evidence-based care that addresses both medical needs and aesthetic goals.</p>
+                <p>Dr. Nguyen's approach blends scientific precision with genuine compassion, creating individualized treatment plans that prioritize optimal outcomes and patient satisfaction.</p>
+                <div class="cta-group">
+                    <a href="about.html" class="cta-primary">Meet Dr. Nguyen</a>
+                    <a href="contact.html" class="cta-secondary">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="expertise-section">
+        <div class="section-header">
+            <h2>Areas of Excellence</h2>
+            <p>Comprehensive dermatologic care combining surgical expertise, medical precision, and aesthetic artistry</p>
+        </div>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Skin Cancer & Mohs Surgery</h3>
+                <p>Tissue-sparing removal with the highest cure rates and personalized reconstruction for optimal cosmetic outcomes.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                        <line x1="7" y1="7" x2="7.01" y2="7"/>
+                    </svg>
+                </div>
+                <h3>Scar Optimization & Revision</h3>
+                <p>Advanced protocols combining surgical technique, laser technology, and medical-grade skincare for superior results.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3>Medical Dermatology</h3>
+                <p>Evidence-based treatment for acne, eczema, rosacea, pigment disorders, and chronic skin conditions.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h3>Hair Loss Treatment</h3>
+                <p>Personalized treatment plans using the latest medical therapies and regenerative procedures for hair restoration.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3>Cosmetic Dermatology</h3>
+                <p>Subtle, natural enhancements using advanced injectables, lasers, and aesthetic procedures tailored to your features.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3>BaoMD Skincare</h3>
+                <p>Physician-formulated solutions bridging clinical outcomes with everyday skin health and optimal healing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <p class="testimonial-quote">My promise is to put the patient first—listening carefully and delivering precise, evidence-based skincare, guided by Austin's innovative, technology-driven spirit.</p>
+        <p class="testimonial-author">— Dr. Quoc-Bao Nguyen</p>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+            <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('mobile-open');
+                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        
