@@ -15,6 +15,11 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
+        
+        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
+        
+        
+        
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -22,6 +27,35 @@
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        /* Hamburger Menu - GUARANTEED WORKING */
+        .hamburger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            padding: 5px; 
+            z-index: 1001; 
+            gap: 4px;
+            background: none;
+            border: none;
+        }
+        .hamburger span { 
+            width: 25px; 
+            height: 3px; 
+            background: var(--navy); 
+            transition: all 0.3s; 
+            border-radius: 3px; 
+            display: block;
+        }
+        .hamburger.active span:nth-child(1) { 
+            transform: rotate(45deg) translate(5px, 5px); 
+        }
+        .hamburger.active span:nth-child(2) { 
+            opacity: 0; 
+        }
+        .hamburger.active span:nth-child(3) { 
+            transform: rotate(-45deg) translate(7px, -6px); 
+        }
+
         
         .mobile-menu-btn {
             display: none;
@@ -33,15 +67,7 @@
             padding: 0.5rem;
         }
         
-        /* Hamburger Icon */
-        .hamburger { 
-            display: none; 
-            flex-direction: column; 
-            cursor: pointer; 
-            padding: 5px; 
-            z-index: 1001; 
-            gap: 4px;
-        }
+        
         .hamburger span { 
             width: 25px; 
             height: 3px; 
@@ -49,15 +75,9 @@
             transition: all 0.3s; 
             border-radius: 3px; 
         }
-        .hamburger.active span:nth-child(1) { 
-            transform: rotate(45deg) translate(5px, 5px); 
-        }
-        .hamburger.active span:nth-child(2) { 
-            opacity: 0; 
-        }
-        .hamburger.active span:nth-child(3) { 
-            transform: rotate(-45deg) translate(7px, -6px); 
-        }
+        
+        
+        
         
         .hero { 
             min-height: 90vh; 
@@ -329,129 +349,36 @@
         footer a { color: var(--gold); text-decoration: none; }
         
         /* MOBILE RESPONSIVE */
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            nav { padding: 1.2rem 1.5rem; }
-            .logo { font-size: 1rem; }
+                @media (max-width: 768px) {
+            .hamburger { display: flex !important; }
             
             .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-                transition: right 0.3s ease;
-                z-index: 1000;
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                height: 100vh !important;
+                width: 70% !important;
+                max-width: 300px !important;
+                background: var(--white) !important;
+                flex-direction: column !important;
+                padding: 6rem 2rem 2rem !important;
+                gap: 2rem !important;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15) !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
             }
             
-            .nav-links.mobile-open { 
-                right: 0; 
+            .nav-links.active { 
+                right: 0 !important; 
             }
             
             .nav-links a { 
-                font-size: 1.1rem; 
-                padding: 0.5rem 0; 
+                font-size: 1.1rem !important; 
+                padding: 0.5rem 0 !important; 
             }
+            
+            .logo { font-size: 1rem !important; }
 
-            /* Expertise Grid Mobile Override */
-            .expertise-grid { 
-                grid-template-columns: 1fr !important; 
-                gap: 1.5rem !important; 
-            }
-            
-            .expertise-card { 
-                padding: 2rem 1.5rem; 
-            }
-
-            
-            
-            .hero { min-height: 70vh; padding: 4rem 1.5rem; }
-            .hero h1 { font-size: 2.5rem; letter-spacing: 1px; }
-            .hero .credentials { font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .hero p { font-size: 1rem; line-height: 1.8; }
-            
-            .stats-bar { padding: 2rem 1rem; margin-top: -30px; }
-            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-            .stat-number { font-size: 2.5rem; }
-            .stat-label { font-size: 0.85rem; }
-            
-            .welcome-section { padding: 4rem 1.5rem; }
-            .welcome-content { grid-template-columns: 1fr; gap: 3rem; }
-            .welcome-text h2 { font-size: 2.2rem; }
-            .welcome-text p { font-size: 1rem; }
-            .cta-group { flex-direction: column; gap: 1rem; }
-            .cta-primary, .cta-secondary { 
-                width: 100%; 
-                text-align: center;
-                padding: 1.2rem 2rem;
-                font-size: 0.9rem;
-            }
-            
-            .expertise-section { padding: 4rem 1.5rem; }
-            
-            
-            .expertise-icon { 
-                width: 60px; 
-                height: 60px; 
-            }
-
-            .section-header h2 { font-size: 2.5rem; }
-            
-            
-                            .expertise-icon { 
-            width: 70px; 
-            height: 70px; 
-            margin: 0 auto 1rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .expertise-icon::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .expertise-card:hover .expertise-icon::before {
-            opacity: 1;
-            animation: iconPulse 2s ease-in-out infinite;
-        }
-        .expertise-card:hover         .expertise-icon { 
-            width: 70px; 
-            height: 70px; 
-            margin: 0 auto 1rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .expertise-icon svg {
-            filter: drop-shadow(0 4px 12px rgba(201, 169, 97, 0.3));
-            transition: all 0.5s ease;
-        }
-        .expertise-card:hover .expertise-icon svg {
-            filter: drop-shadow(0 8px 20px rgba(201, 169, 97, 0.5));
-        }
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-            
-            .testimonial-section { padding: 4rem 1.5rem; }
-            .testimonial-quote { font-size: 1.4rem; line-height: 1.7; padding: 0 1rem; }
         }
         
         @media (max-width: 374px) {
@@ -602,6 +529,11 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -610,11 +542,6 @@
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
