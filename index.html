@@ -213,183 +213,13 @@
         .expertise-section { padding: 8rem 2rem; background: linear-gradient(to bottom, var(--cream), #f2f0ed, var(--cream)); position: relative; }
         .section-header { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
         .section-header h2 { font-size: 3.5rem; margin-bottom: 1.5rem; }
-        
-        /* Elegant Gold Themed Header */
-        .section-header h2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--navy);
-            letter-spacing: 0.5px;
-        }
-        
-        .expertise-link {
-            color: var(--navy);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-            padding: 1rem 2rem 1rem 0;
-            transition: all 0.4s ease;
-        }
-        
-        .header-text {
-            position: relative;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--navy);
-            letter-spacing: 0.5px;
-            transition: color 0.4s ease;
-        }
-        
-        .explore-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, var(--gold), #d4b976);
-            color: var(--white);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-transform: uppercase;
-        }
-        
-        .badge-text {
-            color: var(--white);
-            font-weight: 600;
-        }
-        
-        .arrow-icon {
-            width: 18px;
-            height: 18px;
-            color: var(--white);
-            transition: transform 0.3s ease;
-        }
-        
-        /* Hover Effects */
-        .expertise-link:hover .header-text {
-            color: var(--gold);
-        }
-        
-        .expertise-link:hover .explore-badge {
-            background: linear-gradient(135deg, #d4b976, var(--gold));
-            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
-            transform: translateX(5px) scale(1.05);
-        }
-        
-        .expertise-link:hover .arrow-icon {
-            transform: translateX(4px);
-            animation: arrowPulse 1s ease infinite;
-        }
-        
-        @keyframes arrowPulse {
-            0%, 100% { transform: translateX(4px); }
-            50% { transform: translateX(8px); }
-        }
-        
-        /* Subtle glow on hover */
-        .expertise-link:hover .header-text::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold), transparent);
-            animation: shimmer 2s ease infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { opacity: 0; transform: scaleX(0); }
-            50% { opacity: 1; transform: scaleX(1); }
-            100% { opacity: 0; transform: scaleX(0); }
-        }
-        
-        /* Mobile responsive */
-        
-            
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-            }
-            
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
-
-            .header-text {
-                font-size: 2rem;
-            }
-            
-            .explore-badge {
-                font-size: 0.8rem;
-                padding: 0.5rem 1rem;
-            }
-            
-            .expertise-link {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-        }
-
-        .expertise-grid { 
-            display: grid !important; 
-            grid-template-columns: repeat(2, 1fr) !important; 
-            gap: 2rem 3rem !important; 
-            max-width: 1000px !important;
-            margin: 0 auto !important;
-        }
-        .expertise-card { 
-            background: linear-gradient(to bottom right, var(--white), var(--cream)); 
-            padding: 2rem 1.5rem; 
-            border-radius: 15px; 
-            text-align: center; 
-            box-shadow: 0 8px 25px rgba(10, 22, 40, 0.08); 
-            border: 1px solid rgba(201, 169, 97, 0.15); 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .expertise-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 40px rgba(10, 22, 40, 0.12); 
-            border-color: var(--gold);
-        }
-        .expertise-icon { 
-            width: 70px; 
-            height: 70px; 
-            margin: 0 auto 1rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        .expertise-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem; }
+        .expertise-card { background: var(--white); padding: 3.5rem; border-radius: 20px; box-shadow: 0 15px 50px rgba(10, 22, 40, 0.08); transition: all 0.5s; border: 1px solid rgba(201, 169, 97, 0.1); position: relative; overflow: hidden; }
+        .expertise-card:hover { transform: translateY(-15px); box-shadow: 0 25px 70px rgba(10, 22, 40, 0.15); }
+        .expertise-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3); }
         .expertise-icon svg { color: var(--navy); }
-        .expertise-card h3 { 
-            font-size: 1.3rem; 
-            margin-bottom: 0.8rem; 
-            color: var(--navy);
-        }
-        .expertise-card p { 
-            font-size: 0.95rem; 
-            line-height: 1.6; 
-            color: var(--text-dark);
-        }
+        .expertise-card h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
+        .expertise-card p { font-size: 1.05rem; line-height: 1.8; }
         
         .testimonial-section { padding: 8rem 2rem; background: var(--navy); color: var(--white); position: relative; text-align: center; }
         .testimonial-quote { font-size: 2rem; font-family: 'Playfair Display', serif; font-style: italic; line-height: 1.8; margin-bottom: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
@@ -399,25 +229,7 @@
         footer a { color: var(--gold); text-decoration: none; }
         
         /* MOBILE RESPONSIVE */
-        
-            
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-            }
-            
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
+        @media (max-width: 768px) {
             nav { padding: 1.2rem 1.5rem; }
             .nav-links { 
                 display: none;
@@ -461,32 +273,9 @@
             
             .expertise-section { padding: 4rem 1.5rem; }
             .section-header h2 { font-size: 2.5rem; }
-            .expertise-grid { 
-            display: grid !important; 
-            grid-template-columns: repeat(2, 1fr) !important; 
-            gap: 2rem 3rem !important; 
-            max-width: 1000px !important;
-            margin: 0 auto !important;
-        }
-            .expertise-card { 
-            background: linear-gradient(to bottom right, var(--white), var(--cream)); 
-            padding: 2rem 1.5rem; 
-            border-radius: 15px; 
-            text-align: center; 
-            box-shadow: 0 8px 25px rgba(10, 22, 40, 0.08); 
-            border: 1px solid rgba(201, 169, 97, 0.15); 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-            .expertise-icon { 
-            width: 70px; 
-            height: 70px; 
-            margin: 0 auto 1rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .expertise-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .expertise-card { padding: 2.5rem 2rem; }
+            .expertise-icon { width: 70px; height: 70px; }
             
             .testimonial-section { padding: 4rem 1.5rem; }
             .testimonial-quote { font-size: 1.4rem; line-height: 1.7; padding: 0 1rem; }
@@ -497,62 +286,111 @@
             .stats-container { grid-template-columns: 1fr; }
         }
     
-        @media (max-width: 768px) {
-            .hamburger { display: flex !important; }
-            
-            .nav-links { 
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important;
-                height: 100vh !important;
-                width: 70% !important;
-                max-width: 300px !important;
-                background: var(--white) !important;
-                flex-direction: column !important;
-                padding: 6rem 2rem 2rem !important;
-                gap: 2rem !important;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1) !important;
-                transition: right 0.3s ease !important;
-                z-index: 1000 !important;
-            }
-            
-            .nav-links.active { 
-                right: 0 !important; 
-            }
-            
-            .nav-links a { 
-                font-size: 1.1rem !important; 
-                padding: 0.5rem 0 !important; 
-            }
-            
-            .logo { font-size: 1rem !important; }
-            
-            .header-text { font-size: 2rem !important; }
-            
-            .explore-badge {
-                font-size: 0.8rem !important;
-                padding: 0.5rem 1rem !important;
-            }
-            
-            .expertise-link {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 1rem !important;
-            }
-            
-            .expertise-grid { 
-                grid-template-columns: 1fr !important; 
-                gap: 1.5rem !important; 
-            }
-            
-            .expertise-card { 
-                padding: 2rem 1.5rem !important; 
-            }
-            
-            .expertise-icon { 
-                width: 60px !important; 
-                height: 60px !important; 
-            }
+        /* Elegant Gold Themed Header */
+        .expertise-link {
+            color: var(--navy);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        .header-text {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            transition: color 0.4s ease;
+        }
+        
+        .explore-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--gold), #d4b976);
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+        
+        .arrow-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-link:hover .header-text {
+            color: var(--gold);
+        }
+        
+        .expertise-link:hover .explore-badge {
+            background: linear-gradient(135deg, #d4b976, var(--gold));
+            box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
+            transform: translateX(5px) scale(1.05);
+        }
+        
+        .expertise-link:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+        
+        /* Expertise Grid - 2 Column Compact */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .expertise-card {
+            background: linear-gradient(to bottom right, var(--white), var(--cream));
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(10, 22, 40, 0.08);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            transition: all 0.4s ease;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(10, 22, 40, 0.12);
+            border-color: var(--gold);
+        }
+        
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--navy);
+        }
+        
+        .expertise-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .expertise-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        
+        .expertise-card:hover .expertise-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
     </style>
@@ -567,13 +405,14 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html"class="active">HOME</a></li>
-                <li><a href="about.html" >ABOUT</a></li>
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
                 <li><a href="expertise.html">EXPERTISE</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
@@ -803,31 +642,20 @@
         </p>
     </footer>
 
-
     <script>
-        // Hamburger menu functionality
-        const hamburger = document.querySelector('.hamburger');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        const links = document.querySelectorAll('.nav-links a');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('mobile-open');
+                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
             });
-        });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
         
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
