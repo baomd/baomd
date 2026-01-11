@@ -19,13 +19,6 @@
         .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-        
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         
         /* Hamburger Menu Icon */
         .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 10px; z-index: 1001; }
@@ -33,6 +26,42 @@
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        /* Hero & Sections */
+        .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); background: linear-gradient(135deg, #0a1628 0%, #1a2d47 100%); }
+        .hero h1 { font-size: 4rem; color: var(--white); }
+        .stats-bar { background: var(--gold); padding: 4rem 2rem; margin-top: -80px; position: relative; z-index: 10; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .expertise-card { background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; 
+            --gold-dark: #b39650; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* Hamburger Menu Icon */
+        
+        
+        
+        
+        
         
         
         
@@ -236,22 +265,10 @@
         
         /* MOBILE RESPONSIVE */
         
-            .nav-links { 
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                gap: 1.5rem;
-                z-index: 999;
-            }
-            .nav-links.mobile-open { display: flex; }
+            
+            
             .mobile-menu-btn { display: block; }
-            .logo { font-size: 1rem; }
+            
             
             .hero { min-height: 70vh; padding: 4rem 1.5rem; }
             .hero h1 { font-size: 2.5rem; letter-spacing: 1px; }
@@ -398,47 +415,30 @@
     
         
             
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-            }
             
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
+            
+            
+            
     
         /* MOBILE FIXES */
         
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%; /* Hidden off-screen */
-                height: 100vh;
-                width: 70%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.4s ease-in-out;
-                z-index: 1000;
-            }
-            .nav-links.active { right: 0; } /* Slide in when active */
-            .nav-links a { font-size: 1.2rem; }
+            
+             /* Slide in when active */
+            
             .expertise-grid { grid-template-columns: 1fr; }
         }
     
         
     
+        @media (max-width: 968px) {
+            
+            
+             /* Slide in when active */
+            
+            .expertise-grid { grid-template-columns: 1fr; }
+        }
+    
+        /* MOBILE FIXES */
         @media (max-width: 968px) {
             .hamburger { display: flex; }
             .nav-links { 
@@ -491,7 +491,7 @@
         </div>
     </section>
 
-    <section class="stats-bar">
+    <section class="stats-section">
         <div class="stats-container">
             <div class="stat-item">
                 <span class="stat-number">30+</span>
@@ -511,26 +511,6 @@
             </div>
         </div>
     </section>
-
-    <section class="welcome-section">
-        <div class="welcome-content">
-            <div class="profile-showcase">
-                <div class="profile-frame">
-                    <img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="profile-image">
-                </div>
-            </div>
-            <div class="welcome-text">
-                <h2>Dermatology Elevated.</h2>
-                <p>Excellence in every aspect of dermatologic care.</p>
-                <p>Dr. Quoc-Bao Nguyen is a double board-certified dermatologist and fellowship-trained Mohs micrographic and reconstructive surgeon with advanced training from MD Anderson Cancer Center and Geisinger Medical Center.</p>
-                <p>His comprehensive background in skin cancer management, facial reconstruction, medical dermatology, and cosmetic dermatology allows him to deliver evidence-based care that addresses both medical needs and aesthetic goals.</p>
-                <p>Dr. Nguyen's approach blends scientific precision with genuine compassion, creating individualized treatment plans that prioritize optimal outcomes and patient satisfaction.</p>
-                <div class="cta-group">
-                    <a href="about.html" class="cta-primary">Meet Dr. Nguyen</a>
-                    <a href="contact.html" class="cta-secondary">Schedule Consultation</a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section class="expertise-section">
