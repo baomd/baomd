@@ -27,7 +27,8 @@
         .bio-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
         .profile-frame { position: relative; padding: 8px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 25%, var(--white) 50%, var(--gold-light) 75%, var(--gold) 100%); background-size: 200% 200%; animation: frameShimmer 8s ease infinite; border-radius: 25px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15); }
         @keyframes frameShimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .bio-image { width: 100%; border-radius: 20px; box-shadow: 0 40px 80px rgba(10, 22, 40, 0.25); }
+        .bio-image { width: 100%; border-radius: 20px; box-shadow: 0 40px 80px rgba(10, 22, 40, 0.25); transition: all 0.6s; }
+        .bio-image-wrapper:hover .bio-image { transform: translateY(-10px) scale(1.02); }
         .bio-text h2 { font-size: 2.8rem; margin-bottom: 2rem; }
         .bio-text h3 { font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--gold); }
         .bio-text p { font-size: 1.1rem; line-height: 2; margin-bottom: 1.8rem; }
@@ -80,7 +81,7 @@
     </section>
 
     <div class="bio-section">
-        <div>
+        <div class="bio-image-wrapper">
             <div class="profile-frame">
                 <img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="bio-image">
             </div>
