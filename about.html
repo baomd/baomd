@@ -8,122 +8,61 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; --gold-light: #d4b976; --cream: #f8f6f3; --white: #ffffff; --text-dark: #2c3e50; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
         
-        /* Navigation */
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.5rem 2rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.2px; }
-        
-        /* Hamburger Menu */
-        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
-        .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-        
-        /* Desktop Navigation */
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; transition: color 0.3s; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 6rem 2rem 4rem; text-align: center; color: var(--white); }
-        .page-header h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 1.5rem; }
-        .page-header p { font-size: 1.2rem; opacity: 0.95; }
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
+        .page-header p { font-size: 1.3rem; opacity: 0.95; }
         
-        .bio-section { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
-        .bio-image { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(10, 22, 40, 0.25); }
-        .bio-text h2 { font-size: 2.5rem; margin-bottom: 2rem; }
-        .bio-text h3 { font-size: 1.8rem; margin: 2.5rem 0 1.5rem; color: var(--gold); }
-        .bio-text p { font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.5rem; }
+        .bio-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
+        .profile-frame { position: relative; padding: 8px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 25%, var(--white) 50%, var(--gold-light) 75%, var(--gold) 100%); background-size: 200% 200%; animation: frameShimmer 8s ease infinite; border-radius: 25px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15); }
+        @keyframes frameShimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .bio-image { width: 100%; border-radius: 20px; box-shadow: 0 40px 80px rgba(10, 22, 40, 0.25); }
+        .bio-text h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+        .bio-text h3 { font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--gold); }
+        .bio-text p { font-size: 1.1rem; line-height: 2; margin-bottom: 1.8rem; }
         
-        .credentials-section { background: linear-gradient(to bottom, var(--cream), #f2f0ed); padding: 5rem 2rem; }
-        .credentials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-        .credential-card { background: var(--white); padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); border-left: 5px solid var(--gold); }
-        .credential-card h4 { font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .credentials-section { background: linear-gradient(to bottom, var(--cream), #f2f0ed); padding: 6rem 2rem; }
+        .credentials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .credential-card { background: var(--white); padding: 3rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); border-left: 5px solid var(--gold); }
+        .credential-card h4 { font-size: 1.5rem; margin-bottom: 1.5rem; }
         .credential-card ul { list-style: none; }
-        .credential-card li { padding: 0.7rem 0; padding-left: 1.5rem; position: relative; font-size: 1rem; }
+        .credential-card li { padding: 0.8rem 0; padding-left: 1.5rem; position: relative; font-size: 1.05rem; }
         .credential-card li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); }
         
-        .philosophy-section { background: var(--navy); color: var(--white); padding: 5rem 2rem; text-align: center; }
+        .philosophy-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
         .philosophy-content { max-width: 900px; margin: 0 auto; }
-        .philosophy-content h2 { font-size: 2.8rem; color: var(--white); margin-bottom: 2rem; }
-        .philosophy-content p { font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; }
+        .philosophy-content h2 { font-size: 3rem; color: var(--white); margin-bottom: 2rem; }
+        .philosophy-content p { font-size: 1.2rem; line-height: 2; margin-bottom: 1.5rem; }
         
-        .memberships-section { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
-        .memberships-section h3 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-        .memberships-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-        .membership-item { background: var(--cream); padding: 1.8rem; border-radius: 10px; text-align: center; font-size: 1rem; font-weight: 500; }
+        .memberships-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; }
+        .memberships-section h3 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
+        .memberships-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .membership-item { background: var(--cream); padding: 2rem; border-radius: 10px; text-align: center; font-size: 1.05rem; font-weight: 500; }
         
-        .cta-primary { display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.3px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; font-size: 0.9rem; }
+        .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
         .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
         
-        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; }
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
         footer a { color: var(--gold); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
         
-        /* Mobile Styles */
-        @media (max-width: 968px) {
-            .hamburger { display: flex; }
-            
-            .nav-links { 
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-            }
-            
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
-            
-            .page-header { padding: 4rem 1.5rem 3rem; }
-            .page-header h1 { font-size: 2.2rem; }
-            .page-header p { font-size: 1.05rem; }
-            
-            .bio-section { grid-template-columns: 1fr; gap: 2.5rem; margin: 3rem auto; }
-            .bio-text h2 { font-size: 2rem; }
-            .bio-text h3 { font-size: 1.5rem; }
-            .bio-text p { font-size: 1rem; }
-            
-            .credentials-section { padding: 3rem 1.5rem; }
-            .credentials-grid { grid-template-columns: 1fr; gap: 2rem; }
-            
-            .philosophy-section { padding: 3rem 1.5rem; }
-            .philosophy-content h2 { font-size: 2rem; }
-            .philosophy-content p { font-size: 1rem; }
-            
-            .memberships-section { margin: 3rem auto; }
-            .memberships-section h3 { font-size: 1.8rem; }
-            .memberships-list { grid-template-columns: 1fr; }
-        }
-        
-        @media (max-width: 480px) {
-            .logo { font-size: 0.9rem; }
-            .page-header h1 { font-size: 1.8rem; }
-            .credential-card { padding: 2rem; }
-        }
+        @media (max-width: 768px) { .bio-section { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html" class="active">ABOUT</a></li>
@@ -141,14 +80,17 @@
     </section>
 
     <div class="bio-section">
-        <div><img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="bio-image"></div>
+        <div>
+            <div class="profile-frame">
+                <img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="bio-image">
+            </div>
+        </div>
         <div class="bio-text">
             <h2>Commitment to Excellence</h2>
             <p>Dr. Quoc-Bao Nguyen is a double board-certified dermatologist and fellowship-trained Mohs micrographic and reconstructive surgeon specializing in skin cancer treatment, reconstructive surgery, medical dermatology, and cosmetic dermatology. Born and raised in Austin, Texas, he is honored to return to his hometown to provide compassionate, high-quality, evidence-based care to the community he loves.</p>
             <p>Dr. Nguyen's academic journey is defined by excellence. He graduated Summa Cum Laude from The University of Texas at Austin, earning a Bachelor of Science in Chemistry through the prestigious Dean's Scholars Honors Program, completing Special Honors, and finishing at the top of his class with a 4.0 GPA.</p>
             <p>He received his Medical Degree with Honors from Texas A&M University, where he was inducted into the Alpha Omega Alpha (AOA) Honor Medical Society in recognition of his outstanding academic performance and leadership.</p>
             <p>He completed his intern year in Neurosurgery at The University of Texas Health Science Center at Houston, followed by a dedicated clinical research year, where he served as a sub-investigator in approximately 20 dermatology clinical research trials. During this time, he also earned an MBA in Finance from The University of Houston, expanding his ability to collaborate effectively with pharmaceutical and biotechnology companies to advance innovative dermatologic therapies.</p>
-            <p>He completed his Dermatology Residency at the prestigious MD Anderson Cancer Center and The University of Texas Health Science Center at Houston, specializing in skin cancer management. He further honed his expertise by completing a Mohs Micrographic Surgery and Dermatologic Oncology Fellowship at Geisinger Medical Center in Pennsylvania, focusing on complex facial reconstruction.</p>
             <h3>Comprehensive Aesthetic Care</h3>
             <p>In addition to his surgical expertise, Dr. Nguyen is passionate about helping his patients look refreshed and feel confident in their skin. He offers a full spectrum of cosmetic treatments—including Botox®, Dysport®, dermal fillers, microneedling, platelet-rich plasma (PRP), chemical peels, laser resurfacing, scar revision, and cosmetic surgery—as well as advanced procedures for cellulite reduction, body contouring, skin tightening, sclerotherapy, and hair restoration.</p>
             <h3>Academic Contributions</h3>
@@ -178,7 +120,7 @@
                 <h4>Education</h4>
                 <ul>
                     <li>MD: Texas A&M University College of Medicine</li>
-                    <li>MBA: University of Houston</li>
+                    <li>MBA: University of Houston Clear Lake</li>
                     <li>BS: The University of Texas at Austin</li>
                 </ul>
             </div>
@@ -204,58 +146,15 @@
             <div class="membership-item">American Medical Association</div>
             <div class="membership-item">Texas Medical Association</div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
+        <div style="text-align: center; margin-top: 4rem;">
             <a href="contact.html" class="cta-primary">Schedule a Consultation</a>
         </div>
     </div>
 
     <footer>
-        <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-    <defs>
-        <linearGradient id="grad-footer-loc" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#c9a961"/>
-            <stop offset="100%" style="stop-color:#d4b976"/>
-        </linearGradient>
-        <filter id="glow-footer">
-            <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
-            <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-    </defs>
-    <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-          stroke="url(#grad-footer-loc)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
-    <circle cx="10" cy="7.5" r="2" fill="url(#grad-footer-loc)" opacity="0.8"/>
-</svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+        <p>📍 Based in Austin, Texas — Caring for patients nationally and internationally</p>
         <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
-
-    <script>
-        // Hamburger menu functionality
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const links = document.querySelectorAll('.nav-links a');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    </script>
 </body>
 </html>
