@@ -46,8 +46,9 @@
         .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
         .form-group { margin-bottom: 2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid var(--cream); border-radius: 10px; font-family: 'Inter', sans-serif; }
-        .submit-btn { width: 100%; padding: 1.3rem; background: var(--gold); color: var(--navy); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid var(--cream); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; }
+        .submit-btn { width: 100%; padding: 1.3rem; background: var(--gold); color: var(--navy); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .submit-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
 
         @media (max-width: 968px) {
             .hamburger { display: flex; }
@@ -117,14 +118,28 @@
 
         <div class="contact-form-section">
             <h3>Send a Message</h3>
-            <form id="contactForm">
-                <div class="form-group"><label>Full Name *</label><input type="text" required></div>
-                <div class="form-group"><label>Email Address *</label><input type="email" required></div>
+            <form action="https://formspree.io/f/xbddjany" method="POST" id="contactForm">
                 <div class="form-group">
-                    <label>Inquiry Type</label>
-                    <select><option>Schedule Consultation</option><option>Speaking Engagement</option><option>BaoMD Skincare</option></select>
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" name="name" id="full-name" required>
                 </div>
-                <div class="form-group"><label>Message *</label><textarea required></textarea></div>
+                <div class="form-group">
+                    <label for="email-address">Email Address *</label>
+                    <input type="email" name="email" id="email-address" required>
+                </div>
+                <div class="form-group">
+                    <label for="inquiry-type">Inquiry Type</label>
+                    <select name="inquiry" id="inquiry-type">
+                        <option value="Consultation">Schedule Consultation</option>
+                        <option value="Speaking">Speaking Engagement</option>
+                        <option value="BaoMD">BaoMD Skincare</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea name="message" id="message" required></textarea>
+                </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
