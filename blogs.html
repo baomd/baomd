@@ -1,220 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Dr. Quoc-Bao Nguyen - Dermatology Insights</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
-            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
-            --white: #ffffff; --text-dark: #2c3e50;
-        }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
-        
-        /* Navigation (Exact Original Layout) */
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
-        .nav-links a.active { color: var(--gold); }
-        .nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+<div class="blog-grid" id="blogGrid">
 
-        /* Page Header */
-        .page-header { 
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #0d1b2e 100%); 
-            padding: 8rem 2rem 5rem; text-align: center; color: var(--white); position: relative; overflow: hidden;
-        }
-        .page-header::before { 
-            content: ''; position: absolute; inset: 0; 
-            background: radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.1) 0%, transparent 40%);
-        }
-        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1rem; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .page-header p { font-size: 1.3rem; opacity: 0.9; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-
-        /* Controls */
-        .container { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
-        .blog-controls { background: var(--cream); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); margin-bottom: 4rem; border-left: 5px solid var(--gold); }
-        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
-        .filter-btn { padding: 0.85rem 1.8rem; background: var(--white); border: 2px solid var(--white); border-radius: 50px; cursor: pointer; transition: 0.3s; }
-        .filter-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); font-weight: 600; border-color: var(--gold); }
-
-        /* Gold Theme Icons with Glow Background */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2.5rem; }
-        .blog-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); transition: 0.4s; cursor: pointer; border: 1px solid rgba(201, 169, 97, 0.1); }
-        .blog-card:hover { transform: translateY(-8px); border-color: var(--gold); }
-        
-        .blog-image { 
-            height: 240px; 
-            background: var(--navy); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-        }
-        .icon-glow {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(201, 169, 97, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .gold-icon { width: 60px; height: 60px; fill: var(--gold); position: relative; z-index: 2; }
-
-        /* Meta Branding */
-        .blog-content { padding: 2rem; }
-        .blog-category { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light)); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; color: var(--navy); }
-        .blog-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--cream); font-size: 0.85rem; }
-        .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 0.8rem; margin-right: 10px; }
-        .blog-author { display: flex; align-items: center; font-weight: 600; color: var(--navy); }
-
-        /* Pagination */
-        .pagination { display: flex; justify-content: center; gap: 0.75rem; margin-top: 4rem; }
-        .page-btn { padding: 0.9rem 1.5rem; background: var(--white); border: 2px solid var(--cream); border-radius: 50px; cursor: pointer; }
-        .page-btn.active { background: var(--gold); font-weight: 600; }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
-            <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="expertise.html">EXPERTISE</a></li>
-                <li><a href="speaking.html">SPEAKING</a></li>
-                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
-                <li><a href="blogs.html" class="active">BLOGS</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
+    <article class="blog-card" data-category="skincare">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M15,20.17V18H9V20.17L12,23.17L15,20.17M9,3.83V6H15V3.83L12,0.83L9,3.83M12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z"/></svg>
         </div>
-    </nav>
-
-    <header class="page-header">
-        <h1>Blogs & Updates</h1>
-        <p>Expert perspectives on dermatology, skincare, and aesthetic medicine</p>
-    </header>
-
-    <div class="container">
-        <div class="blog-controls">
-            <div class="controls-wrapper">
-                <div class="search-box">
-                    <input type="text" placeholder="Search articles..." id="blogSearch">
-                </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-cat="all">All Posts</button>
-                    <button class="filter-btn" data-cat="skincare">Skincare</button>
-                    <button class="filter-btn" data-cat="medical">Medical</button>
-                    <button class="filter-btn" data-cat="aesthetics">Aesthetics</button>
-                    <button class="filter-btn" data-cat="leadership">Leadership</button>
-                    <button class="filter-btn" data-cat="finance">Finance</button>
-                </div>
+        <div class="blog-content">
+            <span class="blog-category">Skincare</span>
+            <h3>The Molecular Evolution of Retinoids</h3>
+            <p class="blog-excerpt">Analyzing cellular signaling pathways and the comparative efficacy of prescription-strength tretinoin versus emerging hydroxypinacolone retinoates...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 14, 2026</span>
             </div>
         </div>
+    </article>
 
-        <div class="blog-grid" id="blogGrid">
-            <article class="blog-card" data-category="medical">
-                <div class="blog-image">
-                    <div class="icon-glow"></div>
-                    <svg class="gold-icon" viewBox="0 0 24 24"><path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.67,16.17L7.5,13L8.91,11.58L10.67,13.34L15.09,8.92L16.5,10.33L10.67,16.17Z"/></svg>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-category">Medical</span>
-                    <h3>Immune-Mediated Response in Psoriasis</h3>
-                    <p class="blog-excerpt">Analyzing the latest research on T-cell regulation and the development of next-generation biologics...</p>
-                    <div class="blog-meta">
-                        <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                        <span class="blog-date">Jan 12, 2026</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card" data-category="aesthetics">
-                <div class="blog-image">
-                    <div class="icon-glow"></div>
-                    <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-category">Aesthetics</span>
-                    <h3>Volumetric Restoration Techniques</h3>
-                    <p class="blog-excerpt">A comparative study on deep-plane structural support versus superficial refinement using HA fillers...</p>
-                    <div class="blog-meta">
-                        <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                        <span class="blog-date">Jan 10, 2026</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card" data-category="medical">
-                <div class="blog-image">
-                    <div class="icon-glow"></div>
-                    <svg class="gold-icon" viewBox="0 0 24 24"><path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-category">Medical</span>
-                    <h3>Dermoscopy in Early Stage Melanoma</h3>
-                    <p class="blog-excerpt">How advanced imaging patterns are redefining early detection and improving patient outcomes...</p>
-                    <div class="blog-meta">
-                        <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                        <span class="blog-date">Jan 08, 2026</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card" data-category="aesthetics">
-                <div class="blog-image">
-                    <div class="icon-glow"></div>
-                    <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.41,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.59,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-category">Aesthetics</span>
-                    <h3>Neurotoxin Precision in Facial Harmony</h3>
-                    <p class="blog-excerpt">Understanding the interplay of dynamic musculature to achieve natural, expressive results...</p>
-                    <div class="blog-meta">
-                        <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                        <span class="blog-date">Jan 05, 2026</span>
-                    </div>
-                </div>
-            </article>
+    <article class="blog-card" data-category="skincare">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,7L14,10H10L12,7M12,17L10,14H14L12,17M17,12L14,10V14L17,12M7,12L10,14V10L7,12M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
         </div>
-
-        <div class="pagination">
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">Next →</button>
+        <div class="blog-content">
+            <span class="blog-category">Skincare</span>
+            <h3>Photoprotection in the Digital Age</h3>
+            <p class="blog-excerpt">Beyond UV: Assessing the cutaneous impact of High-Energy Visible (HEV) light and the protective role of iron oxides in modern mineral formulations...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 13, 2026</span>
+            </div>
         </div>
-    </div>
+    </article>
 
-    <script>
-        const searchInput = document.getElementById('blogSearch');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
+    <article class="blog-card" data-category="medical">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Medical</span>
+            <h3>Immune-Mediated Response in Psoriasis</h3>
+            <p class="blog-excerpt">Analyzing the latest research on T-cell regulation and the development of next-generation biologics for chronic inflammation...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 12, 2026</span>
+            </div>
+        </div>
+    </article>
 
-        function filterPosts() {
-            const term = searchInput.value.toLowerCase();
-            const activeCat = document.querySelector('.filter-btn.active').getAttribute('data-cat');
-            blogCards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                const cat = card.getAttribute('data-category');
-                const isMatch = (activeCat === 'all' || cat === activeCat) && text.includes(term);
-                card.style.display = isMatch ? 'block' : 'none';
-            });
-        }
+    <article class="blog-card" data-category="leadership">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M5,2V5H19V2H5M5,22H19V19H5V22M6,6V18H9V6H6M11,6V18H13V6H11M15,6V18H18V6H15Z"/></svg>
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Leadership</span>
+            <h3>The Physician Executive: Leading Change</h3>
+            <p class="blog-excerpt">Navigating the transition from clinical excellence to organizational leadership within national medical associations and private practice...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 11, 2026</span>
+            </div>
+        </div>
+    </article>
 
-        searchInput.addEventListener('input', filterPosts);
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                filterPosts();
-            });
-        });
-    </script>
-</body>
-</html>
+    <article class="blog-card" data-category="leadership">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M16,13C15.71,13 15.42,13.03 15.14,13.08C16.12,13.88 16.75,15.11 16.75,16.5C16.75,17.89 16.12,19.12 15.14,19.92C15.42,19.97 15.71,20 16,20A3.5,3.5 0 0,0 19.5,16.5A3.5,3.5 0 0,0 16,13M8,13A3.5,3.5 0 0,0 4.5,16.5A3.5,3.5 0 0,0 8,20C8.29,20 8.58,19.97 8.86,19.92C7.88,19.12 7.25,17.89 7.25,16.5C7.25,15.11 7.88,13.88 8.86,13.08C8.58,13.03 8.29,13 8,13M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C14.67,14 20,15.33 20,18V20H4V18C4,14.67 9.33,14 12,14Z"/></svg>
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Leadership</span>
+            <h3>Mentorship Dynamics in Residency</h3>
+            <p class="blog-excerpt">Strategies for established practitioners to foster the next generation of dermatologists while maintaining clinical productivity...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 09, 2026</span>
+            </div>
+        </div>
+    </article>
+
+    <article class="blog-card" data-category="finance">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z"/></svg>
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Finance</span>
+            <h3>Maximizing Practice Valuation</h3>
+            <p class="blog-excerpt">Essential financial metrics for dermatologists: Understanding EBITDA, revenue diversification, and the impact of ancillary service lines on equity...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 07, 2026</span>
+            </div>
+        </div>
+    </article>
+
+    <article class="blog-card" data-category="finance">
+        <div class="blog-image">
+            <div class="icon-glow"></div>
+            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A2,2 0 0,1 8,11V9A2,2 0 0,1 10,7H11V6H13V7H15V9H11V10H14A2,2 0 0,1 16,12V14A2,2 0 0,1 14,16H13V17H11Z"/></svg>
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Finance</span>
+            <h3>Tax-Efficient Wealth Preservation</h3>
+            <p class="blog-excerpt">Exploring advanced asset protection strategies and tax-advantaged investment vehicles specifically tailored for high-net-worth medical professionals...</p>
+            <div class="blog-meta">
+                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
+                <span class="blog-date">Jan 04, 2026</span>
+            </div>
+        </div>
+    </article>
+
+</div>
