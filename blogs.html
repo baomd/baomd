@@ -15,62 +15,62 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
-        /* Navigation (Exact Original) */
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
+        /* Navigation & Mobile Hamburger */
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.5rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a.active { color: var(--gold); }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: 0.3s; }
-        .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
-
-        /* Page Header (Exact Original Layout) */
-        .page-header { 
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #0d1b2e 100%); 
-            padding: 8rem 2rem 5rem; text-align: center; color: var(--white); position: relative; overflow: hidden;
-        }
-        .page-header::before { 
-            content: ''; position: absolute; inset: 0; 
-            background: radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.1) 0%, transparent 40%);
-        }
-        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1rem; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .page-header p { font-size: 1.3rem; opacity: 0.9; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-
-        /* Grid Styling */
-        .container { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
-        .blog-controls { background: var(--cream); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); margin-bottom: 4rem; border-left: 5px solid var(--gold); }
-        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
-        .filter-btn { padding: 0.85rem 1.8rem; background: var(--white); border: 2px solid var(--white); border-radius: 50px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
-        .filter-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); font-weight: 600; border-color: var(--gold); }
-
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2.5rem; min-height: 400px; }
-        .blog-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); transition: 0.4s; border: 1px solid rgba(201, 169, 97, 0.1); }
-        .blog-card:hover { transform: translateY(-8px); border-color: var(--gold); }
         
-        /* Gold Icons & Image Area */
-        .blog-image { height: 220px; background: var(--navy); display: flex; align-items: center; justify-content: center; position: relative; }
-        .icon-glow { position: absolute; width: 100px; height: 100px; background: radial-gradient(circle, rgba(201, 169, 97, 0.2) 0%, transparent 70%); border-radius: 50%; }
-        .gold-svg { width: 60px; height: 60px; fill: var(--gold); position: relative; z-index: 2; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 25px; height: 3px; background: var(--navy); transition: 0.3s; }
 
-        .blog-content { padding: 2rem; }
-        .blog-category { display: inline-block; background: var(--gold); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; color: var(--navy); }
-        .blog-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--cream); font-size: 0.85rem; }
-        .author-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 0.75rem; margin-right: 8px; }
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+            .nav-links { 
+                position: fixed; top: 75px; right: -100%; width: 100%; height: calc(100vh - 75px);
+                background: var(--white); flex-direction: column; align-items: center; padding-top: 4rem;
+                transition: 0.4s; box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+            }
+            .nav-links.active { right: 0; }
+        }
 
-        /* Pagination Style */
-        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-top: 5rem; }
-        .page-btn { padding: 0.9rem 1.4rem; background: var(--white); border: 2px solid var(--cream); border-radius: 50px; cursor: pointer; transition: 0.3s; color: var(--navy); font-weight: 600; font-size: 0.95rem; }
-        .page-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); border-color: var(--gold); color: var(--navy); }
-        .page-btn:hover:not(.active) { border-color: var(--gold); transform: translateY(-2px); background: var(--cream); }
+        /* Desktop Grid - 4 Columns */
+        .blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 1.5rem; 
+            margin-bottom: 4rem; 
+        }
+
+        @media (max-width: 1200px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+
+        /* Restored Styling */
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 6rem 2rem 4rem; text-align: center; color: var(--white); }
+        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; cursor: pointer; }
+        .blog-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .blog-image { height: 180px; background: var(--navy); display: flex; align-items: center; justify-content: center; position: relative; }
+        .gold-svg { width: 50px; height: 50px; fill: var(--gold); position: relative; z-index: 2; }
+        .blog-content { padding: 1.5rem; }
+        .blog-category { font-size: 0.65rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .blog-content h3 { font-size: 1.2rem; margin-bottom: 0.8rem; line-height: 1.4; }
+        .blog-excerpt { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 1.5rem; }
+
+        .pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 3rem; }
+        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .page-btn.active { background: var(--gold); border-color: var(--gold); color: white; }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
-            <ul class="nav-links">
+            <div class="hamburger" id="mobileMenu">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="expertise.html">EXPERTISE</a></li>
@@ -83,31 +83,15 @@
     </nav>
 
     <header class="page-header">
-        <h1>Blogs & Updates</h1>
-        <p>Expert perspectives on dermatology, skincare, and aesthetic medicine</p>
+        <h1>Topic Papers & Insights</h1>
+        <p>Advanced perspectives on the evolution of dermatology</p>
     </header>
 
     <div class="container">
-        <div class="blog-controls">
-            <div class="controls-wrapper">
-                <div class="search-box">
-                    <input type="text" placeholder="Search insights..." id="blogSearch" style="width: 100%; padding: 1rem 1.5rem; border-radius: 50px; border: 2px solid white;">
-                </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-cat="all">All Posts</button>
-                    <button class="filter-btn" data-cat="skincare">Skincare</button>
-                    <button class="filter-btn" data-cat="medical">Medical</button>
-                    <button class="filter-btn" data-cat="aesthetics">Aesthetics</button>
-                    <button class="filter-btn" data-cat="leadership">Leadership</button>
-                    <button class="filter-btn" data-cat="finance">Finance</button>
-                </div>
-            </div>
-        </div>
-
         <div class="blog-grid" id="blogGrid">
             </div>
 
-        <div class="pagination" id="paginationControls">
+        <div class="pagination">
             <button class="page-btn active" onclick="goToPage(1)">1</button>
             <button class="page-btn" onclick="goToPage(2)">2</button>
             <button class="page-btn" onclick="goToPage(3)">3</button>
@@ -116,52 +100,42 @@
     </div>
 
     <script>
-        // Post Data Object
         const allPosts = [
-            { cat: 'medical', title: 'Immune-Mediated Response in Psoriasis', excerpt: 'Analyzing the latest research on T-cell regulation and next-gen biologics...', date: 'Jan 12, 2026', icon: 'M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.67,16.17L7.5,13L8.91,11.58L10.67,13.34L15.09,8.92L16.5,10.33L10.67,16.17Z' },
-            { cat: 'aesthetics', title: 'Volumetric Restoration Techniques', excerpt: 'Comparative study on deep-plane structural support vs superficial refinement...', date: 'Jan 10, 2026', icon: 'M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z' },
-            { cat: 'skincare', title: 'The Molecular Evolution of Retinoids', excerpt: 'Analyzing cellular signaling pathways and efficacy of prescription tretinoin...', date: 'Jan 08, 2026', icon: 'M15,20.17V18H9V20.17L12,23.17L15,20.17M9,3.83V6H15V3.83L12,0.83L9,3.83M12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z' },
-            { cat: 'leadership', title: 'The Physician Executive Role', excerpt: 'Navigating the transition from clinical excellence to national leadership...', date: 'Jan 05, 2026', icon: 'M5,2V5H19V2H5M5,22H19V19H5V22M6,6V18H9V6H6M11,6V18H13V6H11M15,6V18H18V6H15Z' },
-            { cat: 'finance', title: 'Maximizing Practice Valuation', excerpt: 'Understanding EBITDA and revenue diversification for practice equity...', date: 'Jan 02, 2026', icon: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z' },
-            { cat: 'medical', title: 'Dermoscopy in Early Melanoma', excerpt: 'How advanced imaging patterns are redefining early detection outcomes...', date: 'Dec 28, 2025', icon: 'M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z' }
+            // MEDICAL
+            { cat: 'medical', title: 'T-Cell Regulation in Psoriasis', excerpt: 'Analyzing the latest research on IL-23 pathways and next-generation biologics.', date: 'Jan 2026', icon: 'M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.67,16.17L7.5,13L8.91,11.58L10.67,13.34L15.09,8.92L16.5,10.33L10.67,16.17Z' },
+            { cat: 'medical', title: 'AI in Early Melanoma Detection', excerpt: 'How deep learning algorithms are assisting dermatologists in clinical diagnostics.', date: 'Dec 2025', icon: 'M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z' },
+            // AESTHETICS
+            { cat: 'aesthetics', title: 'Deep-Plane Volumetric Restoration', excerpt: 'A comparative study on structural support using high G-prime fillers.', date: 'Jan 2026', icon: 'M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z' },
+            { cat: 'aesthetics', title: 'Neuromodulator Diffusion Patterns', excerpt: 'Optimizing precision in aesthetic delivery through anatomical mapping.', date: 'Nov 2025', icon: 'M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z' },
+            // SKINCARE
+            { cat: 'skincare', title: 'The Molecular Evolution of Retinoids', excerpt: 'Comparing efficacy and irritation profiles of prescription-strength tretinoin.', date: 'Jan 2026', icon: 'M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z' },
+            { cat: 'skincare', title: 'Antioxidant Synergy in UV Defense', excerpt: 'How Vitamin C and Ferulic acid enhance photoprotective clinical outcomes.', date: 'Oct 2025', icon: 'M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z' },
+            // LEADERSHIP
+            { cat: 'leadership', title: 'The Physician Executive Role', excerpt: 'Navigating the transition from clinical practice to board-level leadership.', date: 'Jan 2026', icon: 'M12,12A4,4 0 1,0 8,8A4,4 0 0,0 12,12Z' },
+            { cat: 'leadership', title: 'Future of ADS Advocacy', excerpt: 'Strengthening the national voice of dermatology in healthcare policy.', date: 'Sept 2025', icon: 'M12,12A4,4 0 1,0 8,8A4,4 0 0,0 12,12Z' },
+            // FINANCE
+            { cat: 'finance', title: 'Maximizing Practice Valuation', excerpt: 'Key financial metrics: EBITDA, overhead reduction, and revenue mix.', date: 'Jan 2026', icon: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z' },
+            { cat: 'finance', title: 'Equity in Medical Real Estate', excerpt: 'Strategies for dermatologists owning and managing clinical facilities.', date: 'Aug 2025', icon: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z' }
         ];
 
         let currentPage = 1;
-        const postsPerPage = 3;
+        const postsPerPage = 4; // Now showing 4 per screen
 
         function renderPosts() {
             const grid = document.getElementById('blogGrid');
-            const term = document.getElementById('blogSearch').value.toLowerCase();
-            const activeCat = document.querySelector('.filter-btn.active').dataset.cat;
-
-            // Filter
-            const filtered = allPosts.filter(p => {
-                const matchesSearch = p.title.toLowerCase().includes(term);
-                const matchesCat = activeCat === 'all' || p.cat === activeCat;
-                return matchesSearch && matchesCat;
-            });
-
-            // Paginate
             const start = (currentPage - 1) * postsPerPage;
-            const paginated = filtered.slice(start, start + postsPerPage);
+            const paginated = allPosts.slice(start, start + postsPerPage);
 
             grid.innerHTML = paginated.map(post => `
                 <article class="blog-card">
                     <div class="blog-image">
-                        <div class="icon-glow"></div>
                         <svg class="gold-svg" viewBox="0 0 24 24"><path d="${post.icon}"/></svg>
                     </div>
                     <div class="blog-content">
                         <span class="blog-category">${post.cat}</span>
                         <h3>${post.title}</h3>
                         <p class="blog-excerpt">${post.excerpt}</p>
-                        <div class="blog-meta">
-                            <div style="display:flex; align-items:center;">
-                                <div class="author-avatar">QN</div>
-                                <span>Editorial: Dr. Nguyen</span>
-                            </div>
-                            <span>${post.date}</span>
-                        </div>
+                        <div style="font-size:0.8rem; color:var(--gold-dark); font-weight:600;">DR. NGUYEN • ${post.date}</div>
                     </div>
                 </article>
             `).join('');
@@ -169,27 +143,18 @@
 
         function goToPage(num) {
             currentPage = num;
-            const btns = document.querySelectorAll('.page-btn');
-            btns.forEach((b, i) => {
-                b.classList.toggle('active', i + 1 === num);
-            });
+            document.querySelectorAll('.page-btn').forEach((b, i) => b.classList.toggle('active', i + 1 === num));
             renderPosts();
-            window.scrollTo({ top: document.querySelector('.blog-controls').offsetTop - 100, behavior: 'smooth' });
+            window.scrollTo({ top: 300, behavior: 'smooth' });
         }
 
-        function nextPage() {
-            if (currentPage < 3) goToPage(currentPage + 1);
-        }
+        function nextPage() { if (currentPage < 3) goToPage(currentPage + 1); }
 
-        // Initialize listeners
-        document.getElementById('blogSearch').addEventListener('input', () => { currentPage = 1; renderPosts(); });
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentPage = 1;
-                renderPosts();
-            });
+        // Hamburger Toggle Logic
+        const menuBtn = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
         renderPosts();
