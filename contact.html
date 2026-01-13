@@ -13,7 +13,7 @@
         
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.2px; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
@@ -29,13 +29,13 @@
         
         .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
         .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
-        .page-header p { font-size: 1.1rem; }
+        .page-header p { font-size: 1.3rem; }
         
         .contact-container { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
         .contact-info h2 { font-size: 2.5rem; margin-bottom: 2rem; }
         .contact-info p { font-size: 1.15rem; line-height: 2; margin-bottom: 3rem; }
         .info-item { margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
-        .info-item h3 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .info-item h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
         .info-icon { font-size: 1.8rem; }
         .info-item p { font-size: 1.1rem; margin: 0; }
         .info-item a { color: var(--gold); text-decoration: none; font-weight: 600; }
@@ -47,7 +47,7 @@
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--cream); border-radius: 10px; font-size: 1rem; font-family: 'Inter', sans-serif; background: var(--white); }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1); }
         .form-group textarea { min-height: 150px; resize: vertical; }
-        .submit-btn { width: 100%; padding: 1.3rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; cursor: pointer; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
+        .submit-btn { width: 100%; padding: 1.3rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
         .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
         
         .reasons-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; }
@@ -82,10 +82,6 @@
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 1.1rem; padding: 0.5rem 0; }
  .contact-container { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
-        
-        @media (max-width: 480px) {
-            .logo { font-size: 0.9rem; }
-        }
     </style>
 </head>
 <body>
@@ -182,7 +178,7 @@
                     <path d="M40 32 L30 24" stroke="url(#grad-email)" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
                     <circle cx="24" cy="22" r="2" fill="url(#grad-email)" opacity="0.6"/>
                 </svg></span> Email</h3>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c584e12525b49455952125d4f4f554f485d52487c5b515d5550125f5351">[email&#160;protected]</a></p>
+                <p>dr.nguyen.assistant@gmail.com</p>
             </div>
 
             <div class="info-item">
@@ -239,7 +235,8 @@
                     <circle cx="24" cy="24" r="16" fill="url(#grad-clock)" opacity="0.1"/>
                     <circle cx="24" cy="24" r="16" stroke="url(#grad-clock)" stroke-width="2.5" fill="none" filter="url(#glow-clock)"/>
                     <path d="M24 12 L24 24 L32 28" stroke="url(#grad-clock)" stroke-width="2.5" 
-                          stroke-linecap="rounilter="url(#glow-clock)"/>
+                          stroke-linecap="round" stroke-linejoin="round" filter="url(#glow-clock)"/>
+                    <circle cx="24" cy="24" r="2.5" fill="url(#grad-clock)" filter="url(#glow-clock)"/>
                     <circle cx="24" cy="8" r="1.5" fill="url(#grad-clock)"/>
                     <circle cx="24" cy="40" r="1.5" fill="url(#grad-clock)"/>
                     <circle cx="8" cy="24" r="1.5" fill="url(#grad-clock)"/>
