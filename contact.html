@@ -45,41 +45,28 @@
         /* Header */
         .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 6rem 2rem 4rem; text-align: center; color: var(--white); }
         .page-header h1 { font-size: 3rem; color: var(--white); margin-bottom: 1rem; }
-        .page-header p { font-size: 1.2rem; opacity: 0.9; }
         
-        /* Main Layout */
+        /* Contact Section Styling */
         .contact-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
         .contact-info h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
-        .contact-info p.intro { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; color: #555; }
-        
         .info-item { margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
-        .info-item h3 { font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
         
-        /* Adjusted SVG Alignment */
-        .info-icon svg { vertical-align: middle; display: inline-block; }
-        
+        /* Flex Alignment for Icons and Titles */
+        .info-item h3 { font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 12px; }
+        .info-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; }
+
         .info-item p { font-size: 1rem; line-height: 1.6; }
         .info-item a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
 
         /* Form */
         .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(10, 22, 40, 0.08); }
-        .contact-form-section h3 { font-size: 1.8rem; margin-bottom: 2rem; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.95rem; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.9rem; border: 2px solid #eee; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; background: var(--white); transition: 0.3s; }
-        .form-group input:focus { outline: none; border-color: var(--gold); }
-        .submit-btn { width: 100%; padding: 1.1rem; background: var(--gold); color: var(--navy); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-size: 1rem; }
-        .submit-btn:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3); }
-        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .submit-btn { width: 100%; padding: 1.1rem; background: var(--gold); color: var(--navy); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .submit-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
 
         /* Why Choose Section */
-        .reasons-section { background: var(--navy); color: var(--white); padding: 5rem 2rem; margin-top: 4rem; }
-        .reasons-section h2 { font-size: 2.5rem; color: var(--white); text-align: center; margin-bottom: 3rem; }
-        .reasons-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .reason-card { text-align: center; padding: 1.5rem; }
-        .reason-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .reason-card h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 0.8rem; }
-        .reason-card p { font-size: 0.95rem; line-height: 1.6; opacity: 0.9; }
+        .reasons-section { background: var(--navy); color: var(--white); padding: 5rem 2rem; margin-top: 4rem; text-align: center; }
+        .reasons-grid { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .reason-card h3 { color: var(--gold); margin-bottom: 0.8rem; }
 
         footer { background: #05090f; color: var(--white); padding: 4rem 2rem 2rem; text-align: center; font-size: 0.9rem; }
         footer a { color: var(--gold); text-decoration: none; }
@@ -91,6 +78,22 @@
     </style>
 </head>
 <body>
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#c9a961"/>
+                <stop offset="100%" style="stop-color:#d4b976"/>
+            </linearGradient>
+            <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
@@ -115,51 +118,64 @@
     <div class="contact-container">
         <div class="contact-info">
             <h2>Connect With Dr. Nguyen</h2>
-            <p class="intro">Whether you're seeking expert dermatologic care, interested in speaking engagements, or have questions about BaoMD Skincare, we'd love to hear from you.</p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; color: #555;">Whether you're seeking expert dermatologic care, interested in speaking engagements, or have questions about BaoMD Skincare, we'd love to hear from you.</p>
 
             <div class="info-item">
-                <h3><span class="info-icon">
-                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad-loc" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#c9a961"/>
-                                <stop offset="100%" style="stop-color:#d4b976"/>
-                            </linearGradient>
-                            <filter id="glow-loc">
-                                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-                              stroke="url(#grad-loc)" stroke-width="1.5" fill="none" filter="url(#glow-loc)"/>
-                        <circle cx="10" cy="7.5" r="2" fill="url(#grad-loc)" opacity="0.8"/>
-                    </svg>
-                </span> Location</h3>
+                <h3>
+                    <span class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
+                                  stroke="url(#goldGrad)" stroke-width="1.5" fill="none" filter="url(#goldGlow)"/>
+                            <circle cx="10" cy="7.5" r="2" fill="url(#goldGrad)" opacity="0.8"/>
+                        </svg>
+                    </span> 
+                    Location
+                </h3>
                 <p><strong>Central Austin Dermatology & Aesthetics</strong><br>
                 2700 W Anderson Ln. Unit 403<br> Austin, TX 78757</p>
                 <p style="margin-top: 1rem;">
-                    <a href="https://maps.google.com/?q=2700+W+Anderson+Ln+Austin+TX+78757" target="_blank" style="display: inline-block; padding: 0.6rem 1.2rem; background: var(--gold); color: var(--navy); border-radius: 25px; font-weight: 600; font-size: 0.9rem;">
-                        Get Directions 🗺️
+                    <a href="https://maps.google.com" target="_blank" style="display: inline-block; padding: 0.6rem 1.2rem; background: var(--gold); color: var(--navy); border-radius: 25px; font-weight: 600; font-size: 0.9rem;">
+                        Get Directions
                     </a>
                 </p>
             </div>
 
             <div class="info-item">
-                <h3><span class="info-icon">✉️</span> Email</h3>
+                <h3>
+                    <span class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#goldGlow)">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </span> 
+                    Email
+                </h3>
                 <p><a href="mailto:dr.nguyen.assistant@gmail.com">dr.nguyen.assistant@gmail.com</a></p>
             </div>
 
             <div class="info-item">
-                <h3><span class="info-icon">📞</span> Phone</h3>
+                <h3>
+                    <span class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#goldGlow)">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .62 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.81 12.81 0 0 0 2.81.62A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span> 
+                    Phone
+                </h3>
                 <p><strong>Office:</strong> <a href="tel:+15127863498">(512) 786-3498</a></p>
                 <p><strong>Assistant:</strong> <a href="tel:+15125882183">(512) 588-2183</a></p>
             </div>
 
             <div class="info-item">
-                <h3><span class="info-icon">🕒</span> Office Hours</h3>
+                <h3>
+                    <span class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#goldGlow)">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span> 
+                    Office Hours
+                </h3>
                 <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
             </div>
         </div>
@@ -167,30 +183,25 @@
         <div class="contact-form-section">
             <h3>Send a Message</h3>
             <form id="contactForm">
-                <div class="form-group">
-                    <label for="full-name">Full Name *</label>
-                    <input type="text" name="name" id="full-name" required>
+                <div class="form-group" style="margin-bottom:1.5rem">
+                    <label style="display:block; margin-bottom:0.5rem; font-weight:600">Full Name *</label>
+                    <input type="text" name="name" required style="width:100%; padding:0.9rem; border:2px solid #eee; border-radius:10px;">
                 </div>
-                <div class="form-group">
-                    <label for="email-address">Email Address *</label>
-                    <input type="email" name="email" id="email-address" required>
+                <div class="form-group" style="margin-bottom:1.5rem">
+                    <label style="display:block; margin-bottom:0.5rem; font-weight:600">Email Address *</label>
+                    <input type="email" name="email" required style="width:100%; padding:0.9rem; border:2px solid #eee; border-radius:10px;">
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" name="phone" id="phone">
-                </div>
-                <div class="form-group">
-                    <label for="inquiry-type">Inquiry Type</label>
-                    <select name="inquiry" id="inquiry-type">
+                <div class="form-group" style="margin-bottom:1.5rem">
+                    <label style="display:block; margin-bottom:0.5rem; font-weight:600">Inquiry Type</label>
+                    <select name="inquiry" style="width:100%; padding:0.9rem; border:2px solid #eee; border-radius:10px; background:white">
                         <option value="Consultation">Schedule Consultation</option>
                         <option value="Speaking">Speaking Engagement</option>
                         <option value="BaoMD">BaoMD Skincare</option>
-                        <option value="Other">Other</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea name="message" id="message" rows="5" required></textarea>
+                <div class="form-group" style="margin-bottom:1.5rem">
+                    <label style="display:block; margin-bottom:0.5rem; font-weight:600">Message *</label>
+                    <textarea name="message" rows="5" required style="width:100%; padding:0.9rem; border:2px solid #eee; border-radius:10px;"></textarea>
                 </div>
                 <button type="submit" id="submitBtn" class="submit-btn">Send Message</button>
             </form>
@@ -201,36 +212,17 @@
     <section class="reasons-section">
         <h2>Why Choose Dr. Nguyen</h2>
         <div class="reasons-grid">
-            <div class="reason-card">
-                <div class="reason-icon">🎓</div>
-                <h3>Elite Training</h3>
-                <p>Double board-certified with fellowship training from MD Anderson and Geisinger Medical Center</p>
-            </div>
-            <div class="reason-card">
-                <div class="reason-icon">🔬</div>
-                <h3>Research Excellence</h3>
-                <p>30+ publications and 100+ presentations advancing dermatologic science</p>
-            </div>
-            <div class="reason-card">
-                <div class="reason-icon">💎</div>
-                <h3>Comprehensive Care</h3>
-                <p>Surgical, medical, and cosmetic dermatology under one expert physician</p>
-            </div>
-            <div class="reason-card">
-                <div class="reason-icon">🤝</div>
-                <h3>Patient-Centered</h3>
-                <p>Personalized treatment plans tailored to your unique needs and goals</p>
-            </div>
+            <div class="reason-card"><h3>Elite Training</h3><p>Double board-certified with fellowship training from MD Anderson and Geisinger Medical Center</p></div>
+            <div class="reason-card"><h3>Research Excellence</h3><p>30+ publications and 100+ presentations advancing dermatologic science</p></div>
+            <div class="reason-card"><h3>Comprehensive Care</h3><p>Surgical, medical, and cosmetic dermatology under one expert physician</p></div>
         </div>
     </section>
 
     <footer>
         <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
-        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
     <script>
-        // Mobile Navigation Logic
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => {
@@ -238,7 +230,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Form Handling Logic
         const form = document.getElementById("contactForm");
         const status = document.getElementById("statusMsg");
         const btn = document.getElementById("submitBtn");
@@ -247,9 +238,7 @@
             event.preventDefault();
             btn.disabled = true;
             btn.innerText = "Sending...";
-
             const data = new FormData(event.target);
-            
             fetch("https://formspree.io/f/xbddjany", {
                 method: "POST",
                 body: data,
@@ -258,18 +247,14 @@
                 if (response.ok) {
                     window.location.href = "https://baomd.us/thank-you.html";
                 } else {
-                    response.json().then(data => {
-                        status.style.display = "block";
-                        status.style.color = "red";
-                        status.innerText = "Error: " + data.errors.map(error => error.message).join(", ");
-                        btn.disabled = false;
-                        btn.innerText = "Send Message";
-                    })
+                    status.style.display = "block";
+                    status.innerText = "Oops! Error submitting form.";
+                    btn.disabled = false;
+                    btn.innerText = "Send Message";
                 }
-            }).catch(error => {
+            }).catch(() => {
                 status.style.display = "block";
-                status.style.color = "red";
-                status.innerText = "Oops! There was a problem submitting your form.";
+                status.innerText = "Oops! Connection error.";
                 btn.disabled = false;
                 btn.innerText = "Send Message";
             });
