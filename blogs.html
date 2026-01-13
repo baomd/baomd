@@ -1,115 +1,198 @@
-<div class="blog-grid" id="blogGrid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Dr. Quoc-Bao Nguyen - Dermatology Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
+        
+        /* Navigation (Exact Original) */
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-links a.active { color: var(--gold); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: 0.3s; }
+        .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
 
-    <article class="blog-card" data-category="skincare">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M15,20.17V18H9V20.17L12,23.17L15,20.17M9,3.83V6H15V3.83L12,0.83L9,3.83M12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z"/></svg>
+        /* Page Header (Exact Original Layout) */
+        .page-header { 
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #0d1b2e 100%); 
+            padding: 8rem 2rem 5rem; text-align: center; color: var(--white); position: relative; overflow: hidden;
+        }
+        .page-header::before { 
+            content: ''; position: absolute; inset: 0; 
+            background: radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.1) 0%, transparent 40%);
+        }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1rem; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .page-header p { font-size: 1.3rem; opacity: 0.9; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+
+        /* Grid Styling */
+        .container { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
+        .blog-controls { background: var(--cream); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); margin-bottom: 4rem; border-left: 5px solid var(--gold); }
+        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .filter-btn { padding: 0.85rem 1.8rem; background: var(--white); border: 2px solid var(--white); border-radius: 50px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        .filter-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); font-weight: 600; border-color: var(--gold); }
+
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2.5rem; min-height: 400px; }
+        .blog-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08); transition: 0.4s; border: 1px solid rgba(201, 169, 97, 0.1); }
+        .blog-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+        
+        /* Gold Icons & Image Area */
+        .blog-image { height: 220px; background: var(--navy); display: flex; align-items: center; justify-content: center; position: relative; }
+        .icon-glow { position: absolute; width: 100px; height: 100px; background: radial-gradient(circle, rgba(201, 169, 97, 0.2) 0%, transparent 70%); border-radius: 50%; }
+        .gold-svg { width: 60px; height: 60px; fill: var(--gold); position: relative; z-index: 2; }
+
+        .blog-content { padding: 2rem; }
+        .blog-category { display: inline-block; background: var(--gold); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; color: var(--navy); }
+        .blog-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--cream); font-size: 0.85rem; }
+        .author-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 0.75rem; margin-right: 8px; }
+
+        /* Pagination Style */
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-top: 5rem; }
+        .page-btn { padding: 0.9rem 1.4rem; background: var(--white); border: 2px solid var(--cream); border-radius: 50px; cursor: pointer; transition: 0.3s; color: var(--navy); font-weight: 600; font-size: 0.95rem; }
+        .page-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); border-color: var(--gold); color: var(--navy); }
+        .page-btn:hover:not(.active) { border-color: var(--gold); transform: translateY(-2px); background: var(--cream); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html" class="active">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
         </div>
-        <div class="blog-content">
-            <span class="blog-category">Skincare</span>
-            <h3>The Molecular Evolution of Retinoids</h3>
-            <p class="blog-excerpt">Analyzing cellular signaling pathways and the comparative efficacy of prescription-strength tretinoin versus emerging hydroxypinacolone retinoates...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 14, 2026</span>
+    </nav>
+
+    <header class="page-header">
+        <h1>Blogs & Updates</h1>
+        <p>Expert perspectives on dermatology, skincare, and aesthetic medicine</p>
+    </header>
+
+    <div class="container">
+        <div class="blog-controls">
+            <div class="controls-wrapper">
+                <div class="search-box">
+                    <input type="text" placeholder="Search insights..." id="blogSearch" style="width: 100%; padding: 1rem 1.5rem; border-radius: 50px; border: 2px solid white;">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-cat="all">All Posts</button>
+                    <button class="filter-btn" data-cat="skincare">Skincare</button>
+                    <button class="filter-btn" data-cat="medical">Medical</button>
+                    <button class="filter-btn" data-cat="aesthetics">Aesthetics</button>
+                    <button class="filter-btn" data-cat="leadership">Leadership</button>
+                    <button class="filter-btn" data-cat="finance">Finance</button>
+                </div>
             </div>
         </div>
-    </article>
 
-    <article class="blog-card" data-category="skincare">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,7L14,10H10L12,7M12,17L10,14H14L12,17M17,12L14,10V14L17,12M7,12L10,14V10L7,12M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
-        </div>
-        <div class="blog-content">
-            <span class="blog-category">Skincare</span>
-            <h3>Photoprotection in the Digital Age</h3>
-            <p class="blog-excerpt">Beyond UV: Assessing the cutaneous impact of High-Energy Visible (HEV) light and the protective role of iron oxides in modern mineral formulations...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 13, 2026</span>
+        <div class="blog-grid" id="blogGrid">
             </div>
-        </div>
-    </article>
 
-    <article class="blog-card" data-category="medical">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+        <div class="pagination" id="paginationControls">
+            <button class="page-btn active" onclick="goToPage(1)">1</button>
+            <button class="page-btn" onclick="goToPage(2)">2</button>
+            <button class="page-btn" onclick="goToPage(3)">3</button>
+            <button class="page-btn" onclick="nextPage()">Next →</button>
         </div>
-        <div class="blog-content">
-            <span class="blog-category">Medical</span>
-            <h3>Immune-Mediated Response in Psoriasis</h3>
-            <p class="blog-excerpt">Analyzing the latest research on T-cell regulation and the development of next-generation biologics for chronic inflammation...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 12, 2026</span>
-            </div>
-        </div>
-    </article>
+    </div>
 
-    <article class="blog-card" data-category="leadership">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M5,2V5H19V2H5M5,22H19V19H5V22M6,6V18H9V6H6M11,6V18H13V6H11M15,6V18H18V6H15Z"/></svg>
-        </div>
-        <div class="blog-content">
-            <span class="blog-category">Leadership</span>
-            <h3>The Physician Executive: Leading Change</h3>
-            <p class="blog-excerpt">Navigating the transition from clinical excellence to organizational leadership within national medical associations and private practice...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 11, 2026</span>
-            </div>
-        </div>
-    </article>
+    <script>
+        // Post Data Object
+        const allPosts = [
+            { cat: 'medical', title: 'Immune-Mediated Response in Psoriasis', excerpt: 'Analyzing the latest research on T-cell regulation and next-gen biologics...', date: 'Jan 12, 2026', icon: 'M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.67,16.17L7.5,13L8.91,11.58L10.67,13.34L15.09,8.92L16.5,10.33L10.67,16.17Z' },
+            { cat: 'aesthetics', title: 'Volumetric Restoration Techniques', excerpt: 'Comparative study on deep-plane structural support vs superficial refinement...', date: 'Jan 10, 2026', icon: 'M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z' },
+            { cat: 'skincare', title: 'The Molecular Evolution of Retinoids', excerpt: 'Analyzing cellular signaling pathways and efficacy of prescription tretinoin...', date: 'Jan 08, 2026', icon: 'M15,20.17V18H9V20.17L12,23.17L15,20.17M9,3.83V6H15V3.83L12,0.83L9,3.83M12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z' },
+            { cat: 'leadership', title: 'The Physician Executive Role', excerpt: 'Navigating the transition from clinical excellence to national leadership...', date: 'Jan 05, 2026', icon: 'M5,2V5H19V2H5M5,22H19V19H5V22M6,6V18H9V6H6M11,6V18H13V6H11M15,6V18H18V6H15Z' },
+            { cat: 'finance', title: 'Maximizing Practice Valuation', excerpt: 'Understanding EBITDA and revenue diversification for practice equity...', date: 'Jan 02, 2026', icon: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z' },
+            { cat: 'medical', title: 'Dermoscopy in Early Melanoma', excerpt: 'How advanced imaging patterns are redefining early detection outcomes...', date: 'Dec 28, 2025', icon: 'M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z' }
+        ];
 
-    <article class="blog-card" data-category="leadership">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M16,13C15.71,13 15.42,13.03 15.14,13.08C16.12,13.88 16.75,15.11 16.75,16.5C16.75,17.89 16.12,19.12 15.14,19.92C15.42,19.97 15.71,20 16,20A3.5,3.5 0 0,0 19.5,16.5A3.5,3.5 0 0,0 16,13M8,13A3.5,3.5 0 0,0 4.5,16.5A3.5,3.5 0 0,0 8,20C8.29,20 8.58,19.97 8.86,19.92C7.88,19.12 7.25,17.89 7.25,16.5C7.25,15.11 7.88,13.88 8.86,13.08C8.58,13.03 8.29,13 8,13M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C14.67,14 20,15.33 20,18V20H4V18C4,14.67 9.33,14 12,14Z"/></svg>
-        </div>
-        <div class="blog-content">
-            <span class="blog-category">Leadership</span>
-            <h3>Mentorship Dynamics in Residency</h3>
-            <p class="blog-excerpt">Strategies for established practitioners to foster the next generation of dermatologists while maintaining clinical productivity...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 09, 2026</span>
-            </div>
-        </div>
-    </article>
+        let currentPage = 1;
+        const postsPerPage = 3;
 
-    <article class="blog-card" data-category="finance">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z"/></svg>
-        </div>
-        <div class="blog-content">
-            <span class="blog-category">Finance</span>
-            <h3>Maximizing Practice Valuation</h3>
-            <p class="blog-excerpt">Essential financial metrics for dermatologists: Understanding EBITDA, revenue diversification, and the impact of ancillary service lines on equity...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 07, 2026</span>
-            </div>
-        </div>
-    </article>
+        function renderPosts() {
+            const grid = document.getElementById('blogGrid');
+            const term = document.getElementById('blogSearch').value.toLowerCase();
+            const activeCat = document.querySelector('.filter-btn.active').dataset.cat;
 
-    <article class="blog-card" data-category="finance">
-        <div class="blog-image">
-            <div class="icon-glow"></div>
-            <svg class="gold-icon" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A2,2 0 0,1 8,11V9A2,2 0 0,1 10,7H11V6H13V7H15V9H11V10H14A2,2 0 0,1 16,12V14A2,2 0 0,1 14,16H13V17H11Z"/></svg>
-        </div>
-        <div class="blog-content">
-            <span class="blog-category">Finance</span>
-            <h3>Tax-Efficient Wealth Preservation</h3>
-            <p class="blog-excerpt">Exploring advanced asset protection strategies and tax-advantaged investment vehicles specifically tailored for high-net-worth medical professionals...</p>
-            <div class="blog-meta">
-                <div class="blog-author"><div class="author-avatar">QN</div> <span>Editorial: Dr. Nguyen</span></div>
-                <span class="blog-date">Jan 04, 2026</span>
-            </div>
-        </div>
-    </article>
+            // Filter
+            const filtered = allPosts.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(term);
+                const matchesCat = activeCat === 'all' || p.cat === activeCat;
+                return matchesSearch && matchesCat;
+            });
 
-</div>
+            // Paginate
+            const start = (currentPage - 1) * postsPerPage;
+            const paginated = filtered.slice(start, start + postsPerPage);
+
+            grid.innerHTML = paginated.map(post => `
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="icon-glow"></div>
+                        <svg class="gold-svg" viewBox="0 0 24 24"><path d="${post.icon}"/></svg>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">${post.cat}</span>
+                        <h3>${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <div style="display:flex; align-items:center;">
+                                <div class="author-avatar">QN</div>
+                                <span>Editorial: Dr. Nguyen</span>
+                            </div>
+                            <span>${post.date}</span>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function goToPage(num) {
+            currentPage = num;
+            const btns = document.querySelectorAll('.page-btn');
+            btns.forEach((b, i) => {
+                b.classList.toggle('active', i + 1 === num);
+            });
+            renderPosts();
+            window.scrollTo({ top: document.querySelector('.blog-controls').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function nextPage() {
+            if (currentPage < 3) goToPage(currentPage + 1);
+        }
+
+        // Initialize listeners
+        document.getElementById('blogSearch').addEventListener('input', () => { currentPage = 1; renderPosts(); });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentPage = 1;
+                renderPosts();
+            });
+        });
+
+        renderPosts();
+    </script>
+</body>
+</html>
