@@ -182,7 +182,7 @@
                     <path d="M40 32 L30 24" stroke="url(#grad-email)" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
                     <circle cx="24" cy="22" r="2" fill="url(#grad-email)" opacity="0.6"/>
                 </svg></span> Email</h3>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e7a6c3070796b677b70307f6d6d776d6a7f706a5e79737f7772307d7173">[email&#160;protected]</a></p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caaeb8e4a4adbfb3afa4e4abb9b9a3b9beaba4be8aada7aba3a6e4a9a5a7">[email&#160;protected]</a></p>
             </div>
 
             <div class="info-item">
@@ -359,4 +359,11 @@
         });
         
         document.addEventListener('click', (e) => {
-    
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
