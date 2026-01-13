@@ -54,7 +54,10 @@
         
         .info-item { margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
         .info-item h3 { font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-        .info-icon svg { width: 32px; height: 32px; }
+        
+        /* Adjusted SVG Alignment */
+        .info-icon svg { vertical-align: middle; display: inline-block; }
+        
         .info-item p { font-size: 1rem; line-height: 1.6; }
         .info-item a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
 
@@ -115,7 +118,26 @@
             <p class="intro">Whether you're seeking expert dermatologic care, interested in speaking engagements, or have questions about BaoMD Skincare, we'd love to hear from you.</p>
 
             <div class="info-item">
-                <h3><span class="info-icon">📍</span> Location</h3>
+                <h3><span class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad-loc" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961"/>
+                                <stop offset="100%" style="stop-color:#d4b976"/>
+                            </linearGradient>
+                            <filter id="glow-loc">
+                                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
+                              stroke="url(#grad-loc)" stroke-width="1.5" fill="none" filter="url(#glow-loc)"/>
+                        <circle cx="10" cy="7.5" r="2" fill="url(#grad-loc)" opacity="0.8"/>
+                    </svg>
+                </span> Location</h3>
                 <p><strong>Central Austin Dermatology & Aesthetics</strong><br>
                 2700 W Anderson Ln. Unit 403<br> Austin, TX 78757</p>
                 <p style="margin-top: 1rem;">
