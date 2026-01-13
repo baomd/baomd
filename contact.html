@@ -41,7 +41,6 @@
         .contact-container { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
         .info-item { margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
         .info-item h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
-        .info-item a { color: var(--gold); text-decoration: none; font-weight: 600; }
         
         .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
         .form-group { margin-bottom: 2rem; }
@@ -106,8 +105,8 @@
 
             <div class="info-item">
                 <h3>Phone</h3>
-                <p>Office: <a href="tel:+15127863498">(512) 786-3498</a></p>
-                <p>Assistant: <a href="tel:+15125882183">(512) 588-2183</a></p>
+                <p>Office: <a href="tel:+15127863498" style="color: var(--gold); text-decoration: none;">(512) 786-3498</a></p>
+                <p>Assistant: <a href="tel:+15125882183" style="color: var(--gold); text-decoration: none;">(512) 588-2183</a></p>
             </div>
 
             <div class="info-item">
@@ -119,6 +118,10 @@
         <div class="contact-form-section">
             <h3>Send a Message</h3>
             <form action="https://formspree.io/f/xbddjany" method="POST" id="contactForm">
+                <input type="hidden" name="_next" value="https://baomd.github.io/YOUR_REPO_NAME/thank-you.html">
+                <input type="hidden" name="_subject" value="New Website Inquiry - Dr. Nguyen">
+                <input type="hidden" name="_formname" value="Dr. Quoc-Bao Nguyen's Office">
+
                 <div class="form-group">
                     <label for="full-name">Full Name *</label>
                     <input type="text" name="name" id="full-name" required>
