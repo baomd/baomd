@@ -15,21 +15,15 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; width: 100%; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
-        /* Premium Header & Logo */
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        
-        .logo { 
-            font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; 
-            letter-spacing: 1.5px; white-space: nowrap; text-transform: uppercase; 
-        }
+        .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
 
         @media (min-width: 1024px) {
             nav { padding: 1.8rem 3rem; }
             .logo { font-size: 1.3rem; letter-spacing: 2px; }
         }
 
-        /* Mobile Nav */
         .nav-links { 
             position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; 
             background: var(--white); flex-direction: column; padding: 6rem 2rem; 
@@ -48,18 +42,15 @@
         .hamburger span { width: 24px; height: 2px; background: var(--navy); }
         @media (min-width: 1024px) { .hamburger { display: none; } }
 
-        /* Page Content */
         .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 4rem 1.5rem; text-align: center; color: var(--white); }
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
 
         .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
         .blog-controls { background: var(--cream); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 5px solid var(--gold); }
         .controls-wrapper { display: flex; flex-direction: column; gap: 1rem; }
-        
         .search-box input { width: 100%; padding: 0.8rem 1.2rem; border: 1px solid #ddd; border-radius: 50px; outline: none; font-size: 16px; }
         
-        /* Scrollable Filters for Mobile */
-        .filter-buttons { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+        .filter-buttons { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 8px; }
         .filter-btn { white-space: nowrap; padding: 0.6rem 1.2rem; background: var(--white); border: 1px solid #ddd; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
         .filter-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
 
@@ -69,7 +60,6 @@
         @media (min-width: 600px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1100px) { .blog-grid { grid-template-columns: repeat(4, 1fr); } }
 
-        /* Card Styles */
         .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; }
         .blog-card:hover { transform: translateY(-5px); border-color: var(--gold); }
         .blog-image { height: 160px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
@@ -80,10 +70,11 @@
         .blog-content h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--navy); }
         .blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.5; }
 
-        /* Pagination system */
-        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.8rem; margin: 4rem 0; }
-        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 4rem 0; flex-wrap: wrap; }
+        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
+        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .page-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
+        @media (max-width: 480px) { .page-btn { padding: 0.6rem 1rem; font-size: 0.8rem; } }
     </style>
 </head>
 <body>
@@ -105,7 +96,7 @@
 
     <header class="page-header">
         <h1>Blogs & Updates</h1>
-        <p>Insights into Dermatology & Executive Leadership</p>
+        <p>Expert Perspectives by Dr. Nguyen</p>
     </header>
 
     <div class="container">
@@ -129,8 +120,7 @@
 
     <script>
         const icons = {
-            // New Bold Medical Icon for Mobile
-            medical: 'M12,2L12,5M12,21V22M15,18.5C14.1,19.4 12.8,20 11.5,20C9,20 7,18 7,15.5C7,14 8,12.5 9.5,12C10.5,11.7 11.5,11 11.5,10C11.5,9.2 10.8,8.5 10,8.5C9.2,8.5 8.5,9.2 8.5,10M17,11C17,8.2 14.8,6 12,6C9.2,6 7,8.2 7,11C7,11.5 7.1,12 7.2,12.5',
+            medical: 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z',
             skincare: 'M19,19H5V11H19M19,9H5A2,2 0 0,0 3,11V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11A2,2 0 0,0 19,9M17,7H7V5H17M17,3H7A2,2 0 0,0 5,5V7A2,2 0 0,0 7,9H17A2,2 0 0,0 19,7V5A2,2 0 0,0 17,3Z',
             leadership: 'M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.5,12C13.28,11.39 12.7,11 12,11C11.3,11 10.72,11.39 10.5,12C9.74,10.77 8.42,10 7,10A4,4 0 0,0 3,14C3,15.14 3.47,16.17 4.23,16.91C4.46,17.13 4.71,17.34 5,17.5V19H19V17.5C19.29,17.34 19.54,17.13 19.77,16.91C20.53,16.17 21,15.14 21,14A4,4 0 0,0 17,10M12,2L10,5H14L12,2Z',
             aesthetics: 'M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6Z',
@@ -139,12 +129,14 @@
 
         const allPosts = [
             { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis treatment.', date: 'Jan 12' },
-            { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10' },
-            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08' },
-            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05' },
-            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02' },
             { cat: 'medical', title: 'AI in Dermoscopy', excerpt: 'Deep learning in early melanoma detection.', date: 'Dec 28' },
+            { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10' },
+            { cat: 'aesthetics', title: 'Neuromodulator Safety', excerpt: 'Evidence-based protocols for facial tox injections.', date: 'Dec 22' },
+            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08' },
             { cat: 'skincare', title: 'Antioxidant Synergy', excerpt: 'Vitamin C and Ferulic acid in procedural care.', date: 'Dec 20' },
+            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05' },
+            { cat: 'leadership', title: 'Advocacy in Medicine', excerpt: 'Navigating health policy as a specialist.', date: 'Dec 18' },
+            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02' },
             { cat: 'finance', title: 'Medical Real Estate', excerpt: 'Equity strategies for physician facilities.', date: 'Dec 15' }
         ];
 
@@ -172,29 +164,23 @@
                         <span class="blog-category">${post.cat}</span>
                         <h3>${post.title}</h3>
                         <p class="blog-excerpt">${post.excerpt}</p>
-                        <div style="font-size:0.75rem; color:var(--gold-dark); font-weight:700; margin-top:1rem;">DR. NGUYEN • ${post.date}</div>
+                        <div style="font-size:0.75rem; color:var(--gold-dark); font-weight:700; margin-top:1rem;">Dr. Nguyen • ${post.date}</div>
                     </div>
                 </article>`).join('');
 
-            // Pagination Controls
             let pagHTML = '';
-            for(let i=1; i<=totalPages; i++) {
-                pagHTML += `<button class="page-btn ${i===currentPage?'active':''}" onclick="setPage(${i})">${i}</button>`;
-            }
-            if(totalPages > 1 && currentPage < totalPages) {
-                pagHTML += `<button class="page-btn" onclick="setPage(${currentPage+1})">Next →</button>`;
+            if (totalPages > 1) {
+                pagHTML += `<button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="setPage(${currentPage - 1})">← Back</button>`;
+                for(let i=1; i<=totalPages; i++) {
+                    pagHTML += `<button class="page-btn ${i===currentPage?'active':''}" onclick="setPage(${i})">${i}</button>`;
+                }
+                pagHTML += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="setPage(${currentPage + 1})">Next →</button>`;
             }
             document.getElementById('pagination').innerHTML = pagHTML;
         }
 
         window.setPage = (n) => { currentPage = n; render(); window.scrollTo({top: 400, behavior: 'smooth'}); };
-        
-        document.getElementById('blogSearch').addEventListener('input', (e) => { 
-            currentSearch = e.target.value; 
-            currentPage = 1; 
-            render(); 
-        });
-
+        document.getElementById('blogSearch').addEventListener('input', (e) => { currentSearch = e.target.value; currentPage = 1; render(); });
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -204,11 +190,7 @@
                 render();
             });
         });
-
-        document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-
+        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('nav-links').classList.toggle('active'));
         render();
     </script>
 </body>
