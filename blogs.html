@@ -15,6 +15,7 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; width: 100%; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
+        /* Mobile-First Navigation */
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -50,7 +51,8 @@
         .controls-wrapper { display: flex; flex-direction: column; gap: 1rem; }
         .search-box input { width: 100%; padding: 0.8rem 1.2rem; border: 1px solid #ddd; border-radius: 50px; outline: none; font-size: 16px; }
         
-        .filter-buttons { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 8px; }
+        /* Filter scroll for mobile */
+        .filter-buttons { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
         .filter-btn { white-space: nowrap; padding: 0.6rem 1.2rem; background: var(--white); border: 1px solid #ddd; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
         .filter-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
 
@@ -63,18 +65,18 @@
         .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; }
         .blog-card:hover { transform: translateY(-5px); border-color: var(--gold); }
         .blog-image { height: 160px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
-        .gold-svg { width: 50px; height: 50px; fill: var(--gold); }
+        .gold-svg { width: 60px; height: 60px; fill: var(--gold); }
         
         .blog-content { padding: 1.2rem; flex-grow: 1; }
         .blog-category { font-size: 0.65rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
         .blog-content h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--navy); }
         .blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.5; }
 
+        /* Pagination with Back & Next */
         .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 4rem 0; flex-wrap: wrap; }
         .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
         .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .page-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
-        @media (max-width: 480px) { .page-btn { padding: 0.6rem 1rem; font-size: 0.8rem; } }
     </style>
 </head>
 <body>
@@ -120,24 +122,27 @@
 
     <script>
         const icons = {
-            medical: 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z',
+            // ARTISTIC 2D MEDICAL: Shield with cross
+            medical: 'M12,2L4.5,5V11C4.5,15.55 7.7,19.82 12,21C16.3,19.82 19.5,15.55 19.5,11V5L12,2M11,7H13V10H16V12H13V15H11V12H8V10H11V7Z',
+            // ARTISTIC 2D AESTHETICS: Geometric Lotus/Beauty form
+            aesthetics: 'M12,21C12,21 7,16 7,12C7,9.5 8.5,7.5 10.5,7.5C11.1,7.5 11.6,7.6 12,7.9C12.4,7.6 12.9,7.5 13.5,7.5C15.5,7.5 17,9.5 17,12C17,16 12,21 12,21M12,2L10,5L12,8L14,5L12,2Z',
             skincare: 'M19,19H5V11H19M19,9H5A2,2 0 0,0 3,11V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11A2,2 0 0,0 19,9M17,7H7V5H17M17,3H7A2,2 0 0,0 5,5V7A2,2 0 0,0 7,9H17A2,2 0 0,0 19,7V5A2,2 0 0,0 17,3Z',
             leadership: 'M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.5,12C13.28,11.39 12.7,11 12,11C11.3,11 10.72,11.39 10.5,12C9.74,10.77 8.42,10 7,10A4,4 0 0,0 3,14C3,15.14 3.47,16.17 4.23,16.91C4.46,17.13 4.71,17.34 5,17.5V19H19V17.5C19.29,17.34 19.54,17.13 19.77,16.91C20.53,16.17 21,15.14 21,14A4,4 0 0,0 17,10M12,2L10,5H14L12,2Z',
-            aesthetics: 'M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6Z',
             finance: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z'
         };
 
+        // ARTICLES ORDERED DESCENDING (Newest to Oldest)
         const allPosts = [
-            { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis treatment.', date: 'Jan 12' },
-            { cat: 'medical', title: 'AI in Dermoscopy', excerpt: 'Deep learning in early melanoma detection.', date: 'Dec 28' },
-            { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10' },
-            { cat: 'aesthetics', title: 'Neuromodulator Safety', excerpt: 'Evidence-based protocols for facial tox injections.', date: 'Dec 22' },
-            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08' },
-            { cat: 'skincare', title: 'Antioxidant Synergy', excerpt: 'Vitamin C and Ferulic acid in procedural care.', date: 'Dec 20' },
-            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05' },
-            { cat: 'leadership', title: 'Advocacy in Medicine', excerpt: 'Navigating health policy as a specialist.', date: 'Dec 18' },
-            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02' },
-            { cat: 'finance', title: 'Medical Real Estate', excerpt: 'Equity strategies for physician facilities.', date: 'Dec 15' }
+            { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis treatment.', date: 'Jan 12', ts: 10 },
+            { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10', ts: 9 },
+            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08', ts: 8 },
+            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05', ts: 7 },
+            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02', ts: 6 },
+            { cat: 'medical', title: 'AI in Dermoscopy', excerpt: 'Deep learning in early melanoma detection.', date: 'Dec 28', ts: 5 },
+            { cat: 'aesthetics', title: 'Neuromodulator Safety', excerpt: 'Evidence-based protocols for facial tox injections.', date: 'Dec 22', ts: 4 },
+            { cat: 'skincare', title: 'Antioxidant Synergy', excerpt: 'Vitamin C and Ferulic acid in procedural care.', date: 'Dec 20', ts: 3 },
+            { cat: 'leadership', title: 'Advocacy in Medicine', excerpt: 'Navigating health policy as a specialist.', date: 'Dec 18', ts: 2 },
+            { cat: 'finance', title: 'Medical Real Estate', excerpt: 'Equity strategies for physician facilities.', date: 'Dec 15', ts: 1 }
         ];
 
         let currentPage = 1;
@@ -151,7 +156,7 @@
                 const matchesF = currentFilter === 'all' || p.cat === currentFilter;
                 const matchesS = p.title.toLowerCase().includes(currentSearch.toLowerCase());
                 return matchesF && matchesS;
-            });
+            }).sort((a,b) => b.ts - a.ts); // Descending order (Newest first)
 
             const totalPages = Math.ceil(filtered.length / postsPerPage);
             const start = (currentPage - 1) * postsPerPage;
