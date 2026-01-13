@@ -157,7 +157,7 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // UPDATED FOR CUSTOM DOMAIN baomd.us
+                    // Redirects to your custom domain baomd.us
                     window.location.href = "https://baomd.us/thank-you.html";
                 } else {
                     response.json().then(data => {
