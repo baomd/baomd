@@ -12,59 +12,78 @@
             --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
             --white: #ffffff; --text-dark: #2c3e50;
         }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; width: 100%; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
-        /* Navigation & Logo Branding */
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
+        /* Premium Header & Logo */
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 2px; white-space: nowrap; text-transform: uppercase; }
-
-        @media (max-width: 1024px) {
-            nav { padding: 1.2rem 1.5rem; }
-            .logo { font-size: 1.1rem; letter-spacing: 1.5px; }
+        
+        .logo { 
+            font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; 
+            letter-spacing: 1.5px; white-space: nowrap; text-transform: uppercase; 
         }
 
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; padding-bottom: 5px; }
-        .nav-links a.active { color: var(--gold); }
-
-        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; }
-        .hamburger span { width: 26px; height: 2px; background: var(--navy); }
-
-        @media (max-width: 1024px) {
-            .hamburger { display: flex; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 8rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.3s; }
-            .nav-links.active { right: 0; }
+        @media (min-width: 1024px) {
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; letter-spacing: 2px; }
         }
 
-        /* Header */
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
-        .page-header h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #fff; }
+        /* Mobile Nav */
+        .nav-links { 
+            position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; 
+            background: var(--white); flex-direction: column; padding: 6rem 2rem; 
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s;
+            display: flex; gap: 2rem; list-style: none; z-index: 1100;
+        }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        
+        @media (min-width: 1024px) {
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; }
+        }
 
-        /* Blog Grid */
-        .container { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
-        .blog-controls { background: var(--cream); padding: 1.5rem; border-radius: 12px; margin-bottom: 3rem; border-left: 5px solid var(--gold); }
-        .controls-wrapper { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-        .search-box { flex: 1; min-width: 200px; }
-        .search-box input { width: 100%; padding: 0.8rem 1.2rem; border: 1px solid #ddd; border-radius: 50px; outline: none; }
-        .filter-buttons { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .filter-btn { padding: 0.6rem 1rem; background: var(--white); border: 1px solid #ddd; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+
+        /* Page Content */
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 4rem 1.5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
+
+        .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
+        .blog-controls { background: var(--cream); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 5px solid var(--gold); }
+        .controls-wrapper { display: flex; flex-direction: column; gap: 1rem; }
+        
+        .search-box input { width: 100%; padding: 0.8rem 1.2rem; border: 1px solid #ddd; border-radius: 50px; outline: none; font-size: 16px; }
+        
+        /* Scrollable Filters for Mobile */
+        .filter-buttons { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+        .filter-btn { white-space: nowrap; padding: 0.6rem 1.2rem; background: var(--white); border: 1px solid #ddd; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
         .filter-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
 
-        .blog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        @media (max-width: 1200px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+        @media (min-width: 768px) { .controls-wrapper { flex-direction: row; } }
 
-        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; display: flex; flex-direction: column; }
+        .blog-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; min-height: 450px; }
+        @media (min-width: 600px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .blog-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        /* Card Styles */
+        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; }
         .blog-card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .blog-image { height: 180px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
-        .gold-svg { width: 60px; height: 60px; fill: var(--gold); }
+        .blog-image { height: 160px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+        .gold-svg { width: 50px; height: 50px; fill: var(--gold); }
         
-        .blog-content { padding: 1.5rem; flex-grow: 1; }
+        .blog-content { padding: 1.2rem; flex-grow: 1; }
         .blog-category { font-size: 0.65rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-        .blog-content h3 { font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.4; }
-        .blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.5; margin-bottom: 1rem; }
+        .blog-content h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--navy); }
+        .blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+        /* Pagination system */
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.8rem; margin: 4rem 0; }
+        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .page-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
     </style>
 </head>
 <body>
@@ -86,7 +105,7 @@
 
     <header class="page-header">
         <h1>Blogs & Updates</h1>
-        <p>Expert perspectives on dermatology and leadership</p>
+        <p>Insights into Dermatology & Executive Leadership</p>
     </header>
 
     <div class="container">
@@ -99,76 +118,98 @@
                     <button class="filter-btn" data-filter="aesthetics">Aesthetics</button>
                     <button class="filter-btn" data-filter="skincare">Skincare</button>
                     <button class="filter-btn" data-filter="leadership">Leadership</button>
+                    <button class="filter-btn" data-filter="finance">Finance</button>
                 </div>
             </div>
         </div>
 
         <div class="blog-grid" id="blogGrid"></div>
+        <div class="pagination" id="pagination"></div>
     </div>
 
     <script>
-        // ICON DATA
         const icons = {
-            medical: 'M14.5,18C14.5,19.33 13.11,20.39 12,21C10.89,20.39 9.5,19.33 9.5,18C9.5,17.45 9.75,16.96 10.15,16.62C9.28,15.82 8.41,14.88 7.55,13.81C6.9,13 6.31,12.16 5.86,11.36C4.89,11.77 3.86,11.79 3,11.33C1.5,10.5 1.5,8.5 3.5,8C3.89,7.9 4.31,7.9 4.75,8C4.61,7.32 4.54,6.65 4.54,6C4.54,3.24 6.78,1 9.54,1C10.45,1 11.3,1.25 12,1.68C12.7,1.25 13.55,1 14.46,1C17.22,1 19.46,3.24 19.46,6C19.46,6.65 19.39,7.32 19.25,8C19.69,7.9 20.11,7.9 20.5,8C22.5,8.5 22.5,10.5 21,11.33C20.14,11.79 19.11,11.77 18.14,11.36C17.69,12.16 17.1,13 16.45,13.81C15.59,14.88 14.72,15.82 13.85,16.62C14.25,16.96 14.5,17.45 14.5,18M12,19C12.55,19 13,18.55 13,18C13,17.45 12.55,17 12,17C11.45,17 11,17.45 11,18C11,18.55 11.45,19 12,19M12,4C11.1,4 10.3,4.4 9.7,5C10.3,5.6 11.1,6 12,6C12.9,6 13.7,5.6 14.3,5C13.7,4.4 12.9,4 12,4Z',
+            // New Bold Medical Icon for Mobile
+            medical: 'M12,2L12,5M12,21V22M15,18.5C14.1,19.4 12.8,20 11.5,20C9,20 7,18 7,15.5C7,14 8,12.5 9.5,12C10.5,11.7 11.5,11 11.5,10C11.5,9.2 10.8,8.5 10,8.5C9.2,8.5 8.5,9.2 8.5,10M17,11C17,8.2 14.8,6 12,6C9.2,6 7,8.2 7,11C7,11.5 7.1,12 7.2,12.5',
             skincare: 'M19,19H5V11H19M19,9H5A2,2 0 0,0 3,11V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11A2,2 0 0,0 19,9M17,7H7V5H17M17,3H7A2,2 0 0,0 5,5V7A2,2 0 0,0 7,9H17A2,2 0 0,0 19,7V5A2,2 0 0,0 17,3Z',
             leadership: 'M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.5,12C13.28,11.39 12.7,11 12,11C11.3,11 10.72,11.39 10.5,12C9.74,10.77 8.42,10 7,10A4,4 0 0,0 3,14C3,15.14 3.47,16.17 4.23,16.91C4.46,17.13 4.71,17.34 5,17.5V19H19V17.5C19.29,17.34 19.54,17.13 19.77,16.91C20.53,16.17 21,15.14 21,14A4,4 0 0,0 17,10M12,2L10,5H14L12,2Z',
-            aesthetics: 'M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6Z'
+            aesthetics: 'M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6Z',
+            finance: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z'
         };
 
         const allPosts = [
-            { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis.', date: 'Jan 12' },
+            { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis treatment.', date: 'Jan 12' },
             { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10' },
-            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin derivatives.', date: 'Jan 08' },
-            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05' }
+            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08' },
+            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05' },
+            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02' },
+            { cat: 'medical', title: 'AI in Dermoscopy', excerpt: 'Deep learning in early melanoma detection.', date: 'Dec 28' },
+            { cat: 'skincare', title: 'Antioxidant Synergy', excerpt: 'Vitamin C and Ferulic acid in procedural care.', date: 'Dec 20' },
+            { cat: 'finance', title: 'Medical Real Estate', excerpt: 'Equity strategies for physician facilities.', date: 'Dec 15' }
         ];
 
-        function renderPosts(filter = 'all', search = '') {
+        let currentPage = 1;
+        const postsPerPage = 4;
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function render() {
             const grid = document.getElementById('blogGrid');
             const filtered = allPosts.filter(p => {
-                const matchesFilter = filter === 'all' || p.cat === filter;
-                const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase());
-                return matchesFilter && matchesSearch;
+                const matchesF = currentFilter === 'all' || p.cat === currentFilter;
+                const matchesS = p.title.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesF && matchesS;
             });
 
-            grid.innerHTML = filtered.map(post => `
+            const totalPages = Math.ceil(filtered.length / postsPerPage);
+            const start = (currentPage - 1) * postsPerPage;
+            const paginated = filtered.slice(start, start + postsPerPage);
+
+            grid.innerHTML = paginated.map(post => `
                 <article class="blog-card">
-                    <div class="blog-image">
-                        <svg class="gold-svg" viewBox="0 0 24 24"><path d="${icons[post.cat] || icons.medical}"/></svg>
-                    </div>
+                    <div class="blog-image"><svg class="gold-svg" viewBox="0 0 24 24"><path d="${icons[post.cat]}"/></svg></div>
                     <div class="blog-content">
                         <span class="blog-category">${post.cat}</span>
                         <h3>${post.title}</h3>
                         <p class="blog-excerpt">${post.excerpt}</p>
-                        <div style="font-size:0.75rem; color:var(--gold-dark); font-weight:700;">DR. NGUYEN • ${post.date}</div>
+                        <div style="font-size:0.75rem; color:var(--gold-dark); font-weight:700; margin-top:1rem;">DR. NGUYEN • ${post.date}</div>
                     </div>
-                </article>
-            `).join('');
+                </article>`).join('');
+
+            // Pagination Controls
+            let pagHTML = '';
+            for(let i=1; i<=totalPages; i++) {
+                pagHTML += `<button class="page-btn ${i===currentPage?'active':''}" onclick="setPage(${i})">${i}</button>`;
+            }
+            if(totalPages > 1 && currentPage < totalPages) {
+                pagHTML += `<button class="page-btn" onclick="setPage(${currentPage+1})">Next →</button>`;
+            }
+            document.getElementById('pagination').innerHTML = pagHTML;
         }
 
-        // Search
-        document.getElementById('blogSearch').addEventListener('input', (e) => {
-            const activeBtn = document.querySelector('.filter-btn.active');
-            renderPosts(activeBtn.dataset.filter, e.target.value);
+        window.setPage = (n) => { currentPage = n; render(); window.scrollTo({top: 400, behavior: 'smooth'}); };
+        
+        document.getElementById('blogSearch').addEventListener('input', (e) => { 
+            currentSearch = e.target.value; 
+            currentPage = 1; 
+            render(); 
         });
 
-        // Filter
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                renderPosts(btn.dataset.filter, document.getElementById('blogSearch').value);
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                render();
             });
         });
 
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
         });
 
-        // Initial Load
-        renderPosts();
+        render();
     </script>
 </body>
 </html>
