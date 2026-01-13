@@ -15,16 +15,16 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); }
         
-        /* Fixed Navigation Menu */
+        /* Fixed Professional Navigation */
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.2px; text-transform: uppercase; }
-        
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
+        /* Mobile Hamburger Logic */
         .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
         .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -33,29 +33,35 @@
 
         @media (max-width: 968px) {
             .hamburger { display: flex; }
-            .nav-links { 
-                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
-                background: var(--white); flex-direction: column; padding: 6rem 2rem; gap: 2rem;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1); transition: right 0.3s ease; z-index: 1000;
-            }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px; background: var(--white); flex-direction: column; padding: 6rem 2rem; gap: 2rem; box-shadow: -5px 0 25px rgba(0,0,0,0.1); transition: right 0.3s ease; }
             .nav-links.active { right: 0; }
         }
 
-        /* Restored Original Blog Content Styles */
-        .blog-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 6rem; text-align: center; color: var(--white); }
-        .blog-header h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 1.5rem; }
-        .search-container { max-width: 600px; margin: -2rem auto 4rem; padding: 0 1rem; position: relative; z-index: 10; }
-        .search-bar { width: 100%; padding: 1.2rem 2rem; border-radius: 50px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); font-size: 1rem; }
-        .blog-grid { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 3rem; }
-        .blog-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border: 1px solid var(--cream); }
-        .blog-card:hover { transform: translateY(-10px); }
-        .blog-img { width: 100%; height: 240px; background: var(--cream); position: relative; }
+        /* EXACT CONTENT FEATURES FROM BLOGS (1) */
+        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1rem; }
+        
+        .container { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
+        .blog-controls { background: var(--cream); padding: 2rem; border-radius: 15px; margin-bottom: 4rem; border-left: 5px solid var(--gold); }
+        .controls-wrapper { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+        .search-box { flex: 1; min-width: 280px; }
+        .search-box input { width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--white); border-radius: 50px; font-size: 1rem; }
+        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.85rem 1.8rem; background: var(--white); border: 2px solid var(--white); border-radius: 50px; cursor: pointer; }
+        .filter-btn.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); font-weight: 600; }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2.5rem; }
+        .blog-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: 0.4s; cursor: pointer; }
+        .blog-card:hover { transform: translateY(-8px); }
+        .blog-image { height: 240px; background: var(--navy-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light); font-size: 4rem; }
         .blog-content { padding: 2rem; }
-        .blog-category { color: var(--gold); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; display: block; }
-        .blog-excerpt { color: #666; line-height: 1.6; margin-bottom: 1.5rem; }
-        .pagination { display: flex; justify-content: center; gap: 1rem; margin: 4rem 0; }
-        .page-btn { padding: 0.8rem 1.5rem; border-radius: 10px; border: 1px solid var(--cream); background: var(--white); cursor: pointer; transition: 0.3s; }
-        .page-btn.active { background: var(--navy); color: var(--white); }
+        .blog-category { display: inline-block; background: var(--gold); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .blog-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--cream); font-size: 0.9rem; }
+        .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        
+        .pagination { display: flex; justify-content: center; gap: 0.75rem; margin-top: 4rem; }
+        .page-btn { padding: 0.9rem 1.5rem; background: var(--white); border: 2px solid var(--cream); border-radius: 50px; cursor: pointer; }
+        .page-btn.active { background: var(--gold); font-weight: 600; }
     </style>
 </head>
 <body>
@@ -75,53 +81,76 @@
         </div>
     </nav>
 
-    <header class="blog-header">
-        <h1>Dermatology Insights</h1>
-        <p>Expert perspective on modern skin health, aesthetics, and leadership.</p>
+    <header class="page-header">
+        <h1>Medical Insights</h1>
+        <p>Expert perspective on modern skin health and leadership.</p>
     </header>
 
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search articles..." id="searchInput">
-    </div>
-
-    <main class="blog-grid">
-        <article class="blog-card" data-category="Aesthetics">
-            <div class="blog-img"></div>
-            <div class="blog-content">
-                <span class="blog-category">Aesthetics</span>
-                <h3>The Future of Regenerative Aesthetics</h3>
-                <p class="blog-excerpt">Exploring how bio-stimulators and regenerative techniques are redefining natural anti-aging results...</p>
+    <div class="container">
+        <div class="blog-controls">
+            <div class="controls-wrapper">
+                <div class="search-box">
+                    <input type="text" placeholder="Search articles..." id="blogSearch">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Aesthetics</button>
+                    <button class="filter-btn">Skincare</button>
+                    <button class="filter-btn">Leadership</button>
+                </div>
             </div>
-        </article>
+        </div>
 
-        <article class="blog-card" data-category="Leadership">
-            <div class="blog-img"></div>
-            <div class="blog-content">
-                <span class="blog-category">Leadership</span>
-                <h3>Leading with Purpose in Modern Medicine</h3>
-                <p class="blog-excerpt">Insights from the ADS presidency on navigating the changing landscape of specialty healthcare...</p>
-            </div>
-        </article>
+        <div class="blog-grid" id="blogGrid">
+            <article class="blog-card" data-category="Aesthetics">
+                <div class="blog-image">✨</div>
+                <div class="blog-content">
+                    <span class="blog-category">Aesthetics</span>
+                    <h3>The Future of Regenerative Aesthetics</h3>
+                    <p class="blog-excerpt">Exploring how bio-stimulators and regenerative techniques are redefining natural anti-aging results...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author"><div class="author-avatar">BMD</div> <span>BaoMD Editorial</span></div>
+                        <span class="blog-date">Jan 12, 2026</span>
+                    </div>
+                </div>
+            </article>
 
-        <article class="blog-card" data-category="Skincare">
-            <div class="blog-img"></div>
-            <div class="blog-content">
-                <span class="blog-category">Skincare</span>
-                <h3>The Science Behind BaoMD</h3>
-                <p class="blog-excerpt">A deep dive into the clinical formulations that power our latest skincare innovations...</p>
-            </div>
-        </article>
-    </main>
+            <article class="blog-card" data-category="Leadership">
+                <div class="blog-image">🏛️</div>
+                <div class="blog-content">
+                    <span class="blog-category">Leadership</span>
+                    <h3>Leading with Purpose in Modern Medicine</h3>
+                    <p class="blog-excerpt">Insights from the ADS presidency on navigating the changing landscape of specialty healthcare...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author"><div class="author-avatar">BMD</div> <span>BaoMD Editorial</span></div>
+                        <span class="blog-date">Jan 10, 2026</span>
+                    </div>
+                </div>
+            </article>
 
-    <div class="pagination">
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">Next →</button>
+            <article class="blog-card" data-category="Skincare">
+                <div class="blog-image">🧪</div>
+                <div class="blog-content">
+                    <span class="blog-category">Skincare</span>
+                    <h3>The Science Behind BaoMD</h3>
+                    <p class="blog-excerpt">A deep dive into the clinical formulations that power our latest skincare innovations...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author"><div class="author-avatar">BMD</div> <span>BaoMD Editorial</span></div>
+                        <span class="blog-date">Jan 08, 2026</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">Next →</button>
+        </div>
     </div>
 
     <script>
-        // Menu Toggle
+        // Hamburger Menu Logic
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => {
@@ -129,14 +158,18 @@
             navLinks.classList.toggle('active');
         });
 
-        // Restore Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const blogCards = document.querySelectorAll('.blog-card');
-        searchInput.addEventListener('input', (e) => {
+        // Search and Click Logic from original file
+        document.getElementById('blogSearch').addEventListener('input', function(e) {
             const term = e.target.value.toLowerCase();
-            blogCards.forEach(card => {
+            document.querySelectorAll('.blog-card').forEach(card => {
                 const text = card.innerText.toLowerCase();
                 card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('This would navigate to the full blog post.');
             });
         });
     </script>
