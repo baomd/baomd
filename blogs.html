@@ -132,20 +132,60 @@
     <script>
         const allPosts = [
             {
+                cat: 'finance',
+                title: 'Medical Real Estate: Equity Strategies',
+                excerpt: 'Building wealth through physician facility ownership.',
+                date: 'Dec 12',
+                link: 'blog-medical-real-estate.html',
+                img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80'
+            },
+            {
                 cat: 'medical',
-                title: 'Scar Care, Treatment, and Healing Optimization',
-                excerpt: 'What actually improves outcomes in scar management and wound healing.',
-                date: 'Nov 1',
-                link: 'blog-scar-care.html',
-                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80'
+                title: 'Skin Cancer: Detection and Prevention',
+                excerpt: 'When to see a dermatologist and what you need to know.',
+                date: 'Dec 7',
+                link: 'blog-skin-cancer-detection.html',
+                img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&q=80'
+            },
+            {
+                cat: 'aesthetics',
+                title: 'Dermal Fillers and Fat Transfer',
+                excerpt: 'Volume restoration techniques for natural, lasting results.',
+                date: 'Dec 3',
+                link: 'blog-dermal-fillers.html',
+                img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80'
+            },
+            {
+                cat: 'aesthetics',
+                title: 'Neuromodulators in Aesthetic Dermatology',
+                excerpt: 'Enhancing balance and expression through thoughtful neuromodulator use.',
+                date: 'Nov 28',
+                link: 'blog-neuromodulators.html',
+                img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80'
+            },
+            {
+                cat: 'medical',
+                title: 'Full-Body Skin Imaging, AI, and Governance',
+                excerpt: 'Precision requires guardrails in AI-powered skin cancer detection.',
+                date: 'Nov 24',
+                link: 'blog-full-body-imaging-ai.html',
+                img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80'
+            },
+            {
+                cat: 'research',
+                title: 'Clinical Trials in Dermatology',
+                excerpt: 'Understanding the role and impact of clinical research in advancing care.',
+                date: 'Nov 19',
+                link: 'blog-clinical-trials.html',
+                img: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&q=80'
             },
             {
                 cat: 'leadership',
-                title: 'Participating in Advisory Boards',
-                excerpt: 'Contributing expertise without losing focus in physician leadership roles.',
-                date: 'Nov 5',
-                link: 'blog-advisory-boards.html',
-                img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80'
+                title: 'The Physician Executive',
+                excerpt: 'Transitioning clinical excellence to executive leadership.',
+                date: 'Nov 14',
+                link: 'blog-physician-executive.html',
+                img: 'https://images.unsplash.com/photo-1542744095-291d1f67b221?w=400&q=80'
             },
             {
                 cat: 'finance',
@@ -157,59 +197,19 @@
             },
             {
                 cat: 'leadership',
-                title: 'The Physician Executive',
-                excerpt: 'Transitioning clinical excellence to executive leadership.',
-                date: 'Nov 14',
-                link: 'blog-physician-executive.html',
-                img: 'https://images.unsplash.com/photo-1542744095-291d1f67b221?w=400&q=80'
-            },
-            {
-                cat: 'research',
-                title: 'Clinical Trials in Dermatology',
-                excerpt: 'Understanding the role and impact of clinical research in advancing care.',
-                date: 'Nov 19',
-                link: 'blog-clinical-trials.html',
-                img: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&q=80'
+                title: 'Participating in Advisory Boards',
+                excerpt: 'Contributing expertise without losing focus in physician leadership roles.',
+                date: 'Nov 5',
+                link: 'blog-advisory-boards.html',
+                img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80'
             },
             {
                 cat: 'medical',
-                title: 'Full-Body Skin Imaging, AI, and Governance',
-                excerpt: 'Precision requires guardrails in AI-powered skin cancer detection.',
-                date: 'Nov 24',
-                link: 'blog-full-body-imaging-ai.html',
-                img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80'
-            },
-            {
-                cat: 'aesthetics',
-                title: 'Neuromodulators in Aesthetic Dermatology',
-                excerpt: 'Enhancing balance and expression through thoughtful neuromodulator use.',
-                date: 'Nov 28',
-                link: 'blog-neuromodulators.html',
-                img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80'
-            },
-            {
-                cat: 'aesthetics',
-                title: 'Dermal Fillers and Fat Transfer',
-                excerpt: 'Volume restoration techniques for natural, lasting results.',
-                date: 'Dec 3',
-                link: 'blog-dermal-fillers.html',
-                img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80'
-            },
-            {
-                cat: 'medical',
-                title: 'Skin Cancer: Detection and Prevention',
-                excerpt: 'When to see a dermatologist and what you need to know.',
-                date: 'Dec 7',
-                link: 'blog-skin-cancer-detection.html',
-                img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&q=80'
-            },
-            {
-                cat: 'finance',
-                title: 'Medical Real Estate: Equity Strategies',
-                excerpt: 'Building wealth through physician facility ownership.',
-                date: 'Dec 12',
-                link: 'blog-medical-real-estate.html',
-                img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80'
+                title: 'Scar Care, Treatment, and Healing Optimization',
+                excerpt: 'What actually improves outcomes in scar management and wound healing.',
+                date: 'Nov 1',
+                link: 'blog-scar-care.html',
+                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80'
             }
         ];
 
