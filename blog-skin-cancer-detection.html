@@ -38,16 +38,16 @@
         .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
         .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
         
-        .article-content { font-size: 0.95rem; line-height: 1.7; color: #333; }
-        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
-        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
-        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
+        .article-content { font-size: 1rem; line-height: 1.8; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.5rem; line-height: 1.8; }
         .article-content strong { color: var(--navy); font-weight: 600; }
         .article-content em { font-style: italic; }
         
-        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
-        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
-        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
+        .article-content ul { margin: 1.5rem 0 2rem 1.8rem; }
+        .article-content li { margin-bottom: 0.8rem; line-height: 1.7; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.9rem; position: absolute; left: -1.8rem; top: 0.1rem; }
         
         figure { margin: 3rem 0; }
         figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
@@ -62,7 +62,9 @@
         
         @media (max-width: 768px) {
             .article-header h1 { font-size: 2rem; }
-            .article-content { font-size: 0.9rem; }
+            .article-content { font-size: 0.95rem; }
+            .article-content h2 { font-size: 1.5rem; }
+            .article-content h3 { font-size: 1.2rem; }
             .author-bio { flex-direction: column; text-align: center; }
         }
     </style>
@@ -101,79 +103,135 @@
         
         <article class="article-content">
             <p>Skin cancer is the most common cancer in the United States, with millions of new cases diagnosed each year. The good news is that most skin cancers are highly treatable when detected early. The risk rises when lesions are ignored, misunderstood, or discovered late.</p>
+            
             <p>Understanding the major types of skin cancer, recognizing early warning signs, and practicing consistent prevention are the foundation of long-term skin health.</p>
+
             <h2>What Is Skin Cancer?</h2>
+            
             <p>Skin cancer develops when skin cells grow uncontrollably, most often due to DNA damage from ultraviolet (UV) radiation. When the body cannot adequately repair this damage, abnormal cells multiply and form tumors, which may be benign or malignant.</p>
-            <h2>There are three primary types of skin cancer:</h2>
-            <h2>Basal cell carcinoma (BCC)</h2>
-            <h2>Squamous cell carcinoma (SCC)</h2>
-            <h2>Melanoma</h2>
+            
+            <p>There are three primary types of skin cancer:</p>
+            
+            <ul>
+                <li>Basal cell carcinoma (BCC)</li>
+                <li>Squamous cell carcinoma (SCC)</li>
+                <li>Melanoma</li>
+            </ul>
+            
             <p>Each behaves differently and carries a different level of risk.</p>
+
             <h2>Types of Skin Cancer</h2>
-            <h2>Basal Cell Carcinoma (BCC)</h2>
+
+            <h3>Basal Cell Carcinoma (BCC)</h3>
+            
             <p>Basal cell carcinoma is the most common form of skin cancer and typically the least aggressive. It grows slowly but can cause significant local damage if untreated.</p>
-            <h2>Common signs include:</h2>
-            <h2>A pearly or waxy bump</h2>
-            <h2>A sore that does not heal or repeatedly reopens</h2>
-            <h2>A reddish, scaly patch</h2>
-            <h2>A scar-like area with pale or yellow coloration</h2>
-            <p>Treatment:
-BCC is highly treatable, often with surgical excision or Mohs micrographic surgery, which allows for precise removal while preserving healthy tissue.</p>
-            <h2>Squamous Cell Carcinoma (SCC)</h2>
+            
+            <p>Common signs include:</p>
+            
+            <ul>
+                <li>A pearly or waxy bump</li>
+                <li>A sore that does not heal or repeatedly reopens</li>
+                <li>A reddish, scaly patch</li>
+                <li>A scar-like area with pale or yellow coloration</li>
+            </ul>
+            
+            <p><strong>Treatment:</strong> BCC is highly treatable, often with surgical excision or Mohs micrographic surgery, which allows for precise removal while preserving healthy tissue.</p>
+
+            <h3>Squamous Cell Carcinoma (SCC)</h3>
+            
             <p>Squamous cell carcinoma is the second most common skin cancer and carries a higher risk of spread if untreated.</p>
-            <h2>Common signs include:</h2>
-            <h2>A firm red bump or nodule</h2>
-            <h2>A flat lesion with a scaly or crusted surface</h2>
-            <h2>A rough, wart-like growth</h2>
-            <h2>An open sore that bleeds or crusts</h2>
-            <p>Treatment:
-SCC is typically managed with surgical excision, Mohs surgery, cryotherapy, or radiation in select cases. Early treatment is critical to prevent progression.</p>
-            <h2>Melanoma</h2>
+            
+            <p>Common signs include:</p>
+            
+            <ul>
+                <li>A firm red bump or nodule</li>
+                <li>A flat lesion with a scaly or crusted surface</li>
+                <li>A rough, wart-like growth</li>
+                <li>An open sore that bleeds or crusts</li>
+            </ul>
+            
+            <p><strong>Treatment:</strong> SCC is typically managed with surgical excision, Mohs surgery, cryotherapy, or radiation in select cases. Early treatment is critical to prevent progression.</p>
+
+            <h3>Melanoma</h3>
+            
             <p>Melanoma is less common but more dangerous. It originates in melanocytes, the pigment-producing cells, and can spread rapidly if not detected early.</p>
-            <h2>Warning signs include:</h2>
-            <h2>A new or changing mole</h2>
-            <h2>Irregular shape or uneven borders</h2>
-            <h2>Multiple or uneven colors</h2>
-            <h2>Size larger than 6 mm or progressive growth</h2>
-            <h2>Symptoms such as itching, bleeding, or pain</h2>
-            <p>Treatment:
-Early-stage melanoma is treated surgically. Advanced cases may require immunotherapy or targeted systemic treatment.</p>
+            
+            <p>Warning signs include:</p>
+            
+            <ul>
+                <li>A new or changing mole</li>
+                <li>Irregular shape or uneven borders</li>
+                <li>Multiple or uneven colors</li>
+                <li>Size larger than 6 mm or progressive growth</li>
+                <li>Symptoms such as itching, bleeding, or pain</li>
+            </ul>
+            
+            <p><strong>Treatment:</strong> Early-stage melanoma is treated surgically. Advanced cases may require immunotherapy or targeted systemic treatment.</p>
+
             <h2>How to Spot Skin Cancer: The ABCDE Rule</h2>
-            <h3>A helpful guide for identifying concerning moles is the ABCDE rule:</h3>
-            <h2>A – Asymmetry: One half does not match the other</h2>
-            <h2>B – Border: Irregular or poorly defined edges</h2>
-            <h2>C – Color: Multiple colors or uneven pigmentation</h2>
-            <h2>D – Diameter: Larger than 6 mm or growing</h2>
-            <h2>E – Evolving: Any change in size, shape, color, or symptoms</h2>
+            
+            <p>A helpful guide for identifying concerning moles is the ABCDE rule:</p>
+            
+            <ul>
+                <li><strong>A – Asymmetry:</strong> One half does not match the other</li>
+                <li><strong>B – Border:</strong> Irregular or poorly defined edges</li>
+                <li><strong>C – Color:</strong> Multiple colors or uneven pigmentation</li>
+                <li><strong>D – Diameter:</strong> Larger than 6 mm or growing</li>
+                <li><strong>E – Evolving:</strong> Any change in size, shape, color, or symptoms</li>
+            </ul>
+            
             <p>Change over time is one of the most important warning signs.</p>
+
             <h2>When to See a Dermatologist</h2>
-            <h2>You should seek evaluation if you notice:</h2>
-            <h2>A new or changing mole</h2>
-            <h2>A sore that does not heal within 2–3 weeks</h2>
-            <h2>Persistent bleeding, itching, or tenderness</h2>
-            <h2>A rapidly growing or changing lesion</h2>
-            <h2>A rough or scaly patch that does not resolve</h2>
+            
+            <p>You should seek evaluation if you notice:</p>
+            
+            <ul>
+                <li>A new or changing mole</li>
+                <li>A sore that does not heal within 2–3 weeks</li>
+                <li>Persistent bleeding, itching, or tenderness</li>
+                <li>A rapidly growing or changing lesion</li>
+                <li>A rough or scaly patch that does not resolve</li>
+            </ul>
+            
             <p>Higher-risk individuals include those with fair skin, a history of sunburns, a family history of skin cancer, immunosuppression, or prior skin cancer.</p>
+
             <h2>Skin Cancer Prevention</h2>
+            
             <p>Most skin cancers are related to cumulative UV exposure. Prevention focuses on reducing long-term damage.</p>
-            <h2>Key strategies include:</h2>
-            <h2>Daily use of broad-spectrum sunscreen (SPF 30 or higher)</h2>
-            <h2>Protective clothing, hats, and sunglasses</h2>
-            <h2>Avoiding peak sun hours (10 AM–4 PM)</h2>
-            <h2>Avoiding tanning beds</h2>
-            <h2>Regular professional skin exams</h2>
+            
+            <p>Key strategies include:</p>
+            
+            <ul>
+                <li>Daily use of broad-spectrum sunscreen (SPF 30 or higher)</li>
+                <li>Protective clothing, hats, and sunglasses</li>
+                <li>Avoiding peak sun hours (10 AM–4 PM)</li>
+                <li>Avoiding tanning beds</li>
+                <li>Regular professional skin exams</li>
+            </ul>
+            
             <p>Consistency matters more than perfection.</p>
+
             <h2>Treatment Options</h2>
-            <h3>Treatment depends on the type, size, location, and stage of the cancer and may include:</h3>
-            <h2>Surgical excision</h2>
-            <h2>Mohs micrographic surgery</h2>
-            <h2>Cryotherapy</h2>
-            <h2>Radiation therapy</h2>
-            <h2>Topical treatments for select superficial cancers</h2>
+            
+            <p>Treatment depends on the type, size, location, and stage of the cancer and may include:</p>
+            
+            <ul>
+                <li>Surgical excision</li>
+                <li>Mohs micrographic surgery</li>
+                <li>Cryotherapy</li>
+                <li>Radiation therapy</li>
+                <li>Topical treatments for select superficial cancers</li>
+            </ul>
+            
             <p>Early detection allows for simpler treatment and better cosmetic and functional outcomes.</p>
+
             <h2>Final Thoughts</h2>
+            
             <p>Skin cancer is common, often preventable, and frequently curable when detected early. Awareness, regular skin checks, and consistent sun protection significantly reduce risk.</p>
+            
             <p>Your skin changes over time. Paying attention—and acting early—matters.</p>
+            
             <p>If you notice something new, changing, or concerning, evaluation by a dermatologist is the safest next step.</p>
         </article>
 
