@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advisory Boards | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 1.05rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Leadership</span>
+        <h1>Participating in Advisory Boards: Contributing Expertise Without Losing Focus</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>•</span>
+            <span>January 2026</span>
+            <span>•</span>
+            <span>8 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80" alt="Advisory Boards" class="featured-image">
+        
+        <article class="article-content">
+            <p>As physicians progress in their careers, opportunities often arise to serve on advisory boards—for companies, professional societies, startups, nonprofits, or healthcare organizations. Done well, advisory roles allow clinicians to contribute expertise, shape direction, and extend impact beyond their own practice. Done poorly, they become distractions with little influence or return.</p>
+            <p>The difference lies in intentional participation.</p>
+            <h2>What an Advisory Board Actually Does</h2>
+            <p>An advisory board is not a governing body. It does not manage day-to-day operations or carry fiduciary authority. Its role is to provide:</p>
+            <h2>Domain expertise</h2>
+            <h2>Strategic perspective</h2>
+            <h2>Credible external validation</h2>
+            <h2>Early identification of risk and opportunity</h2>
+            <p>Advisors help organizations think better—not run faster.</p>
+            <h2>Why Physicians Are Valuable Advisors</h2>
+            <h2>Physicians bring a combination that is difficult to replicate:</h2>
+            <h2>Real-world clinical insight</h2>
+            <h2>Understanding of patient needs and outcomes</h2>
+            <h2>Familiarity with regulatory and reimbursement constraints</h2>
+            <h2>Credibility with peers, partners, and customers</h2>
+            <p>This perspective is especially valuable in healthcare, life sciences, and technology, where decisions made without clinical context often fail downstream.</p>
+            <figure>
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80" alt="Supporting illustration">
+            </figure>
+            <h2>Choosing the Right Advisory Role</h2>
+            <p>Not every advisory invitation is worth accepting. High-quality roles share common traits:</p>
+            <h2>A clear scope and expectations</h2>
+            <h2>Respect for clinical expertise</h2>
+            <h2>Access to decision-makers, not just updates</h2>
+            <h2>Alignment with the physician’s values and interests</h2>
+            <p>If input is consistently ignored, the role is symbolic—not strategic.</p>
+            <h2>How to Contribute Effectively</h2>
+            <p>Effective advisors do not attempt to solve every problem. They focus on leverage.</p>
+            <h2>Strong contributions often include:</h2>
+            <h2>Asking the uncomfortable but necessary questions</h2>
+            <h2>Translating clinical reality into business or policy implications</h2>
+            <h2>Identifying unintended consequences early</h2>
+            <h2>Providing clarity when teams are moving too quickly</h2>
+            <p>Judgment matters more than volume of input.</p>
+            <h2>Time, Compensation, and Boundaries</h2>
+            <p>Advisory roles should be structured to respect time and expertise. Compensation may include honoraria, equity, or professional recognition, depending on the organization and stage.</p>
+            <h2>Equally important are boundaries:</h2>
+            <h2>Defined time commitments</h2>
+            <h2>Clear conflict-of-interest policies</h2>
+            <h2>Transparency around decision-making authority</h2>
+            <p>Advisory work should complement—not compete with—clinical responsibilities.</p>
+            <h2>Advisory Boards as a Form of Leadership</h2>
+            <p>Serving as an advisor is a quiet form of leadership. Influence comes not from authority, but from trust and consistency.</p>
+            <h2>Physicians who contribute thoughtfully often become:</h2>
+            <h2>Long-term strategic partners</h2>
+            <h2>Trusted voices during inflection points</h2>
+            <h2>Bridges between clinical reality and organizational ambition</h2>
+            <p>These relationships compound over time.</p>
+            <h2>When to Say No</h2>
+            <p>Declining an advisory role is sometimes the most responsible decision. Common reasons include:</p>
+            <h2>Misalignment of mission</h2>
+            <h2>Insufficient influence</h2>
+            <h2>Excessive time demands</h2>
+            <h2>Conflicts with patient care or professional integrity</h2>
+            <p>Saying no preserves credibility for the roles that matter.</p>
+            <h2>A Long-Term Perspective</h2>
+            <p>Advisory board participation is not about resume building. It is about stewardship—helping organizations make better decisions that affect patients, clinicians, and systems of care.</p>
+            <p>For physicians, advisory roles offer a way to scale expertise without abandoning practice.</p>
+            <h2>Final Thought</h2>
+            <p>Your clinical experience is valuable beyond the exam room. Advisory boards are one of the most effective ways to deploy that experience—when chosen carefully and approached with intention.</p>
+            <p>Contribute where your voice changes outcomes.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist and physician leader with expertise in medical dermatology, practice management, and healthcare innovation.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>

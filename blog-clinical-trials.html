@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Trials | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 1.05rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Research</span>
+        <h1>Clinical Trials: How Innovation Moves From Concept to Care</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>•</span>
+            <span>January 2026</span>
+            <span>•</span>
+            <span>8 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80" alt="Clinical Trials" class="featured-image">
+        
+        <article class="article-content">
+            <p>Every effective medication or medical device in use today exists because multiple stakeholders worked together to generate credible evidence. Clinical trials sit at the center of this process, translating scientific discovery into safe, effective patient care. They are not the responsibility of a single group, but a coordinated effort involving physicians, patients, industry, research organizations, and regulators.</p>
+            <h2>Why Clinical Trials Matter</h2>
+            <h2>Clinical trials answer the most important questions in medicine:</h2>
+            <h2>Does a treatment work better than existing options?</h2>
+            <h2>Is it safe across different patient populations?</h2>
+            <h2>What risks are acceptable relative to benefit?</h2>
+            <p>Without trials, new therapies would rely on theory or early observations. Trials replace assumption with evidence.</p>
+            <h2>The Role of the U.S. Food and Drug Administration</h2>
+            <p>The FDA’s role is to evaluate—not create—medical innovation. It reviews data generated through clinical trials to determine whether a therapy meets established standards for safety, effectiveness, and quality.</p>
+            <p>Before approval, therapies move through multiple trial phases, each designed to progressively assess risk, dosing, and benefit. FDA oversight ensures that:</p>
+            <h2>Trial data is credible and reproducible</h2>
+            <h2>Adverse events are transparently reported</h2>
+            <h2>Approved indications are evidence-based</h2>
+            <p>This framework protects patients and supports clinician confidence.</p>
+            <h2>How Pharmaceutical and Medical Device Companies Advance Care</h2>
+            <h2>Pharmaceutical and medical device companies play a critical role by:</h2>
+            <figure>
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="Supporting illustration">
+            </figure>
+            <h2>Investing in early-stage research and development</h2>
+            <h2>Designing and funding large-scale clinical trials</h2>
+            <h2>Advancing therapies that may take years to reach patients</h2>
+            <p>Developing a new treatment is costly, time-intensive, and high-risk. Industry absorbs much of this risk, allowing innovation to move forward at a scale that academic centers alone often cannot support.</p>
+            <p>Industry-led trials, when properly governed, expand therapeutic options and push standards of care forward.</p>
+            <h2>The Role of Contract Research Organizations (CROs)</h2>
+            <p>Contract Research Organizations support the execution of clinical trials by providing operational expertise. CROs help ensure that trials are conducted efficiently, ethically, and in compliance with regulatory requirements.</p>
+            <h2>Their responsibilities often include:</h2>
+            <h2>Trial coordination and site management</h2>
+            <h2>Regulatory submissions and documentation</h2>
+            <h2>Data collection, monitoring, and analysis</h2>
+            <h2>Ensuring adherence to Good Clinical Practice (GCP)</h2>
+            <p>By handling these complex logistics, CROs allow investigators and sponsors to focus on science, safety, and outcomes.</p>
+            <h2>Why Physician Involvement Still Matters</h2>
+            <p>Despite industry and CRO involvement, physicians remain central to meaningful research. Clinicians:</p>
+            <h2>Ensure protocols reflect real-world practice</h2>
+            <h2>Protect patient safety and informed consent</h2>
+            <h2>Interpret results through a clinical lens</h2>
+            <p>Trials without physician engagement risk producing data that is difficult to apply in practice.</p>
+            <h2>Patients at the Center</h2>
+            <p>Clinical trials depend on patient participation. Ethical oversight, transparency, and respect for patient autonomy are fundamental. Trials succeed only when trust is maintained at every level.</p>
+            <h2>A System That Requires Balance</h2>
+            <h2>Progress in medicine depends on collaboration:</h2>
+            <h2>Industry drives innovation</h2>
+            <h2>CROs ensure execution and compliance</h2>
+            <h2>Physicians provide clinical judgment</h2>
+            <h2>The FDA maintains standards</h2>
+            <h2>Patients make progress possible</h2>
+            <p>When these roles are aligned, innovation becomes both safe and scalable.</p>
+            <h2>Final Perspective</h2>
+            <p>Clinical trials are how medicine advances responsibly. They represent a balance between innovation and protection, speed and rigor.</p>
+            <p>Pharmaceutical companies and CROs enable discovery to reach patients. Physicians ensure it remains clinically meaningful. The FDA ensures it remains safe.</p>
+            <p>Together, they form the infrastructure that allows modern medicine to move forward with confidence.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist and physician leader with expertise in medical dermatology, practice management, and healthcare innovation.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>

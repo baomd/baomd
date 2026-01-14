@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding EBITDA | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 1.05rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Practice Finance</span>
+        <h1>Practice Valuation: Understanding EBITDA for Private Practitioners</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>•</span>
+            <span>January 2026</span>
+            <span>•</span>
+            <span>8 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt="Understanding EBITDA" class="featured-image">
+        
+        <article class="article-content">
+            <p>At some point, most private practitioners hear the same phrase: “Your practice is valued at a multiple of EBITDA.”
+For many physicians, EBITDA feels abstract—an accounting term used by investors rather than clinicians. In reality, EBITDA is simply a way to measure how efficiently a practice generates cash from its core operations.</p>
+            <p>Understanding EBITDA allows physicians to see their practice the way buyers do—and to make better decisions long before a sale is ever on the table.</p>
+            <h2>What Is EBITDA?</h2>
+            <p>EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization. In practical terms, it represents the cash flow produced by a practice before financing structure and non-operating accounting items.</p>
+            <h2>For a medical practice, EBITDA answers one question:</h2>
+            <p>How much cash does this business generate from patient care after normal operating expenses?</p>
+            <h2>Why EBITDA Matters in Practice Valuation</h2>
+            <p>Buyers—whether private equity groups, hospital systems, or strategic partners—use EBITDA because it allows them to compare practices on equal footing.</p>
+            <h2>EBITDA:</h2>
+            <h2>Removes differences in physician tax strategies</h2>
+            <h2>Ignores personal debt or ownership structure</h2>
+            <h2>Focuses on operational performance</h2>
+            <p>Valuation is typically expressed as a multiple of EBITDA, not revenue.</p>
+            <h2>How EBITDA Is Calculated in a Medical Practice</h2>
+            <h2>At a high level:</h2>
+            <p>Revenue
+− Operating expenses (staff, rent, supplies, billing, malpractice, IT, etc.)
+= EBITDA</p>
+            <figure>
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Supporting illustration">
+            </figure>
+            <p>However, physician practices require adjustments.</p>
+            <h2>The Key Adjustment: Physician Compensation</h2>
+            <h2>For owner-physicians, compensation must be “normalized.”</h2>
+            <p>If an owner pays themselves above or below market rates, EBITDA is adjusted to reflect what it would cost to replace them with a similarly trained clinician.</p>
+            <p>This normalization is critical. Without it, EBITDA is distorted.</p>
+            <h2>Common EBITDA Add-Backs</h2>
+            <p>Add-backs are expenses that reduce reported profit but are not considered part of normal ongoing operations.</p>
+            <h2>Examples may include:</h2>
+            <h2>Excess owner compensation</h2>
+            <h2>Personal expenses run through the practice</h2>
+            <h2>One-time legal or consulting fees</h2>
+            <h2>Non-recurring equipment purchases</h2>
+            <p>Add-backs must be reasonable and defensible.</p>
+            <h2>What Drives EBITDA Multiples</h2>
+            <h2>Not all EBITDA is valued equally. Multiples vary based on:</h2>
+            <h2>Specialty and procedure mix</h2>
+            <h2>Growth trajectory</h2>
+            <h2>Payer mix and reimbursement stability</h2>
+            <h2>Provider concentration risk</h2>
+            <h2>Operational maturity and scalability</h2>
+            <p>A well-run practice with predictable cash flow commands a higher multiple.</p>
+            <h2>Why Revenue Alone Is Misleading</h2>
+            <p>High revenue does not guarantee high value. Two practices with identical revenue can have dramatically different EBITDA—and therefore very different valuations.</p>
+            <p>Efficiency, not volume, drives value.</p>
+            <h2>Improving EBITDA Before a Transaction</h2>
+            <h2>Practices improve valuation by:</h2>
+            <h2>Standardizing operations</h2>
+            <h2>Optimizing staffing and scheduling</h2>
+            <h2>Improving billing efficiency and collections</h2>
+            <h2>Reducing unnecessary overhead</h2>
+            <h2>Diversifying revenue streams</h2>
+            <p>These changes often improve income even if a sale never occurs.</p>
+            <h2>Think Like an Owner, Not Just a Clinician</h2>
+            <p>EBITDA is not just for selling. It is a tool for understanding the financial health of your practice.</p>
+            <h2>Physicians who understand EBITDA:</h2>
+            <h2>Negotiate better deals</h2>
+            <h2>Plan growth more effectively</h2>
+            <h2>Maintain control over their professional future</h2>
+            <h2>Final Perspective</h2>
+            <p>EBITDA is not an abstract investor concept. It is a clear lens on how your practice performs as a business.</p>
+            <p>Whether or not you plan to sell, understanding EBITDA allows you to make decisions with intention—not surprise.</p>
+            <p>A well-run practice is valuable. EBITDA is how that value is measured.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist and physician leader with expertise in medical dermatology, practice management, and healthcare innovation.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>

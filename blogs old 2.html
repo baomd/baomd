@@ -19,6 +19,7 @@
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
+        /* Font matching for brand name */
         .logo { 
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem; 
@@ -52,6 +53,7 @@
         .hamburger span { width: 24px; height: 2px; background: var(--navy); }
         @media (min-width: 1024px) { .hamburger { display: none; } }
 
+        /* Page Headers */
         .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 4rem 1.5rem; text-align: center; color: var(--white); }
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
 
@@ -70,10 +72,10 @@
         @media (min-width: 600px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1100px) { .blog-grid { grid-template-columns: repeat(4, 1fr); } }
 
-        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; cursor: pointer; }
+        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; }
         .blog-card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .blog-image { height: 160px; background: var(--navy); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .blog-image img { width: 100%; height: 100%; object-fit: cover; }
+        .blog-image { height: 160px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+        .gold-svg { width: 60px; height: 60px; fill: var(--gold); }
         
         .blog-content { padding: 1.2rem; flex-grow: 1; }
         .blog-category { font-size: 0.65rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
@@ -81,10 +83,9 @@
         .blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.5; }
 
         /* Pagination Styling */
-        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 4rem 0 2rem; flex-wrap: wrap; }
-        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.9rem; color: var(--navy); }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 4rem 0; flex-wrap: wrap; }
+        .page-btn { padding: 0.8rem 1.2rem; border-radius: 50px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
         .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-        .page-btn:hover:not(:disabled) { background: var(--gold-light); border-color: var(--gold); }
         .page-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
     </style>
 </head>
@@ -117,9 +118,10 @@
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="medical">Medical</button>
+                    <button class="filter-btn" data-filter="aesthetics">Aesthetics</button>
+                    <button class="filter-btn" data-filter="skincare">Skincare</button>
                     <button class="filter-btn" data-filter="leadership">Leadership</button>
                     <button class="filter-btn" data-filter="finance">Finance</button>
-                    <button class="filter-btn" data-filter="research">Research</button>
                 </div>
             </div>
         </div>
@@ -129,76 +131,47 @@
     </div>
 
     <script>
+        const icons = {
+            medical: 'M12,2L4.5,5V11C4.5,15.55 7.7,19.82 12,21C16.3,19.82 19.5,15.55 19.5,11V5L12,2M11,7H13V10H16V12H13V15H11V12H8V10H11V7Z',
+            aesthetics: 'M12,21C12,21 7,16 7,12C7,9.5 8.5,7.5 10.5,7.5C11.1,7.5 11.6,7.6 12,7.9C12.4,7.6 12.9,7.5 13.5,7.5C15.5,7.5 17,9.5 17,12C17,16 12,21 12,21M12,2L10,5L12,8L14,5L12,2Z',
+            skincare: 'M19,19H5V11H19M19,9H5A2,2 0 0,0 3,11V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V11A2,2 0 0,0 19,9M17,7H7V5H17M17,3H7A2,2 0 0,0 5,5V7A2,2 0 0,0 7,9H17A2,2 0 0,0 19,7V5A2,2 0 0,0 17,3Z',
+            leadership: 'M19,22H5V20H19V22M17,10C15.58,10 14.26,10.77 13.5,12C13.28,11.39 12.7,11 12,11C11.3,11 10.72,11.39 10.5,12C9.74,10.77 8.42,10 7,10A4,4 0 0,0 3,14C3,15.14 3.47,16.17 4.23,16.91C4.46,17.13 4.71,17.34 5,17.5V19H19V17.5C19.29,17.34 19.54,17.13 19.77,16.91C20.53,16.17 21,15.14 21,14A4,4 0 0,0 17,10M12,2L10,5H14L12,2Z',
+            finance: 'M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z'
+        };
+
         const allPosts = [
-            {
-                cat: 'medical',
-                title: 'Scar Care, Treatment, and Healing Optimization',
-                excerpt: 'What actually improves outcomes in scar management and wound healing.',
-                date: 'Nov 1',
-                link: 'blog-scar-care.html',
-                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80'
-            },
-            {
-                cat: 'leadership',
-                title: 'Participating in Advisory Boards',
-                excerpt: 'Contributing expertise without losing focus in physician leadership roles.',
-                date: 'Nov 5',
-                link: 'blog-advisory-boards.html',
-                img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80'
-            },
-            {
-                cat: 'finance',
-                title: 'Understanding EBITDA for Private Practice',
-                excerpt: 'Financial metrics that matter for physician practice valuation.',
-                date: 'Nov 10',
-                link: 'blog-ebitda-guide.html',
-                img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80'
-            },
-            {
-                cat: 'leadership',
-                title: 'The Physician Executive',
-                excerpt: 'Transitioning clinical excellence to executive leadership.',
-                date: 'Nov 14',
-                link: 'blog-physician-executive.html',
-                img: 'https://images.unsplash.com/photo-1542744095-291d1f67b221?w=400&q=80'
-            },
-            {
-                cat: 'research',
-                title: 'Clinical Trials in Dermatology',
-                excerpt: 'Understanding the role and impact of clinical research in advancing care.',
-                date: 'Nov 19',
-                link: 'blog-clinical-trials.html',
-                img: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&q=80'
-            }
+            { cat: 'medical', title: 'T-Cell Regulation', excerpt: 'Analyzing IL-23 pathways in psoriasis treatment.', date: 'Jan 12', ts: 10 },
+            { cat: 'aesthetics', title: 'Volumetric Restoration', excerpt: 'Structural support using high G-prime fillers.', date: 'Jan 10', ts: 9 },
+            { cat: 'skincare', title: 'Molecular Retinoids', excerpt: 'The evolution of tretinoin and derivatives.', date: 'Jan 08', ts: 8 },
+            { cat: 'leadership', title: 'The Physician Executive', excerpt: 'Transitioning clinical excellence to leadership.', date: 'Jan 05', ts: 7 },
+            { cat: 'finance', title: 'Practice Valuation', excerpt: 'Understanding EBITDA for private practitioners.', date: 'Jan 02', ts: 6 },
+            { cat: 'medical', title: 'AI in Dermoscopy', excerpt: 'Deep learning in early melanoma detection.', date: 'Dec 28', ts: 5 },
+            { cat: 'aesthetics', title: 'Neuromodulator Safety', excerpt: 'Evidence-based protocols for facial tox injections.', date: 'Dec 22', ts: 4 },
+            { cat: 'skincare', title: 'Antioxidant Synergy', excerpt: 'Vitamin C and Ferulic acid in procedural care.', date: 'Dec 20', ts: 3 },
+            { cat: 'leadership', title: 'Advocacy in Medicine', excerpt: 'Navigating health policy as a specialist.', date: 'Dec 18', ts: 2 },
+            { cat: 'finance', title: 'Medical Real Estate', excerpt: 'Equity strategies for physician facilities.', date: 'Dec 15', ts: 1 }
         ];
 
-        let currentFilter = 'all';
-        let currentSearch = '';
         let currentPage = 1;
         const postsPerPage = 4;
+        let currentFilter = 'all';
+        let currentSearch = '';
 
         function render() {
             const grid = document.getElementById('blogGrid');
-            const pagination = document.getElementById('pagination');
-            
             const filtered = allPosts.filter(p => {
                 const matchesF = currentFilter === 'all' || p.cat === currentFilter;
-                const matchesS = p.title.toLowerCase().includes(currentSearch.toLowerCase()) || 
-                                p.excerpt.toLowerCase().includes(currentSearch.toLowerCase());
+                const matchesS = p.title.toLowerCase().includes(currentSearch.toLowerCase());
                 return matchesF && matchesS;
-            });
+            }).sort((a,b) => b.ts - a.ts);
 
-            // Calculate pagination
             const totalPages = Math.ceil(filtered.length / postsPerPage);
             const start = (currentPage - 1) * postsPerPage;
             const paginated = filtered.slice(start, start + postsPerPage);
 
-            // Render blog cards
             grid.innerHTML = paginated.map(post => `
-                <article class="blog-card" onclick="window.location.href='${post.link}'">
-                    <div class="blog-image">
-                        <img src="${post.img}" alt="${post.title}">
-                    </div>
+                <article class="blog-card">
+                    <div class="blog-image"><svg class="gold-svg" viewBox="0 0 24 24"><path d="${icons[post.cat]}"/></svg></div>
                     <div class="blog-content">
                         <span class="blog-category">${post.cat}</span>
                         <h3>${post.title}</h3>
@@ -207,35 +180,19 @@
                     </div>
                 </article>`).join('');
 
-            // Render pagination
             let pagHTML = '';
             if (totalPages > 1) {
-                // Previous button
                 pagHTML += `<button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="setPage(${currentPage - 1})">← Back</button>`;
-                
-                // Page numbers
-                for(let i = 1; i <= totalPages; i++) {
-                    pagHTML += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="setPage(${i})">${i}</button>`;
+                for(let i=1; i<=totalPages; i++) {
+                    pagHTML += `<button class="page-btn ${i===currentPage?'active':''}" onclick="setPage(${i})">${i}</button>`;
                 }
-                
-                // Next button
                 pagHTML += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="setPage(${currentPage + 1})">Next →</button>`;
             }
-            pagination.innerHTML = pagHTML;
+            document.getElementById('pagination').innerHTML = pagHTML;
         }
 
-        window.setPage = (n) => { 
-            currentPage = n; 
-            render(); 
-            window.scrollTo({top: 400, behavior: 'smooth'}); 
-        };
-
-        document.getElementById('blogSearch').addEventListener('input', (e) => { 
-            currentSearch = e.target.value; 
-            currentPage = 1;
-            render(); 
-        });
-        
+        window.setPage = (n) => { currentPage = n; render(); window.scrollTo({top: 400, behavior: 'smooth'}); };
+        document.getElementById('blogSearch').addEventListener('input', (e) => { currentSearch = e.target.value; currentPage = 1; render(); });
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -245,11 +202,7 @@
                 render();
             });
         });
-        
-        document.getElementById('hamburger').addEventListener('click', () => 
-            document.getElementById('nav-links').classList.toggle('active')
-        );
-        
+        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('nav-links').classList.toggle('active'));
         render();
     </script>
 </body>
