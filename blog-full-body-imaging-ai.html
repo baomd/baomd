@@ -38,16 +38,16 @@
         .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
         .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
         
-        .article-content { font-size: 0.95rem; line-height: 1.7; color: #333; }
-        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin: 2.5rem 0 1.2rem 0; line-height: 1.3; }
-        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-light); margin: 2rem 0 1rem 0; }
-        .article-content p { margin-bottom: 1.5rem; line-height: 1.8; }
+        .article-content { font-size: 0.95rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 3rem 0 1.5rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2.5rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
         .article-content strong { color: var(--navy); font-weight: 600; }
         .article-content em { font-style: italic; }
         
-        .article-content ul { margin: 1.5rem 0 2rem 1.8rem; }
-        .article-content li { margin-bottom: 0.8rem; line-height: 1.7; padding-left: 0.5rem; list-style-type: none; position: relative; }
-        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.9rem; position: absolute; left: -1.8rem; top: 0.1rem; }
+        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
+        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
         
         figure { margin: 3rem 0; }
         figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
@@ -62,7 +62,7 @@
         
         @media (max-width: 768px) {
             .article-header h1 { font-size: 2rem; }
-            .article-content { font-size: 0.9rem; }
+            .article-content { font-size: 1rem; }
             .author-bio { flex-direction: column; text-align: center; }
         }
     </style>
@@ -101,44 +101,79 @@
         
         <article class="article-content">
             <p>Early detection is one of the most effective tools in skin cancer care. Full-body skin imaging has emerged as a way to systematically document the skin surface, track change over time, and reduce reliance on memory or snapshot exams. When paired thoughtfully with artificial intelligence, these systems offer meaningful potential—but only if governance keeps pace with technology.</p>
+
             <h2>What Full-Body Skin Imaging Actually Solves</h2>
+            
             <p>Traditional skin exams are limited by time, variability, and human recall. Full-body imaging creates a high-resolution baseline of the entire skin surface, allowing clinicians to:</p>
-            <h2>Monitor lesions longitudinally</h2>
-            <h2>Detect subtle change earlier</h2>
-            <h2>Reduce unnecessary biopsies</h2>
-            <h2>Improve documentation and continuity of care</h2>
+            
+            <ul>
+                <li>Monitor lesions longitudinally</li>
+                <li>Detect subtle change earlier</li>
+                <li>Reduce unnecessary biopsies</li>
+                <li>Improve documentation and continuity of care</li>
+            </ul>
+            
             <p>The value lies less in the image itself and more in change detection over time.</p>
-            <h2>Where AI Fits—and Where It Doesn’t</h2>
-            <h3>AI systems applied to skin imaging excel at pattern recognition. They can:</h3>
-            <h2>Flag new or changing lesions</h2>
-            <h2>Highlight asymmetry or structural change</h2>
-            <h2>Assist with triage and prioritization</h2>
+
+            <h2>Where AI Fits—and Where It Doesn't</h2>
+            
+            <p>AI systems applied to skin imaging excel at pattern recognition. They can:</p>
+            
+            <ul>
+                <li>Flag new or changing lesions</li>
+                <li>Highlight asymmetry or structural change</li>
+                <li>Assist with triage and prioritization</li>
+            </ul>
+            
             <p>What AI does not do is replace clinical judgment. It does not integrate patient history, immune status, prior treatments, or risk tolerance. It does not examine texture, palpate lesions, or contextualize findings within the broader clinical picture.</p>
+            
             <p>AI is most effective as a second set of eyes, not a decision-maker.</p>
+
             <h2>The Risk of Ungoverned Automation</h2>
-            <h2>As imaging and AI adoption grows, so do risks:</h2>
-            <h2>Over-reliance on algorithmic output</h2>
-            <h2>False reassurance or unnecessary alarm</h2>
-            <h2>Data misuse or unclear ownership</h2>
-            <h2>Erosion of clinician accountability</h2>
+            
+            <p>As imaging and AI adoption grows, so do risks:</p>
+            
+            <ul>
+                <li>Over-reliance on algorithmic output</li>
+                <li>False reassurance or unnecessary alarm</li>
+                <li>Data misuse or unclear ownership</li>
+                <li>Erosion of clinician accountability</li>
+            </ul>
+            
             <p>Without clear governance, technology can quietly shift responsibility away from physicians while leaving liability behind.</p>
+
             <h2>Why Governance Matters</h2>
-            <h2>Governance defines:</h2>
-            <h2>Who owns and controls patient data</h2>
-            <h2>How AI outputs are interpreted and documented</h2>
-            <h2>Where final clinical responsibility resides</h2>
-            <h2>How systems are audited, updated, and validated</h2>
+            
+            <p>Governance defines:</p>
+            
+            <ul>
+                <li>Who owns and controls patient data</li>
+                <li>How AI outputs are interpreted and documented</li>
+                <li>Where final clinical responsibility resides</li>
+                <li>How systems are audited, updated, and validated</li>
+            </ul>
+            
             <p>In a well-governed model, AI recommendations are transparent, explainable, and subordinate to clinician judgment. The physician remains the decision-maker—not the interface.</p>
+
             <h2>A Physician-Led Model</h2>
-            <h3>The most durable approach to AI-assisted skin imaging is physician-led:</h3>
-            <h2>AI supports detection, not diagnosis</h2>
-            <h2>Systems are integrated into clinical workflows</h2>
-            <h2>Oversight committees define use cases and limits</h2>
-            <h2>Patients understand how technology is used in their care</h2>
+            
+            <p>The most durable approach to AI-assisted skin imaging is physician-led:</p>
+            
+            <ul>
+                <li>AI supports detection, not diagnosis</li>
+                <li>Systems are integrated into clinical workflows</li>
+                <li>Oversight committees define use cases and limits</li>
+                <li>Patients understand how technology is used in their care</li>
+            </ul>
+            
             <p>This preserves trust while improving outcomes.</p>
+
             <h2>Looking Forward</h2>
+            
             <p>Full-body imaging and AI will continue to evolve. Their promise is real—but only when paired with restraint, accountability, and clarity of roles.</p>
+            
             <p>Technology should sharpen judgment, not replace it. In dermatology, as in all of medicine, better tools do not absolve responsibility. They demand it.</p>
+            
             <p>Precision requires governance.</p>
         </article>
 
