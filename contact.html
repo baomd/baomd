@@ -37,16 +37,14 @@
         .info-item p { font-size: 1.1rem; margin: 0; }
         .info-item a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
         
-        /* Form Section */
         .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
-        .contact-form-section h3 { margin-bottom: 2.5rem; } /* Added space between title and first input */
+        .contact-form-section h3 { margin-bottom: 2.5rem; }
         .form-group { margin-bottom: 2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid var(--cream); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; }
         .submit-btn { width: 100%; padding: 1.3rem; background: var(--gold); color: var(--navy); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .submit-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
 
-        /* Icon Styling */
         .brand-icon { filter: url(#glow-brand); flex-shrink: 0; }
 
         .reasons-section { background: var(--navy); color: var(--white); padding: 6rem 2rem; margin-top: 4rem; }
@@ -78,8 +76,7 @@
             <filter id="glow-brand" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
                 <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
                 </feMerge>
             </filter>
         </defs>
@@ -131,8 +128,7 @@
             <div class="info-item">
                 <h3>
                     <svg width="24" height="24" viewBox="0 0 24 24" class="brand-icon" fill="none" stroke="url(#grad-brand)" stroke-width="1.5">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <path d="M22 6l-10 7L2 6"/>
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
                     </svg>
                     Email
                 </h3>
@@ -153,8 +149,7 @@
             <div class="info-item">
                 <h3>
                     <svg width="24" height="24" viewBox="0 0 24 24" class="brand-icon" fill="none" stroke="url(#grad-brand)" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 6v6l4 2"/>
+                        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
                     </svg>
                     Office Hours
                 </h3>
@@ -223,29 +218,50 @@
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
-    </footer>
+    <footer><p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p></footer>
 
     <script>
+        // Mobile Nav
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); });
 
+        // Form Handling
         const form = document.getElementById("contactForm");
         const status = document.getElementById("statusMsg");
         const btn = document.getElementById("submitBtn");
 
-        form.addEventListener("submit", async function(event) {
+        form.addEventListener("submit", function(event) {
             event.preventDefault();
-            btn.disabled = true; btn.innerText = "Sending...";
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+
             const data = new FormData(event.target);
+            
             fetch("https://formspree.io/f/xbddjany", {
-                method: "POST", body: data, headers: { 'Accept': 'application/json' }
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
-                if (response.ok) { window.location.href = "https://baomd.us/thank-you.html"; }
-                else { status.style.display = "block"; status.innerText = "Oops! Error."; btn.disabled = false; btn.innerText = "Send Message"; }
-            }).catch(() => { status.style.display = "block"; status.innerText = "Error."; btn.disabled = false; btn.innerText = "Send Message"; });
+                if (response.ok) {
+                    // This force-redirects to your thank you page
+                    window.location.href = "https://baomd.us/thank-you.html";
+                } else {
+                    response.json().then(data => {
+                        status.style.display = "block";
+                        status.style.color = "red";
+                        status.innerText = "Submission Error. Please check fields.";
+                        btn.disabled = false;
+                        btn.innerText = "Send Message";
+                    });
+                }
+            }).catch(error => {
+                status.style.display = "block";
+                status.style.color = "red";
+                status.innerText = "Connection error. Please try again.";
+                btn.disabled = false;
+                btn.innerText = "Send Message";
+            });
         });
     </script>
 </body>
