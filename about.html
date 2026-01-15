@@ -11,9 +11,13 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
         
-        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        /* Navigation - Synced Branding */
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Logo Styling - Synced with Index/Contact */
         .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
+        
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
@@ -54,6 +58,7 @@
         .cta-primary { display: inline-block; padding: 1.3rem 3.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; }
         .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
         
+        /* Footer - Synced Branding */
         footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
         footer a { color: var(--gold); text-decoration: none; }
         
@@ -70,7 +75,8 @@
                 top: 0;
                 right: -100%;
                 height: 100vh;
-                width: 70%;
+                width: 75%;
+                max-width: 300px;
                 background: var(--white);
                 flex-direction: column;
                 padding: 6rem 2rem;
@@ -91,6 +97,21 @@
     </style>
 </head>
 <body>
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="grad-brand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#c9a961"/>
+                <stop offset="100%" style="stop-color:#d4b976"/>
+            </linearGradient>
+            <filter id="glow-footer" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
@@ -125,11 +146,11 @@
         <div class="bio-text">
             <h2>Commitment to Excellence</h2>
             <p>Dr. Quoc-Bao Nguyen is a double board-certified dermatologist and fellowship-trained Mohs micrographic and reconstructive surgeon specializing in skin cancer treatment, reconstructive surgery, medical dermatology, and cosmetic dermatology. Born and raised in Austin, Texas, he is honored to return to his hometown to provide compassionate, high-quality, evidence-based care to the community he loves.</p>
-            <p>Dr. Quoc-Bao Nguyen currently serves as President of the Austin Dermatological Society.<p>
+            <p>Dr. Quoc-Bao Nguyen currently serves as President of the Austin Dermatological Society.</p>
             <p>Dr. Nguyen's academic journey is defined by excellence. He graduated Summa Cum Laude from The University of Texas at Austin, earning a Bachelor of Science in Chemistry through the prestigious Dean's Scholars Honors Program, completing Special Honors, and finishing at the top of his class with a 4.0 GPA.</p>
             <p>He received his Medical Degree with Honors from Texas A&M University, where he was inducted into the Alpha Omega Alpha (AOA) Honor Medical Society in recognition of his outstanding academic performance and leadership.</p>
             <p>He completed his intern year in Neurosurgery at The University of Texas Health Science Center at Houston, followed by a dedicated clinical research year, where he served as a sub-investigator in approximately 20 dermatology clinical research trials. During this time, he also earned an MBA in Finance from The University of Houston, expanding his ability to collaborate effectively with pharmaceutical and biotechnology companies to advance innovative dermatologic therapies.</p>
-            <p>He completed his Dermatology Residency at the prestigious MD Anderson Cancer Center and The University of Texas Health Science Center at Houston, specializing in skin cancer management. He further honed his expertise by completing a Mohs Micrographic Surgery and Dermatologic Oncology Fellowship at Geisinger Medical Center in Pennsylvania, focusing on complex facial reconstruction.<p>
+            <p>He completed his Dermatology Residency at the prestigious MD Anderson Cancer Center and The University of Texas Health Science Center at Houston, specializing in skin cancer management. He further honed his expertise by completing a Mohs Micrographic Surgery and Dermatologic Oncology Fellowship at Geisinger Medical Center in Pennsylvania, focusing on complex facial reconstruction.</p>
             <h3>Comprehensive Aesthetic Care</h3>
             <p>In addition to his surgical expertise, Dr. Nguyen is passionate about helping his patients look refreshed and feel confident in their skin. He offers a full spectrum of cosmetic treatments—including Botox®, Dysport®, dermal fillers, microneedling, platelet-rich plasma (PRP), chemical peels, laser resurfacing, scar revision, and cosmetic surgery—as well as advanced procedures for cellulite reduction, body contouring, skin tightening, sclerotherapy, and hair restoration.</p>
             <h3>Academic Contributions</h3>
@@ -192,24 +213,12 @@
 
     <footer>
         <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-    <defs>
-        <linearGradient id="grad-footer-loc" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#c9a961"/>
-            <stop offset="100%" style="stop-color:#d4b976"/>
-        </linearGradient>
-        <filter id="glow-footer">
-            <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
-            <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-    </defs>
-    <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-          stroke="url(#grad-footer-loc)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
-    <circle cx="10" cy="7.5" r="2" fill="url(#grad-footer-loc)" opacity="0.8"/>
-</svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
-        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
+                  stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
+            <circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/>
+        </svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+        <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, and you wish to discuss potential accommodations related to using this website, please contact us</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
@@ -217,14 +226,12 @@
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         
-        // Open/Close menu
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -232,7 +239,6 @@
             });
         });
 
-        // Close menu if user clicks outside of it
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 hamburger.classList.remove('active');
