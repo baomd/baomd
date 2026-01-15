@@ -13,10 +13,7 @@
         
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* Logo - Synced with Index.html */
         .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
-        
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
@@ -58,7 +55,6 @@
         .reason-card h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
         .reason-card p { font-size: 1.05rem; line-height: 1.8; }
 
-        /* Updated Footer styling to match index.html exactly */
         footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
         footer a { color: var(--gold); text-decoration: none; }
 
@@ -69,7 +65,7 @@
             .contact-container { grid-template-columns: 1fr; }
             .page-header h1 { font-size: 2.5rem; }
         }
-
+        
         @media (max-width: 480px) {
             .logo { font-size: 0.9rem; }
         }
@@ -141,7 +137,7 @@
                     </svg>
                     Email
                 </h3>
-                <p><a href="mailto:office@baomd.us">office@baomd.us</a></p>
+                <p><a href="mailto:dr.nguyen.assistant@gmail.com">dr.nguyen.assistant@gmail.com</a></p>
             </div>
 
             <div class="info-item">
@@ -229,22 +225,17 @@
 
     <footer>
         <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-                  stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
-            <circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/>
-        </svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
-        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
-        <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, and you wish to discuss potential accommodations related to using this website, please contact us</p>
+            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/><circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/></svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+        <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, please contact us</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
     <script>
-        // Mobile Nav
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); });
 
-        // Form Handling
         const form = document.getElementById("contactForm");
         const status = document.getElementById("statusMsg");
         const btn = document.getElementById("submitBtn");
