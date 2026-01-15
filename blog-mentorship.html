@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship in Medicine and Dermatology | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 0.95rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 3rem 0 1.5rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2.5rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        .article-content em { font-style: italic; }
+        
+        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
+        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Leadership</span>
+        <h1>Mentorship in Medicine and Dermatology: Supporting the Next Generation</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>&bull;</span>
+            <span>January 23, 2026</span>
+            <span>&bull;</span>
+            <span>6 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="mentorship-image.png" alt="" class="featured-image">
+        
+        <article class="article-content">
+            <p>Medicine advances not only through innovation, but through continuity. Mentorship is the mechanism by which clinical judgment, professional values, and hard-earned experience are passed forward. In dermatology - where career paths are varied and competition is high - mentorship is especially important for <strong>medical students, residents, and junior physicians</strong> navigating early decisions with long-term consequences.</p>
+            
+            <h2>Why Mentorship Matters Early</h2>
+            <p>For medical students and residents, the gap between theory and practice can feel wide. Mentorship provides context that training alone cannot:</p>
+            <ul>
+            <li>How to think clinically, not just what to know</li>
+            <li>How to evaluate career paths realistically</li>
+            <li>How to manage pressure, failure, and uncertainty</li>
+            </ul>
+            <p>Early guidance helps trainees make informed choices rather than reactive ones.</p>
+            
+            <h2>Mentorship for Medical Students</h2>
+            <p>Medical students interested in dermatology benefit from mentorship that offers:</p>
+            <ul>
+            <li>Honest insight into the specialty's demands and rewards</li>
+            <li>Guidance on research, applications, and timing</li>
+            <li>Exposure to clinical reasoning and patient interaction</li>
+            </ul>
+            <p>Mentors help students understand whether dermatology aligns with their goals - not just their résumé.</p>
+            
+            <h2>Mentorship During Residency</h2>
+            <p>Residency is where knowledge becomes judgment. Mentorship during this stage supports:</p>
+            <ul>
+            <li>Clinical decision-making and procedural confidence</li>
+            <li>Subspecialty exploration</li>
+            <li>Professional identity development</li>
+            </ul>
+            <p>Residents benefit from mentors who explain <strong>why</strong> decisions are made - not just how.</p>
+            
+            <h2>Supporting Junior Physicians</h2>
+            <p>The transition from training to independent practice introduces new challenges: autonomy, business considerations, leadership, and sustainability. Junior physicians often benefit from mentorship that addresses:</p>
+            <ul>
+            <li>Practice models and career structure</li>
+            <li>Work-life integration</li>
+            <li>Long-term planning and adaptability</li>
+            </ul>
+            <p>At this stage, mentorship becomes more strategic and less prescriptive.</p>
+            
+            <h2>The Mentor's Role</h2>
+            <p>Effective mentors for trainees and early-career physicians:</p>
+            <ul>
+            <li>Set expectations clearly</li>
+            <li>Provide candid feedback</li>
+            <li>Model professionalism and restraint</li>
+            <li>Encourage independence</li>
+            </ul>
+            <p>The goal is not replication, but development.</p>
+            
+            <h2>Building a Mentorship Culture</h2>
+            <p>Strong mentorship cultures are built intentionally - through departments, professional societies, and informal networks. They create environments where:</p>
+            <ul>
+            <li>Questions are welcomed</li>
+            <li>Growth is prioritized</li>
+            <li>Experience is shared openly</li>
+            </ul>
+            <p>These cultures improve not only individual careers, but the specialty as a whole.</p>
+            
+            <h2>Paying It Forward</h2>
+            <p>Physicians who were guided early carry a responsibility to guide others. Mentoring students, residents, and junior colleagues strengthens the profession and preserves its standards.</p>
+            <p>Teaching reinforces clarity. Mentorship sustains excellence.</p>
+            
+            <h2>Final Perspective</h2>
+            <p>Mentorship is not a single conversation or a formal title. It is an ongoing commitment to guidance, perspective, and support.</p>
+            <p>For medical students, residents, and junior physicians in dermatology, mentorship is not optional - it is foundational.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist and physician leader with expertise in medical dermatology, practice management, and healthcare innovation.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>
