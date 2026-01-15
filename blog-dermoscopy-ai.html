@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermoscopy and the Promise & Limits of Artificial Intelligence | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 0.95rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 3rem 0 1.5rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2.5rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        .article-content em { font-style: italic; }
+        
+        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
+        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Medical Dermatology</span>
+        <h1>Dermoscopy and the Promise & Limits of Artificial Intelligence</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>&bull;</span>
+            <span>January 17, 2026</span>
+            <span>&bull;</span>
+            <span>5 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="" class="featured-image">
+        
+        <article class="article-content">
+            <p>Dermoscopy changed dermatology by letting us see what the naked eye cannot. Pigment networks, vascular patterns, symmetry, and subtle structural clues often reveal diagnostic signals long before a lesion looks obviously concerning. When used correctly, dermoscopy improves accuracy, reduces unnecessary biopsies, and refines clinical judgment.</p>
+            
+            <p>Artificial intelligence builds on this by recognizing patterns at scale. Trained on large image datasets, AI systems can quickly sort lesions, flag high-risk features, and assist with triage. In controlled settings, some models now approach expert-level performance for narrow tasks such as melanoma detection from static images.</p>
+            
+            <p>The opportunity is real - but it has clear limits.</p>
+            
+            <h2>Context Beyond the Image</h2>
+            <p>Dermoscopy is more than image recognition. Context matters: how a lesion has changed, the patient's history, the anatomic site, prior treatments, and the clinician's tolerance for risk. AI does not examine the patient, assess texture, evaluate surrounding skin, or weigh competing diagnoses. It detects patterns; it does not exercise judgment.</p>
+            
+            <h2>AI as an Adjunct, Not a Replacement</h2>
+            <p>Used appropriately, AI works best as an adjunct:</p>
+            <ul>
+            <li>Drawing attention to lesions that deserve closer inspection</li>
+            <li>Reducing cognitive load in busy clinical settings</li>
+            <li>Improving consistency in documentation and follow-up</li>
+            <li>Supporting education and second-look review</li>
+            </ul>
+            
+            <p>Problems arise when AI is framed as a replacement for clinical reasoning.</p>
+            
+            <h2>Human and Machine Working Together</h2>
+            <p>The future of dermoscopy is not human versus machine. It is clinicians using dermoscopy to ask better questions - and AI to help ensure fewer important details are overlooked. Outcomes improve not because decisions are automated, but because judgment is better informed.</p>
+            
+            <p>Technology is a tool. Responsibility remains human.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist specializing in medical, surgical, and cosmetic dermatology. Dr. Nguyen combines clinical expertise with evidence-based approaches to deliver optimal patient outcomes.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>
