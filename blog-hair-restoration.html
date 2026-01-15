@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Restoration: Medical Therapy, Supplements, and Procedural Options | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 0.95rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 3rem 0 1.5rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2.5rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        .article-content em { font-style: italic; }
+        
+        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
+        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Medical Dermatology</span>
+        <h1>Hair Restoration: Medical Therapy, Supplements, and Procedural Options</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>•</span>
+            <span>January 11, 2026</span>
+            <span>•</span>
+            <span>9 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80" alt="Hair Restoration: Medical Therapy, Supplements, and Procedural Options" class="featured-image">
+        
+        <article class="article-content">
+            <p>Hair loss is common, progressive, and biologically driven. While it often presents as a cosmetic concern, effective treatment requires medical understanding, early intervention, and long-term planning. Modern hair restoration is not about a single product or procedure—it is about stabilization first, restoration second.</p>
+            <h2>Understanding Hair Loss</h2>
+            <p>The most common cause of hair loss in both men and women is androgenetic alopecia, a genetically determined process driven by follicular sensitivity to dihydrotestosterone (DHT). Other causes include:</p>
+            <ul>
+            <li>Telogen effluvium (stress, illness, hormonal shifts)</li>
+            <li>Alopecia areata (autoimmune)</li>
+            <li>Scarring alopecias</li>
+            <li>Nutritional deficiencies or systemic disease</li>
+            </ul>
+
+            <p>Accurate diagnosis is essential. Treatments that work for androgenetic alopecia will not be effective for inflammatory or scarring conditions.</p>
+            <h2>Medical Therapy: The Foundation of Hair Restoration</h2>
+            <p>Medical therapy is the cornerstone of treatment. Its primary goal is to slow or stop progression, which is essential before considering any procedural intervention.</p>
+            <h2>Minoxidil (Topical and Oral)</h2>
+            <p>Minoxidil prolongs the growth (anagen) phase of the hair cycle and increases follicular size.</p>
+            <ul>
+            <li>Topical minoxidil (2% or 5%) is available over the counter</li>
+            <li>Low-dose oral minoxidil may be prescribed in select patients</li>
+            </ul>
+
+            <p>Minoxidil does not address hormonal causes of hair loss, but it improves density and thickness when used consistently. Results typically appear after 3–6 months.</p>
+            <h2>Finasteride</h2>
+            <p>Finasteride reduces conversion of testosterone to DHT by inhibiting 5-alpha reductase.</p>
+            <ul>
+            <li>Available as an oral prescription</li>
+            <li>Also used in topical formulations</li>
+            </ul>
+
+            <p>Finasteride is one of the most effective treatments for male-pattern hair loss and is sometimes used off-label in women under medical supervision. It works best when started early and used long term.</p>
+            <h2>Dutasteride</h2>
+            <p>Dutasteride inhibits both type I and type II 5-alpha reductase enzymes, resulting in more complete DHT suppression.</p>
+            <ul>
+            <li>Prescription-only</li>
+            <li>Used selectively in patients with progressive or refractory hair loss</li>
+            </ul>
+
+            <p>Because of its potency, patient selection and counseling are critical.</p>
+            <h2>Over-the-Counter Supplements and Adjuncts</h2>
+            <h2>Nutrafol and Viviscal</h2>
+            <p>Nutraceuticals such as Nutrafol and Viviscal aim to support hair growth by addressing:</p>
+            <ul>
+            <li>Nutritional deficiencies</li>
+            <li>Stress and inflammation</li>
+            <li>Hormonal balance</li>
+            </ul>
+
+            <p>While supplements alone do not reverse androgenetic alopecia, they may provide benefit as adjunctive therapy, particularly in women or patients with diffuse shedding.</p>
+            <h2>Ketoconazole Shampoo</h2>
+            <p>Ketoconazole-containing shampoos may reduce scalp inflammation and DHT activity locally. They are commonly used as supportive therapy alongside medical treatment.</p>
+            <h2>Procedural Options</h2>
+            <h2>Platelet-Rich Plasma (PRP)</h2>
+            <p>PRP involves injecting concentrated growth factors derived from a patient’s own blood into the scalp. It may:</p>
+            <ul>
+            <li>Improve hair thickness</li>
+            <li>Reduce shedding</li>
+            <li>Support follicular health</li>
+            </ul>
+
+            <p>PRP works best when combined with medical therapy and is not a substitute for it.</p>
+            <h2>Hair Transplantation</h2>
+            <p>Hair transplantation redistributes genetically resistant follicles to areas of thinning.</p>
+            <p>Successful outcomes depend on:</p>
+            <ul>
+            <li>Donor hair quality</li>
+            <li>Stability of hair loss</li>
+            <li>Surgical planning and technique</li>
+            </ul>
+
+            <p>Transplantation restores hair but does not stop future loss—ongoing medical therapy remains essential.</p>
+            <h2>Hair Restoration in Women</h2>
+            <p>Hair loss in women often presents as diffuse thinning and may involve hormonal, inflammatory, or metabolic contributors. Treatment emphasizes:</p>
+            <ul>
+            <li>Medical therapy and scalp health</li>
+            <li>Nutritional and hormonal evaluation</li>
+            <li>Conservative procedural intervention when appropriate</li>
+            </ul>
+
+            <p>A tailored approach is critical.</p>
+            <h2>Timing and Expectations</h2>
+            <p>The most common mistake in hair restoration is waiting too long. Early intervention preserves follicles and improves long-term outcomes.</p>
+            <p>Key expectations:</p>
+            <ul>
+            <li>Results take months, not weeks</li>
+            <li>Maintenance is lifelong</li>
+            <li>Not all hair loss is reversible</li>
+            </ul>
+
+            <p>Consistency matters more than intensity.</p>
+            <h2>A Long-Term Strategy</h2>
+            <p>Effective hair restoration relies on:</p>
+            <ul>
+            <li>Accurate diagnosis</li>
+            <li>Evidence-based medical therapy</li>
+            <li>Thoughtful use of supplements and procedures</li>
+            <li>Long-term maintenance</li>
+            </ul>
+
+            <p>There is no shortcut that replaces biology.</p>
+            <h2>The Dermatologic Perspective</h2>
+            <p>Hair loss is a medical condition with cosmetic consequences—not the other way around. When treated early and systematically, many patients achieve meaningful improvement and long-term stability.</p>
+            <p>The goal is not maximal density at any cost, but natural, sustainable results over time.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist specializing in medical, surgical, and cosmetic dermatology. Dr. Nguyen combines clinical expertise with evidence-based approaches to deliver optimal patient outcomes.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>
