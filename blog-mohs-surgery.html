@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohs Micrographic Surgery: Precision Skin Cancer Treatment | Dr. Quoc-Bao Nguyen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #0a1628; --navy-light: #1a2d47; --gold: #c9a961; 
+            --gold-light: #d4b976; --gold-dark: #b39650; --cream: #f8f6f3; 
+            --white: #ffffff; --text-dark: #2c3e50;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; }
+        
+        nav { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 1.5rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; padding: 6rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; display: flex; gap: 2rem; list-style: none; z-index: 1100; }
+        .nav-links.active { right: 0; }
+        .nav-links a { color: var(--navy); text-decoration: none; font-size: 1rem; font-weight: 600; }
+        @media (min-width: 1024px) { 
+            nav { padding: 1.8rem 3rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { position: static; height: auto; width: auto; flex-direction: row; padding: 0; box-shadow: none; background: transparent; }
+            .nav-links a { font-size: 0.9rem; font-weight: 500; }
+        }
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1200; }
+        .hamburger span { width: 24px; height: 2px; background: var(--navy); }
+        @media (min-width: 1024px) { .hamburger { display: none; } }
+        
+        .article-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 5rem 2rem 3rem; text-align: center; color: var(--white); }
+        .article-category { display: inline-block; background: var(--gold); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .article-meta { display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; font-size: 0.95rem; opacity: 0.9; }
+        
+        .article-container { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
+        
+        .article-content { font-size: 0.95rem; line-height: 1.9; color: #333; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin: 3rem 0 1.5rem 0; line-height: 1.3; }
+        .article-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy-light); margin: 2.5rem 0 1rem 0; }
+        .article-content p { margin-bottom: 1.3rem; line-height: 1.7; }
+        .article-content strong { color: var(--navy); font-weight: 600; }
+        .article-content em { font-style: italic; }
+        
+        .article-content ul { margin: 1.2rem 0 1.5rem 1.5rem; }
+        .article-content li { margin-bottom: 0.7rem; line-height: 1.6; padding-left: 0.5rem; list-style-type: none; position: relative; }
+        .article-content li::before { content: "◆"; color: var(--gold); font-size: 0.8rem; position: absolute; left: -1.5rem; }
+        
+        .article-content ol { margin: 1.2rem 0 1.5rem 2rem; }
+        .article-content ol li { list-style-type: decimal; }
+        .article-content ol li::before { content: none; }
+        
+        figure { margin: 3rem 0; }
+        figure img { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        figcaption { text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic; }
+        
+        .author-bio { background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; padding: 2.5rem; margin: 4rem 0; display: flex; gap: 2rem; align-items: center; border: 1px solid var(--gold-light); }
+        .author-avatar-large { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 4rem 2rem 2rem; text-align: center; margin-top: 6rem; line-height: 1.8; }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .author-bio { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
+                <li><a href="blogs.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-category">Medical Dermatology</span>
+        <h1>Mohs Micrographic Surgery: Precision Skin Cancer Treatment</h1>
+        <div class="article-meta">
+            <span>Dr. Quoc-Bao Nguyen</span>
+            <span>&bull;</span>
+            <span>January 20, 2026</span>
+            <span>&bull;</span>
+            <span>7 min read</span>
+        </div>
+    </header>
+
+    <div class="article-container">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200&q=80" alt="" class="featured-image">
+        
+        <article class="article-content">
+            <p>Mohs micrographic surgery is a specialized technique for treating certain skin cancers with the highest possible cure rate while preserving as much healthy tissue as possible. It is particularly valuable for cancers on the face and other anatomically or functionally sensitive areas.</p>
+            
+            <p>The procedure combines staged surgical removal with immediate microscopic examination of the tissue margins, allowing for complete cancer clearance before reconstruction begins.</p>
+            
+            <h2>What Makes Mohs Surgery Different</h2>
+            <p>Unlike standard excision, Mohs surgery evaluates 100% of the surgical margin in real time. Cancer is removed in thin layers, each carefully mapped and examined under a microscope. Additional tissue is removed only if cancer cells remain.</p>
+            
+            <p>This approach offers two major advantages:</p>
+            <ul>
+            <li>Maximum cure rates</li>
+            <li>Minimal removal of healthy tissue</li>
+            </ul>
+            
+            <p>The result is a procedure that balances oncologic safety with functional and cosmetic preservation.</p>
+            
+            <h2>When Mohs Surgery Is Recommended</h2>
+            <p>Mohs surgery is commonly used for:</p>
+            <ul>
+            <li>Basal cell carcinoma</li>
+            <li>Squamous cell carcinoma</li>
+            <li>Recurrent or previously treated skin cancers</li>
+            <li>Tumors with aggressive growth patterns</li>
+            <li>Cancers located on the face, scalp, ears, hands, feet, or genital area</li>
+            </ul>
+            
+            <p>Not every skin cancer requires Mohs surgery. The decision depends on multiple factors, including tumor type, location, size, prior treatment, and patient-specific considerations. Careful selection is essential.</p>
+            
+            <h2>What to Expect on the Day of Surgery</h2>
+            <p>Mohs surgery is performed in an outpatient setting using local anesthesia.</p>
+            
+            <p>The process typically includes:</p>
+            <ol>
+            <li>Removal of the visible tumor</li>
+            <li>Microscopic examination of the tissue</li>
+            <li>Additional stages as needed until margins are clear</li>
+            <li>Reconstruction once the cancer is fully removed</li>
+            </ol>
+            
+            <p>Because the number of stages varies, the length of the visit cannot be precisely predicted. Patients should plan to spend several hours in the office.</p>
+            
+            <h2>Reconstruction After Mohs Surgery</h2>
+            <p>Once the cancer is cleared, attention turns to reconstruction. This may involve:</p>
+            <ul>
+            <li>Allowing the wound to heal naturally</li>
+            <li>Layered closure</li>
+            <li>Local tissue rearrangement</li>
+            <li>Skin grafting, when appropriate</li>
+            </ul>
+            
+            <p>Reconstruction is planned with an emphasis on restoring normal contour, function, and appearance - not simply closing the wound. Decisions are individualized and based on anatomy, healing dynamics, and long-term outcomes.</p>
+            
+            <h2>Cure Rates and Outcomes</h2>
+            <p>Mohs surgery offers the highest cure rates available for many common skin cancers:</p>
+            <ul>
+            <li>Up to 99% for primary basal cell carcinoma</li>
+            <li>Up to 94-97% for recurrent tumors</li>
+            </ul>
+            
+            <p>Equally important are functional and cosmetic outcomes, which depend on thoughtful surgical planning and reconstruction.</p>
+            
+            <h2>A Measured, Patient-Centered Approach</h2>
+            <p>Mohs surgery is a powerful tool - but not a default. Each recommendation is made with careful consideration of risks, benefits, and alternatives. When Mohs surgery is chosen, it is because it offers a clear advantage for long-term health and quality of life.</p>
+            
+            <h2>Scheduling a Consultation</h2>
+            <p>If you have been diagnosed with skin cancer or referred for Mohs surgery, a consultation allows for review of pathology, discussion of treatment options, and development of an individualized surgical plan.</p>
+        </article>
+
+        <div class="author-bio">
+            <img src="../profile-photo.jpg" alt="Dr. Quoc-Bao Nguyen" class="author-avatar-large">
+            <div class="author-info">
+                <h4>Dr. Quoc-Bao Nguyen, MD</h4>
+                <p>Board-certified dermatologist specializing in medical, surgical, and cosmetic dermatology. Dr. Nguyen combines clinical expertise with evidence-based approaches to deliver optimal patient outcomes.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => 
+            document.getElementById('nav-links').classList.toggle('active')
+        );
+    </script>
+</body>
+</html>
