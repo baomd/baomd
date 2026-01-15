@@ -11,11 +11,11 @@
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
         
-        /* Navigation - Synced with Index/Contact/Blogs */
+        /* Navigation - Synced Branding */
         nav { background: rgba(255, 255, 255, 0.98); padding: 1.8rem 3rem; box-shadow: 0 4px 30px rgba(10, 22, 40, 0.12); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(20px); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
-        /* Logo Styling */
+        /* Logo Styling - Synced with Index/Contact */
         .logo { font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1.5px; }
         
         /* Hamburger Menu */
@@ -54,33 +54,12 @@
             position: relative;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .service-icon::before {
-            content: '';
-            position: absolute;
-            inset: -15px;
-            background: radial-gradient(circle, rgba(201, 169, 97, 0.12) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        .service-card:hover .service-icon::before {
-            opacity: 1;
-            animation: iconGlow 2s ease-in-out infinite;
-        }
-        .service-card:hover .service-icon {
-            transform: translateY(-8px) scale(1.15);
-        }
+        
         .service-icon svg {
             filter: drop-shadow(0 4px 12px rgba(201, 169, 97, 0.25));
             transition: filter 0.5s ease;
         }
-        .service-card:hover .service-icon svg {
-            filter: drop-shadow(0 8px 24px rgba(201, 169, 97, 0.45));
-        }
-        @keyframes iconGlow {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.3); opacity: 1; }
-        }
+        
         .service-card h3 { font-size: 1.6rem; margin-bottom: 1.5rem; }
         .service-card p { font-size: 1rem; line-height: 1.8; margin-bottom: 1.2rem; }
         .service-features { list-style: none; margin-top: 1.5rem; }
@@ -94,10 +73,8 @@
         .cta-primary { display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.3px; box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4); transition: all 0.4s; font-size: 0.9rem; }
         .cta-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6); }
         
-        /* Footer - Synced with Index/Contact */
         footer { background: linear-gradient(to bottom, #05090f, var(--navy)); color: var(--white); padding: 5rem 2rem 2rem; text-align: center; }
         footer a { color: var(--gold); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
         
         @media (max-width: 968px) {
             .hamburger { display: flex; }
@@ -108,7 +85,7 @@
             }
             .nav-links.active { right: 0; }
             .page-header { padding: 4rem 1.5rem 3rem; }
-            .page-header h1 { font-size: 2.5rem; }
+            .page-header h1 { font-size: 2.5rem !important; }
             .services-container { margin: 3rem auto; }
             .category-header h2 { font-size: 2rem; }
             .service-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -124,14 +101,10 @@
     <svg style="display: none;">
         <defs>
             <linearGradient id="grad-brand" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#c9a961"/>
-                <stop offset="100%" style="stop-color:#d4b976"/>
+                <stop offset="0%" style="stop-color:#c9a961"/><stop offset="100%" style="stop-color:#d4b976"/>
             </linearGradient>
             <filter id="glow-footer" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
-                </feMerge>
+                <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
         </defs>
     </svg>
@@ -139,9 +112,7 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">QUOC-BAO NGUYEN, MD</a>
-            <div class="hamburger">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -167,25 +138,80 @@
             </div>
             <div class="service-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                            <circle cx="30" cy="30" r="24" fill="url(#grad-brand)" opacity="0.1"/>
-                            <path d="M30 10 L40 18 L48 18 L48 26 L40 34 L30 42 L20 34 L12 26 L12 18 L20 18 Z" stroke="url(#grad-brand)" stroke-width="2.5" fill="none"/>
-                            <path d="M30 22 L30 38 M22 30 L38 30" stroke="url(#grad-brand)" stroke-width="2.5" stroke-linecap="round"/>
-                        </svg>
-                    </div>
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="24" fill="url(#grad-brand)" opacity="0.1"/><path d="M30 10 L40 18 L48 18 L48 26 L40 34 L30 42 L20 34 L12 26 L12 18 L20 18 Z" stroke="url(#grad-brand)" stroke-width="2.5" fill="none"/><path d="M30 22 L30 38 M22 30 L38 30" stroke="url(#grad-brand)" stroke-width="2.5" stroke-linecap="round"/></svg></div>
                     <h3>Mohs Micrographic Surgery</h3>
                     <p>The gold standard for skin cancer treatment, offering the highest cure rates while preserving healthy tissue and optimizing cosmetic outcomes.</p>
-                    <ul class="service-features">
-                        <li>99% cure rate for basal cell carcinoma and squamous cell carcinoma</li>
-                        <li>Tissue-sparing precision</li>
-                        <li>Same-day procedure and reconstruction</li>
-                        <li>Optimal aesthetic results</li>
-                    </ul>
+                    <ul class="service-features"><li>99% cure rate for basal cell carcinoma and squamous cell carcinoma</li><li>Tissue-sparing precision</li><li>Same-day procedure and reconstruction</li><li>Optimal aesthetic results</li></ul>
                 </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M15 20 L25 15 L35 20 L45 15" stroke="url(#grad-brand)" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M15 30 L25 25 L35 30 L45 25" stroke="url(#grad-brand)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M15 40 L25 35 L35 40 L45 35" stroke="url(#grad-brand)" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="15" cy="30" r="3" fill="url(#grad-brand)"/><circle cx="45" cy="25" r="3" fill="url(#grad-brand)"/></svg></div>
+                    <h3>Reconstructive Surgery</h3>
+                    <p>Advanced facial reconstruction techniques following skin cancer removal, trauma, or previous surgeries.</p>
+                    <ul class="service-features"><li>Complex flap and graft procedures</li><li>Facial aesthetic units preservation</li><li>Minimizing visible scarring</li><li>Natural, functional outcomes</li></ul>
                 </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="26" fill="url(#grad-brand)" opacity="0.1"/><path d="M18 24 Q30 20 42 24" stroke="url(#grad-brand)" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M18 30 Q30 26 42 30" stroke="url(#grad-brand)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M18 36 Q30 40 42 36" stroke="url(#grad-brand)" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="18" cy="30" r="3" fill="url(#grad-brand)"/><circle cx="42" cy="30" r="3" fill="url(#grad-brand)"/></svg></div>
+                    <h3>Scar Revision & Optimization</h3>
+                    <p>Multi-modal approach combining surgical techniques, laser therapy, and medical-grade skincare for superior scar improvement.</p>
+                    <ul class="service-features"><li>Surgical scar revision</li><li>Laser scar treatment</li><li>Injectable scar therapy</li><li>BaoMD Scar Cream protocols</li></ul>
+                </div>
+            </div>
         </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Medical Dermatology</h2>
+                <p>Evidence-Based Treatment for All Skin Conditions</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="20" stroke="url(#grad-brand)" stroke-width="2.5" fill="none" opacity="0.3"/><path d="M30 15 L34 22 L42 23 L36 29 L38 37 L30 33 L22 37 L24 29 L18 23 L26 22 Z" fill="url(#grad-brand)" opacity="0.6"/><circle cx="30" cy="30" r="5" fill="url(#grad-brand)" opacity="0.5"/></svg></div>
+                    <h3>Acne Treatment</h3>
+                    <p>Comprehensive acne management from adolescent to adult acne, including severe and treatment-resistant cases.</p>
+                    <ul class="service-features"><li>Topical and oral medications</li><li>Advanced therapies</li><li>Acne scar prevention and treatment</li><li>Personalized skincare regimens</li></ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="25" cy="25" r="15" stroke="url(#grad-brand)" stroke-width="3" fill="none"/><path d="M36 36 L48 48" stroke="url(#grad-brand)" stroke-width="4" stroke-linecap="round"/><circle cx="25" cy="25" r="4" fill="url(#grad-brand)" opacity="0.5"/></svg></div>
+                    <h3>Skin Cancer Detection & Prevention</h3>
+                    <p>Thorough full-body skin examinations using advanced diagnostic techniques for early detection.</p>
+                    <ul class="service-features"><li>Total body skin examinations</li><li>Dermoscopy and imaging</li><li>Risk assessment and screening</li><li>Preventive education</li></ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="15" y="12" width="30" height="36" rx="4" stroke="url(#grad-brand)" stroke-width="2.5" fill="none"/><circle cx="30" cy="22" r="6" fill="url(#grad-brand)" opacity="0.3"/><rect x="20" y="32" width="20" height="3" rx="1.5" fill="url(#grad-brand)" opacity="0.6"/></svg></div>
+                    <h3>Chronic Skin Conditions</h3>
+                    <p>Expert management of eczema, psoriasis, rosacea, vitiligo, and other chronic dermatologic conditions.</p>
+                    <ul class="service-features"><li>Advanced biologic therapies</li><li>Phototherapy treatments</li><li>Personalized treatment plans</li><li>Long-term disease management</li></ul>
+                </div>
+            </div>
         </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Cosmetic Dermatology</h2>
+                <p>Natural Enhancement & Aesthetic Refinement</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M15 15 L25 25" stroke="url(#grad-brand)" stroke-width="2.5" stroke-linecap="round"/><rect x="23" y="23" width="24" height="8" rx="2" fill="url(#grad-brand)" opacity="0.6" transform="rotate(45 35 27)"/><circle cx="45" cy="45" r="3" fill="url(#grad-brand)"/></svg></div>
+                    <h3>Injectable Treatments</h3>
+                    <p>Neurotoxins and dermal fillers for facial rejuvenation with natural, balanced results.</p>
+                    <ul class="service-features"><li>Botox® and Dysport®</li><li>Hyaluronic acid fillers</li><li>Advanced injection techniques</li><li>Natural facial harmony</li></ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M30 10 L30 25" stroke="url(#grad-brand)" stroke-width="3" stroke-linecap="round"/><path d="M10 30 L25 30" stroke="url(#grad-brand)" stroke-width="3" stroke-linecap="round"/><path d="M35 30 L50 30" stroke="url(#grad-brand)" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="30" r="8" fill="none" stroke="url(#grad-brand)" stroke-width="2.5" opacity="0.6"/><circle cx="30" cy="30" r="4" fill="url(#grad-brand)" opacity="0.7"/></svg></div>
+                    <h3>Laser & Energy Treatments</h3>
+                    <p>State-of-the-art laser technology for skin resurfacing, pigmentation, and vascular concerns.</p>
+                    <ul class="service-features"><li>Laser skin resurfacing</li><li>Pigmentation treatment</li><li>Vascular lesion removal</li><li>Skin tightening procedures</li></ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M30 45 Q26 35 24 25 Q22 15 26 10" stroke="url(#grad-brand)" stroke-width="2.5" stroke-linecap="round"/><path d="M30 45 Q32 35 33 25 Q34 15 32 10" stroke="url(#grad-brand)" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="10" r="2.5" fill="url(#grad-brand)"/><circle cx="32" cy="10" r="2.5" fill="url(#grad-brand)"/><circle cx="30" cy="45" r="3.5" fill="url(#grad-brand)" opacity="0.8"/></svg></div>
+                    <h3>Hair Restoration</h3>
+                    <p>Comprehensive hair loss diagnosis and treatment using medical therapies and advanced procedures.</p>
+                    <ul class="service-features"><li>Medical hair loss treatment</li><li>Platelet-rich plasma (PRP) therapy</li><li>Hair transplantation consultation</li><li>Personalized restoration plans</li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="highlight-section">
         <h2>BaoMD Skincare</h2>
@@ -199,28 +225,18 @@
 
     <footer>
         <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-                  stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
-            <circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/>
-        </svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/><circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/></svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
         <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
-        <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, and you wish to discuss potential accommodations related to using this website, please contact us</p>
+        <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, please contact us</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); }); });
+        document.addEventListener('click', (e) => { if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); } });
     </script>
 </body>
 </html>
