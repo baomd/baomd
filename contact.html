@@ -32,9 +32,9 @@
         .contact-container { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
         .contact-info h2 { font-size: 2.5rem; margin-bottom: 2rem; }
         .contact-info p.intro { font-size: 1.15rem; line-height: 2; margin-bottom: 3rem; }
-        .info-item { margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(to right, var(--cream), var(--white)); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
+        .info-item { margin-bottom: 2.5rem; padding: 2rem; background: var(--cream); border-radius: 15px; border-left: 5px solid var(--gold); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); }
         .info-item h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
-        .info-item p { font-size: 1.1rem; margin: 0; }
+        .info-item p { font-size: 1.1rem; margin: 0; padding-left: calc(24px + 0.8rem); }
         .info-item a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
         
         .contact-form-section { background: linear-gradient(to bottom, var(--cream), var(--white)); padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1); }
@@ -94,7 +94,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
-                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="expertise.html">BACKGROUND</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="blogs.html">BLOGS</a></li>
@@ -104,14 +104,13 @@
     </nav>
 
     <section class="page-header">
-        <h1>Get in Touch</h1>
-        <p>Schedule a Consultation or Speaking Engagement</p>
+        <h1>Professional Contact</h1>
     </section>
 
     <div class="contact-container">
         <div class="contact-info">
-            <h2>Connect With Dr. Nguyen</h2>
-            <p class="intro">Whether you're seeking expert dermatologic care, interested in speaking engagements, or have questions about BaoMD Skincare, we'd love to hear from you.</p>
+            <p class="intro">This page is intended solely for professional, academic, educational, or speaking-related inquiries.</p>
+            <p class="intro" style="margin-top: 0.5rem;">Dr. Nguyen does not offer independent medical services or patient consultations through this website. For patient care, appointments, or referrals, please contact Central Austin Dermatology below directly.</p>
 
             <div class="info-item">
                 <h3>
@@ -119,7 +118,7 @@
                         <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" stroke="url(#grad-brand)" stroke-width="1.5"/>
                         <circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/>
                     </svg>
-                    Location
+                    Clinic Location
                 </h3>
                 <p><strong>Central Austin Dermatology & Aesthetics</strong><br>
                 2700 W Anderson Ln. Unit 403<br>Austin, TX 78757</p>
@@ -135,9 +134,9 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" class="brand-icon" fill="none" stroke="url(#grad-brand)" stroke-width="1.5">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
                     </svg>
-                    Email
+                    Email for professional inquiries only
                 </h3>
-                <p><a href="mailto:dr.nguyen.assistant@gmail.com">dr.nguyen.assistant@gmail.com</a></p>
+                <p><a href="/cdn-cgi/l/email-protection#4f2b3d6121283a362a21612e3c3c263c3b2e213b0f28222e2623612c2022"><span class="__cf_email__" data-cfemail="4b2f3965252c3e322e25652a383822383f2a253f0b2c262a222765282426">[email&#160;protected]</span></a></p>
             </div>
 
             <div class="info-item">
@@ -147,8 +146,8 @@
                     </svg>
                     Phone
                 </h3>
-                <p><strong>Office:</strong> <a href="tel:+15127863498">(512) 786-3498</a></p>
-                <p style="margin-top: 0.5rem;"><strong>Assistant:</strong> <a href="tel:+15125882183">(512) 588-2183</a></p>
+                <p><strong>Central Austin Dermatology:</strong> <a href="tel:+15127863498">(512) 786-3498</a></p>
+                <p style="margin-top: 0.5rem;"><strong>Professional Activities:</strong> <a href="tel:+15125882183">(512) 588-2183</a></p>
             </div>
 
             <div class="info-item">
@@ -156,7 +155,7 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" class="brand-icon" fill="none" stroke="url(#grad-brand)" stroke-width="1.5">
                         <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
                     </svg>
-                    Office Hours
+                    Central Austin Dermatology Office Hours
                 </h3>
                 <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
             </div>
@@ -181,8 +180,9 @@
                     <label for="inquiry-type">Inquiry Type *</label>
                     <select name="inquiry" id="inquiry-type" required>
                         <option value="">Select an option</option>
-                        <option value="Consultation">Schedule Consultation</option>
                         <option value="Speaking">Speaking Engagement</option>
+                        <option value="Academic">Academic Collaboration</option>
+                        <option value="Media">Media Inquiry</option>
                         <option value="BaoMD">BaoMD Skincare</option>
                         <option value="Other">Other</option>
                     </select>
@@ -225,13 +225,14 @@
 
     <footer>
         <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/><circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/></svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/><circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/></svg>Austin, Texas (Professional Profile)</p>
         <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
         <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, please contact us</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        <p style="margin-top: 2rem; font-style: italic; opacity: 0.9;">This website is a professional informational profile only and does not offer medical services, patient consultations, or independent clinical practice.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); });
@@ -265,12 +266,4 @@
                 }
             }).catch(error => {
                 status.style.display = "block";
-                status.style.color = "red";
-                status.innerText = "Technical error. Please try again later.";
-                btn.disabled = false;
-                btn.innerText = "Send Message";
-            });
-        });
-    </script>
-</body>
-</html>
+    
