@@ -68,6 +68,9 @@
         
         @media (max-width: 480px) {
             .logo { font-size: 0.9rem; }
+            .info-item p { font-size: 0.95rem; }
+            .info-item h3 { font-size: 1.1rem; }
+            .info-item strong { display: block; margin-bottom: 0.3rem; }
         }
     </style>
 </head>
@@ -136,7 +139,7 @@
                     </svg>
                     Email for professional inquiries only
                 </h3>
-                <p><a href="/cdn-cgi/l/email-protection#4f2b3d6121283a362a21612e3c3c263c3b2e213b0f28222e2623612c2022"><span class="__cf_email__" data-cfemail="4b2f3965252c3e322e25652a383822383f2a253f0b2c262a222765282426">[email&#160;protected]</span></a></p>
+                <p><a href="mailto:info@baomd.us">info@baomd.us</a></p>
             </div>
 
             <div class="info-item">
@@ -146,8 +149,8 @@
                     </svg>
                     Phone
                 </h3>
-                <p><strong>Central Austin Dermatology:</strong> <a href="tel:+15127863498">(512) 786-3498</a></p>
-                <p style="margin-top: 0.5rem;"><strong>Professional Activities:</strong> <a href="tel:+15125882183">(512) 588-2183</a></p>
+                <p><strong>Central Austin Dermatology:</strong> <a href="tel:+15127863498" style="white-space: nowrap;">(512) 786-3498</a></p>
+                <p style="margin-top: 0.5rem;"><strong>Professional Activities:</strong> <a href="tel:+15125882183" style="white-space: nowrap;">(512) 588-2183</a></p>
             </div>
 
             <div class="info-item">
@@ -232,60 +235,74 @@
         <p style="margin-top: 2rem; font-style: italic; opacity: 0.9;">This website is a professional informational profile only and does not offer medical services, patient consultations, or independent clinical practice.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        // Open/Close menu
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Close menu if user clicks outside of it
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-
-        const form = document.getElementById("contactForm");
-        const status = document.getElementById("statusMsg");
-        const btn = document.getElementById("submitBtn");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-            btn.disabled = true;
-            btn.innerText = "Sending...";
-
-            const data = new FormData(event.target);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
             
-            fetch("https://formspree.io/f/xbddjany", {
-                method: "POST",
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    window.location.href = "https://baomd.us/thank-you.html";
-                } else {
-                    response.json().then(data => {
+            if (hamburger && navLinks) {
+                // Open/Close menu
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu if user clicks outside of it
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+
+            const form = document.getElementById("contactForm");
+            const status = document.getElementById("statusMsg");
+            const btn = document.getElementById("submitBtn");
+
+            if (form) {
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    btn.disabled = true;
+                    btn.innerText = "Sending...";
+
+                    const data = new FormData(event.target);
+                    
+                    fetch("https://formspree.io/f/xbddjany", {
+                        method: "POST",
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    }).then(response => {
+                        if (response.ok) {
+                            window.location.href = "https://baomd.us/thank-you.html";
+                        } else {
+                            response.json().then(data => {
+                                status.style.display = "block";
+                                status.style.color = "red";
+                                status.innerText = "Submission Error. Please check fields.";
+                                btn.disabled = false;
+                                btn.innerText = "Send Message";
+                            });
+                        }
+                    }).catch(error => {
                         status.style.display = "block";
                         status.style.color = "red";
-                        status.innerText = "Submission Error. Please check fields.";
+                        status.innerText = "Network Error. Please try again.";
                         btn.disabled = false;
                         btn.innerText = "Send Message";
                     });
-                }
-            }).catch(error => {
-                status.style.display = "block";
-    
+                });
+            }
+        });
+        </script>
+</body>
+</html>
