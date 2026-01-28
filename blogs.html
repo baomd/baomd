@@ -26,7 +26,7 @@
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.3s; }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; z-index: 1001; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 10px; z-index: 1001; position: relative; }
         .hamburger span { width: 25px; height: 3px; background: var(--navy); margin: 3px 0; transition: all 0.3s; border-radius: 3px; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -110,7 +110,7 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
-                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="expertise.html">BACKGROUND</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
                 <li><a href="ads-leadership.html">ADS LEADERSHIP</a></li>
                 <li><a href="blogs.html" class="active">BLOG</a></li>
@@ -145,13 +145,27 @@
 
     <footer>
         <p><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-            <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
-                  stroke="url(#grad-brand)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
-            <circle cx="10" cy="7.5" r="2" fill="url(#grad-brand)" opacity="0.8"/>
-        </svg>Based in Austin, Texas – Caring for patients nationally and internationally</p>
+    <defs>
+        <linearGradient id="grad-footer-loc" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#c9a961"/>
+            <stop offset="100%" style="stop-color:#d4b976"/>
+        </linearGradient>
+        <filter id="glow-footer">
+            <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <path d="M10 3 C7 3 5 5 5 7.5 C5 11 10 17 10 17 C10 17 15 11 15 7.5 C15 5 13 3 10 3 Z" 
+          stroke="url(#grad-footer-loc)" stroke-width="1.5" fill="none" filter="url(#glow-footer)"/>
+    <circle cx="10" cy="7.5" r="2" fill="url(#grad-footer-loc)" opacity="0.8"/>
+</svg>Austin, Texas (Professional Profile)</p>
         <p>© 2026 Quoc-Bao Nguyen, MD. All rights reserved.</p>
         <p>Accessibility: If you are vision-impaired or have some other impairment covered by the Americans with Disabilities Act or a similar law, and you wish to discuss potential accommodations related to using this website, please contact us</p>
         <p style="margin-top: 1.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        <p style="margin-top: 2rem; font-style: italic; opacity: 0.9;">This website is a professional informational profile only and does not offer medical services, patient consultations, or independent clinical practice.</p>
     </footer>
 
     <script>
@@ -228,7 +242,22 @@
                 render();
             });
         });
-        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('nav-links').classList.toggle('active'));
+        document.getElementById('hamburger').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
+        document.addEventListener('click', (e) => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            if (hamburger && navLinks && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
         render();
     </script>
 </body>
