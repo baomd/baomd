@@ -147,7 +147,7 @@
                     </svg>
                     Email for professional inquiries only
                 </h3>
-                <p><a href="/cdn-cgi/l/email-protection#6a0e1844040d1f130f04440b191903191e0b041e2a0d070b030644090507"><span class="__cf_email__" data-cfemail="e78395c98980929e8289c98694948e9493868993a7808a868e8bc984888a">[email&#160;protected]</span></a></p>
+                <p><a href="/cdn-cgi/l/email-protection#c4a0b6eaaaa3b1bda1aaeaa5b7b7adb7b0a5aab084a3a9a5ada8eaa7aba9"><span class="__cf_email__" data-cfemail="d5b1a7fbbbb2a0acb0bbfbb4a6a6bca6a1b4bba195b2b8b4bcb9fbb6bab8">[email&#160;protected]</span></a></p>
             </div>
 
             <div class="info-item">
@@ -320,4 +320,13 @@
                     }).catch(error => {
                         status.style.display = "block";
                         status.style.color = "red";
-                      
+                                              status.innerText = "Oops! There was a problem submitting your form.";
+                        btn.disabled = false;
+                        btn.innerText = "Send Message";
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
