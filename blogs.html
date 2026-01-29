@@ -32,7 +32,15 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header { 
+            background: 
+                radial-gradient(ellipse at top, rgba(201, 169, 97, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.1), transparent 50%),
+                linear-gradient(135deg, #0a1628 0%, #1a2d47 50%, #0d1b2e 100%);
+            padding: 8rem 2rem 5rem; 
+            text-align: center; 
+            color: var(--white); 
+        }
         .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
 
         .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }

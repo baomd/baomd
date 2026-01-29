@@ -25,7 +25,15 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header { 
+            background: 
+                radial-gradient(ellipse at top, rgba(201, 169, 97, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.1), transparent 50%),
+                linear-gradient(135deg, #0a1628 0%, #1a2d47 50%, #0d1b2e 100%);
+            padding: 8rem 2rem 5rem; 
+            text-align: center; 
+            color: var(--white); 
+        }
         .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
         .page-header p { font-size: 1.3rem; }
         
@@ -139,7 +147,7 @@
                     </svg>
                     Email for professional inquiries only
                 </h3>
-                <p><a href="mailto:dr.nguyen.assistant@gmail.com">dr.nguyen.assistant@gmail.com</a></p>
+                <p><a href="/cdn-cgi/l/email-protection#6a0e1844040d1f130f04440b191903191e0b041e2a0d070b030644090507"><span class="__cf_email__" data-cfemail="e78395c98980929e8289c98694948e9493868993a7808a868e8bc984888a">[email&#160;protected]</span></a></p>
             </div>
 
             <div class="info-item">
@@ -251,7 +259,7 @@
         <p style="margin-top: 2rem; font-style: italic; opacity: 0.9;">This website is a professional informational profile only and does not offer medical services, patient consultations, or independent clinical practice.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
@@ -312,13 +320,4 @@
                     }).catch(error => {
                         status.style.display = "block";
                         status.style.color = "red";
-                        status.innerText = "Network Error. Please try again.";
-                        btn.disabled = false;
-                        btn.innerText = "Send Message";
-                    });
-                });
-            }
-        });
-        </script>
-</body>
-</html>
+                      
