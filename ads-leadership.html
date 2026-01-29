@@ -20,7 +20,17 @@
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         
-        .page-hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 8rem 2rem 6rem; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+        .page-hero { 
+            background: 
+                radial-gradient(ellipse at top, rgba(201, 169, 97, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.1), transparent 50%),
+                linear-gradient(135deg, #0a1628 0%, #1a2d47 50%, #0d1b2e 100%);
+            padding: 8rem 2rem 6rem; 
+            text-align: center; 
+            color: var(--white); 
+            position: relative; 
+            overflow: hidden; 
+        }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(201, 169, 97, 0.15) 0%, transparent 70%); }
         .page-hero > * { position: relative; z-index: 1; }
         

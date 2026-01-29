@@ -31,7 +31,15 @@
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         
-        .page-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 8rem 2rem 5rem; text-align: center; color: var(--white); }
+        .page-header { 
+            background: 
+                radial-gradient(ellipse at top, rgba(201, 169, 97, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.1), transparent 50%),
+                linear-gradient(135deg, #0a1628 0%, #1a2d47 50%, #0d1b2e 100%);
+            padding: 8rem 2rem 5rem; 
+            text-align: center; 
+            color: var(--white); 
+        }
         .page-header h1 { font-size: 4rem; color: var(--white); margin-bottom: 1.5rem; }
         .page-header p { font-size: 1.3rem; }
         
